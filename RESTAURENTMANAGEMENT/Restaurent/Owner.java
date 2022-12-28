@@ -4,24 +4,13 @@ import java.util.ArrayList;
 
 import RESTAURENTMANAGEMENT.App;
 
-public class Owner {
+public class Owner extends User{
 
-    private final String ownerName;
-    private final int ownerID;
     private ArrayList<Restaurent> restaurents;
 
     public Owner(String restaurentName, int restaurentID) {
-        this.ownerID = restaurentID;
-        this.ownerName = restaurentName;
+        super(restaurentName, restaurentID);
         restaurents = new ArrayList<>();
-    }
-
-    public String getOwnerName() {
-        return ownerName;
-    }
-
-    public int getOwnerID() {
-        return ownerID;
     }
 
     public void createNewRestaurent(Restaurent restaurent1) {

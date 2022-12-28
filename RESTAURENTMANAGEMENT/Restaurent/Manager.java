@@ -2,27 +2,17 @@ package RESTAURENTMANAGEMENT.Restaurent;
 
 import RESTAURENTMANAGEMENT.view.ManagerUI;
 
-public class Manager {
+public class Manager extends User{
     private Restaurent restaurent;
-    private final String name;
-    private final int ID;
+    
 
     public Manager(String name, int iD) {
-        this.name = name;
-        ID = iD;
+        super(name, iD);
     }
 
     public void enterRestaurent(){
         ManagerUI managerUI = new ManagerUI();
         managerUI.enterRestaurent(restaurent);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getID() {
-        return ID;
     }
 
     protected Restaurent getRestaurent() {

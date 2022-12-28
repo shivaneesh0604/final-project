@@ -3,26 +3,17 @@ package RESTAURENTMANAGEMENT.Restaurent;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
 import RESTAURENTMANAGEMENT.view.CustomerUI;
 
-public class Customer {
-    private final String name;
-    private final int ID;
+public class Customer extends User{
+    
 
     public Customer(String name, int iD) {
-        this.name = name;
-        ID = iD;
+        super(name, iD);
     }
 
     public void entersTheRestaurent(Restaurent restaurent,Timing timing){
         CustomerUI customerUI = new CustomerUI();
-        customerUI.entersTheRestaurent(restaurent, timing,this.ID);
+        customerUI.entersTheRestaurent(restaurent, timing,this.getID());
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getID() {
-        return ID;
-    }
 
 }

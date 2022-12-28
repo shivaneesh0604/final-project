@@ -1,12 +1,10 @@
 package RESTAURENTMANAGEMENT.Restaurent;
 
-public class Cook {
-    private final String name;
-    private final int ID;
+public class Cook extends User{
+
     private Restaurent restaurent;
     public Cook(String name, int iD) {
-        this.name = name;
-        ID = iD;
+        super(name, iD);
     }
 
     protected Order getfoodAndProcess(Order order) {
@@ -20,12 +18,6 @@ public class Cook {
         return order;
     }
     
-    public String getName() {
-        return name;
-    }
-    public int getID() {
-        return ID;
-    }
     protected Restaurent getRestaurent() {
         return restaurent;
     }

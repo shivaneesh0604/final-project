@@ -9,16 +9,13 @@ import RESTAURENTMANAGEMENT.Interfaces.OrderHook;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentWaiterInterface;
 import RESTAURENTMANAGEMENT.MenuList.UserMenu;
 
-public class Waiter {
-    private final String name;
-    private final int ID;
+public class Waiter extends User{
     private RestaurentWaiterInterface waiterInterface ;
     private final HashMap<Integer, OrderList> orders;
     private final ArrayList<String> Tablenumbers;
     
     public Waiter(String name, int iD) {
-        this.name = name;
-        this.ID = iD;
+        super(name, iD);
         Tablenumbers = new ArrayList<>();
         orders = new HashMap<>();
     }
@@ -121,13 +118,6 @@ public class Waiter {
 
      void setTableNumber(String tablenumber) {
         this.Tablenumbers.add(tablenumber);
-    }
-
-    public String getName() {
-        return name;
-    }
-     int getID() {
-        return ID;
     }
     
      void setRestaurent(Restaurent restaurent) {

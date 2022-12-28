@@ -4,14 +4,12 @@ import java.util.ArrayList;
 
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentChefInterface;
 
-public class Chef {
-    private final String name;
-    private final int ID;
+public class Chef extends User{
+    
     private RestaurentChefInterface restaurent;
 
     public Chef(String name, int iD) {
-        this.name = name;
-        ID = iD;
+        super(name, iD);
     }
 
     public ArrayList<Order> assignToChefAndReceieveFood(ArrayList<Order> orders) {
@@ -24,13 +22,6 @@ public class Chef {
             processedOrders.add(order1);
         }
         return processedOrders;
-    }
-
-    public String getName() {
-        return name;
-    }
-    public int getID() {
-        return ID;
     }
 
     protected RestaurentChefInterface getRestaurent() {

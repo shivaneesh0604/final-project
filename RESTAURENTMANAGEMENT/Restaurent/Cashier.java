@@ -6,16 +6,13 @@ import java.util.HashMap;
 import RESTAURENTMANAGEMENT.Bill.Bill;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCashierInterface;
 
-public class Cashier {
+public class Cashier extends User{
     
-    private final String name;
-    private final int ID;
     private RestaurentCashierInterface restaurent ;
     private HashMap<Integer, Bill> bills = new HashMap<>();
 
     public Cashier(String name, int iD) {
-        this.name = name;
-        ID = iD;
+        super(name, iD);
     }
 
     public Bill generateBill(ArrayList<Order> listOfOrders, int orderid) {
@@ -33,13 +30,6 @@ public class Cashier {
         else{
             System.out.println("payable amount is less than "+bills.get(orderid).getTotalAmount()+" so enter amount equal to "+bills.get(orderid).getTotalAmount());
         }
-    }
-
-    public String getName() {
-        return name;
-    }
-    public int getID() {
-        return ID;
     }
 
     protected RestaurentCashierInterface getRestaurent() {

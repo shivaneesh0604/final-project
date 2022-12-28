@@ -19,7 +19,7 @@ public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Owner owner1 = new Owner("raj",1);
-        Restaurent restaurent1 = new Restaurent("atchayas", 1, owner1.getOwnerID());
+        Restaurent restaurent1 = new Restaurent("atchayas", 1, owner1.getID());
         Cashier cashier = new Cashier("ram", 1);
         Chef chef = new Chef("ramu", 1);
         Cook cook = new Cook("sathya", 1);
