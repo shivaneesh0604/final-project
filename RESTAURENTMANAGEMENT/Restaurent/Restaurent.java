@@ -156,7 +156,6 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     private Waiter getWaiter(String TableNumber, int customerid) {
         for (Waiter waiter : waiters) {
             if (waiter.getTablenumbers().contains(TableNumber)) {
-                waiter.assignCustomer(customerid);
                 return waiter;
             }
         }

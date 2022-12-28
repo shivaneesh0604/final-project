@@ -7,7 +7,7 @@ import RESTAURENTMANAGEMENT.Bill.Bill;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCustomerInterface;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
 import RESTAURENTMANAGEMENT.MenuList.UserMenu;
-import RESTAURENTMANAGEMENT.Orders.Order;
+import RESTAURENTMANAGEMENT.Restaurent.Order;
 import RESTAURENTMANAGEMENT.Restaurent.Restaurent;
 import RESTAURENTMANAGEMENT.Restaurent.Waiter;
 
@@ -36,7 +36,7 @@ public class CustomerUI {
                     String foodname = in.nextLine();
                     System.out.println("enter the quantity");
                     int quantity = in.nextInt();
-                    waiter.TakeNewOrder(customerID, foodname, quantity);
+                    waiter.TakeOrders(customerID, foodname, quantity);
                     break;
 
                 case 3:

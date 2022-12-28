@@ -8,8 +8,6 @@ import RESTAURENTMANAGEMENT.Bill.Bill;
 import RESTAURENTMANAGEMENT.Interfaces.OrderHook;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentWaiterInterface;
 import RESTAURENTMANAGEMENT.MenuList.UserMenu;
-import RESTAURENTMANAGEMENT.Orders.Order;
-import RESTAURENTMANAGEMENT.Orders.OrderList;
 
 public class Waiter {
     private final String name;
@@ -24,22 +22,30 @@ public class Waiter {
         Tablenumbers = new ArrayList<>();
         orders = new HashMap<>();
     }
-
-    protected void assignCustomer(int customerid) {
-        OrderList order = new OrderList();
-        this.orders.put(customerid, order);
+    
+    public UserMenu providesMenu() {
+        UserMenu menu =  waiterInterface.getUserMenu();
+        return menu;
     }
-
-    public void TakeNewOrder(int customerid, String foodName, int quantity) {
-
-        OrderList orders1 = orders.get(customerid);
-        boolean foodExists = false;
-        foodExists = waiterInterface.getUserMenu().checkFoodAvailability(foodName);
-        if (foodExists == false) {
-            System.out.println("Enter the right foodname to order");
-        } else {
-            Order order = new Order(foodName, quantity);
-            orders1.AddtoOrders(order);
+    
+    public void TakeOrders(int customerid, String foodName, int quantity) {
+        
+        if(orders.containsKey(customerid)){
+            OrderList orders1 = orders.get(customerid);
+            boolean foodExists = false;
+            foodExists = waiterInterface.getUserMenu().checkFoodAvailability(foodName);
+            if (foodExists == false) {
+                System.out.println("Enter the right foodname to order");
+            } else {
+                Order order = new Order(foodName, quantity);
+                orders1.AddtoOrders(order);
+            }
+        }
+        else{
+            OrderList order = new OrderList();
+            this.orders.put(customerid, order);
+            Order order2 = new Order(foodName, quantity);
+            order.AddtoOrders(order2);
         }
     }
 
@@ -107,32 +113,28 @@ public class Waiter {
         cashier.payBill(paymentAmount, orders.get(customerid).getOrderId());
     }
 
-    public UserMenu providesMenu() {
-        UserMenu menu =  waiterInterface.getUserMenu();
-        System.out.println(menu);
-        return menu;
-    }
+    
 
-    public List<String> getTablenumbers() {
+     List<String> getTablenumbers() {
         return Tablenumbers;
     }
 
-    public void setTableNumber(String tablenumber) {
+     void setTableNumber(String tablenumber) {
         this.Tablenumbers.add(tablenumber);
     }
 
     public String getName() {
         return name;
     }
-    public int getID() {
+     int getID() {
         return ID;
     }
     
-    protected void setRestaurent(Restaurent restaurent) {
+     void setRestaurent(Restaurent restaurent) {
         this.waiterInterface = restaurent;
     }
 
-    protected RestaurentWaiterInterface getWaiterInterface() {
+     RestaurentWaiterInterface getWaiterInterface() {
         return waiterInterface;
     }
 }

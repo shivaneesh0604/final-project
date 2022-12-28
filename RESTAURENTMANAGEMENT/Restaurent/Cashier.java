@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 import RESTAURENTMANAGEMENT.Bill.Bill;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCashierInterface;
-import RESTAURENTMANAGEMENT.Orders.Order;
 
 public class Cashier {
     

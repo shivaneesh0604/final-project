@@ -1,7 +1,6 @@
-package RESTAURENTMANAGEMENT.Customer;
+package RESTAURENTMANAGEMENT.Restaurent;
 
 import RESTAURENTMANAGEMENT.MenuList.Timing;
-import RESTAURENTMANAGEMENT.Restaurent.Restaurent;
 import RESTAURENTMANAGEMENT.view.CustomerUI;
 
 public class Customer {

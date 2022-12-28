@@ -1,4 +1,4 @@
-package RESTAURENTMANAGEMENT.Orders;
+package RESTAURENTMANAGEMENT.Restaurent;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -46,15 +46,11 @@ public class OrderList {
         return orders;
     }
 
-    public void setDelivered(Order newOrder) {
-        newOrder.setDelivered(true);
-    }
-
-    public int getOrderId() {
+     int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int id) {
+     void setOrderId(int id) {
         this.orderId = id ;
     }
 

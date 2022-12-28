@@ -1,4 +1,4 @@
-package RESTAURENTMANAGEMENT.Orders;
+package RESTAURENTMANAGEMENT.Restaurent;
 
 public class Order {
 

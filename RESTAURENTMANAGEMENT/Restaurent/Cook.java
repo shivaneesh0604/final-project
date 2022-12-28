@@ -1,7 +1,5 @@
 package RESTAURENTMANAGEMENT.Restaurent;
 
-import RESTAURENTMANAGEMENT.Orders.Order;
-
 public class Cook {
     private final String name;
     private final int ID;

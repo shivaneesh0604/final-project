@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import RESTAURENTMANAGEMENT.Interfaces.OrderHook;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentOrderKitchenSystemInterface;
-import RESTAURENTMANAGEMENT.Orders.Order;
 
 public class KitchenOrderSystem implements OrderHook {
 
