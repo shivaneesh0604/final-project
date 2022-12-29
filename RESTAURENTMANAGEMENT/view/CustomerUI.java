@@ -7,9 +7,9 @@ import RESTAURENTMANAGEMENT.Bill.Bill;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCustomerInterface;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
 import RESTAURENTMANAGEMENT.MenuList.UserMenu;
-import RESTAURENTMANAGEMENT.Restaurent.Order;
-import RESTAURENTMANAGEMENT.Restaurent.Restaurent;
-import RESTAURENTMANAGEMENT.Restaurent.Waiter;
+import RESTAURENTMANAGEMENT.Model.Order;
+import RESTAURENTMANAGEMENT.Model.Restaurent;
+import RESTAURENTMANAGEMENT.Model.Waiter;
 
 public class CustomerUI {
     Scanner in = new Scanner(System.in);

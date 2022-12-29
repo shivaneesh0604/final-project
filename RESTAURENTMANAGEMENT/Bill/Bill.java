@@ -2,7 +2,7 @@ package RESTAURENTMANAGEMENT.Bill;
 import java.util.ArrayList;
 
 import RESTAURENTMANAGEMENT.MenuList.Item;
-import RESTAURENTMANAGEMENT.Restaurent.Order;
+import RESTAURENTMANAGEMENT.Model.Order;
 
 public class Bill {
 

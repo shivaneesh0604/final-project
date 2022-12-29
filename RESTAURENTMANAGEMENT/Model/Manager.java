@@ -1,4 +1,4 @@
-package RESTAURENTMANAGEMENT.Restaurent;
+package RESTAURENTMANAGEMENT.Model;
 
 import RESTAURENTMANAGEMENT.view.ManagerUI;
 

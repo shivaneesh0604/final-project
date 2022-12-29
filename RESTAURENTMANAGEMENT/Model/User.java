@@ -1,4 +1,4 @@
-package RESTAURENTMANAGEMENT.Restaurent;
+package RESTAURENTMANAGEMENT.Model;
 
 public class User {
     private final String name;

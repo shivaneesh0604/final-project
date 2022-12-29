@@ -9,7 +9,7 @@ import RESTAURENTMANAGEMENT.MenuList.Dietery;
 import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.MenuList;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
-import RESTAURENTMANAGEMENT.Restaurent.Restaurent;
+import RESTAURENTMANAGEMENT.Model.Restaurent;
 
 public class ManagerUI {
     private RestaurentManagementFunctions managerInterface;

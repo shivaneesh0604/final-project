@@ -1,8 +1,8 @@
 package RESTAURENTMANAGEMENT.Interfaces;
 
 import RESTAURENTMANAGEMENT.MenuList.UserMenu;
-import RESTAURENTMANAGEMENT.Restaurent.Cashier;
-import RESTAURENTMANAGEMENT.Restaurent.KitchenOrderSystem;
+import RESTAURENTMANAGEMENT.Model.Cashier;
+import RESTAURENTMANAGEMENT.Model.KitchenOrderSystem;
 
 public interface RestaurentWaiterInterface {
     public UserMenu getUserMenu();

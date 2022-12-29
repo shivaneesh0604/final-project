@@ -1,4 +1,4 @@
-package RESTAURENTMANAGEMENT.Restaurent;
+package RESTAURENTMANAGEMENT.Model;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -1,6 +1,6 @@
 package RESTAURENTMANAGEMENT.Interfaces;
 
-import RESTAURENTMANAGEMENT.Restaurent.Waiter;
+import RESTAURENTMANAGEMENT.Model.Waiter;
 
 public interface RestaurentCustomerInterface {
     public Waiter getIN(String tablenumber, int customerid);

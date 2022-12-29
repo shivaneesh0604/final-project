@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import RESTAURENTMANAGEMENT.MenuList.Timing;
-import RESTAURENTMANAGEMENT.Restaurent.Restaurent;
-import RESTAURENTMANAGEMENT.Restaurent.Waiter;
-import RESTAURENTMANAGEMENT.Restaurent.Cashier;
-import RESTAURENTMANAGEMENT.Restaurent.Chef;
-import RESTAURENTMANAGEMENT.Restaurent.Cook;
-import RESTAURENTMANAGEMENT.Restaurent.Customer;
-import RESTAURENTMANAGEMENT.Restaurent.Manager;
-import RESTAURENTMANAGEMENT.Restaurent.Owner;
+import RESTAURENTMANAGEMENT.Model.Cashier;
+import RESTAURENTMANAGEMENT.Model.Chef;
+import RESTAURENTMANAGEMENT.Model.Cook;
+import RESTAURENTMANAGEMENT.Model.Customer;
+import RESTAURENTMANAGEMENT.Model.Manager;
+import RESTAURENTMANAGEMENT.Model.Owner;
+import RESTAURENTMANAGEMENT.Model.Restaurent;
+import RESTAURENTMANAGEMENT.Model.Waiter;
 
 public class App {
     public static final ArrayList<Restaurent> restaurents = new ArrayList<>();

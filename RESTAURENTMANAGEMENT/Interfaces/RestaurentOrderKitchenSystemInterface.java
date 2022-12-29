@@ -1,6 +1,6 @@
 package RESTAURENTMANAGEMENT.Interfaces;
 
-import RESTAURENTMANAGEMENT.Restaurent.Chef;
+import RESTAURENTMANAGEMENT.Model.Chef;
 
 public interface RestaurentOrderKitchenSystemInterface {
     public Chef getRandomChef();
