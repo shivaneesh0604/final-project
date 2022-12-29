@@ -35,6 +35,12 @@ public class Waiter extends User {
             if (foodExists == false) {
                 System.out.println("Enter the right foodname to order since it is not available at this time");
             } else {
+                for (Order order : orders1.getOrders()) {
+                    if(order.getFoodname().equals(foodName)&&!order.isDelivered()){
+                        order.setQuantity(order.getQuantity()+quantity);
+                        return;
+                    }
+                }
                 Order order = new Order(foodName, quantity);
                 orders1.AddtoOrders(order);
             }

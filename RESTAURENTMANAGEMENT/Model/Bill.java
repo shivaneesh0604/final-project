@@ -39,7 +39,7 @@ public class Bill {
             for (Item item : menuItems) {
                 if (item.getFoodName().equals(order.getFoodname())) {
                     float price = item.getPrice() * order.getQuantity();
-                    System.out.format("  %-9s             %-9d          %5d               %9d\n",
+                    System.out.format("  %-9s             %-9d          %5d               %9f\n",
                             order.getFoodname(),
                             order.getQuantity(), item.getPrice(), price);
                 }
