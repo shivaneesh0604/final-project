@@ -21,7 +21,7 @@ public class CustomerUI {
         System.out.println("enter table number to sit");
         String tablenumber = in.next();
         Waiter waiter = restaurentCustomerInterface.getIN(tablenumber, customerID);
-        while (true) {
+        MainLoop: while (true) {
             System.out.println(
                     "press 1 for asking menu \n 2 to add new orders \n 3 for deleteOrder \n 4 for confirm order \n 5 for asking bill and paying  ");
             int option = in.nextInt();
@@ -69,14 +69,11 @@ public class CustomerUI {
                     float paymentAmount = in.nextFloat();
                     waiter.paybill(paymentAmount, customerID);
                     break;
+
+                case 6:
+                    break MainLoop;
             }
-            System.out.println("if you want to close options press 1");
-            int closeOption = in.nextInt();
-            if (closeOption == 1) {
-                break;
-            } else {
-                continue;
-            }
+            
         }
     }
     private void receiveOrder(ArrayList<Order> order) {

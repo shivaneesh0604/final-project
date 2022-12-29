@@ -13,6 +13,12 @@ public class MenuList implements UserMenu {
 
     }
 
+    public void showMenu(){
+        for (Item item : totalItems) {
+            System.out.println(item.getFoodName()+" "+item.getPrice()+" "+item.getTiming());
+        }
+    }
+
     @Override
     public void showMenu(Timing timing) {
         System.out.println("Food available are ");

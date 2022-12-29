@@ -38,7 +38,7 @@ public class App {
         ArrayList<Restaurent> restaurents = ListOfRestaurents.getInstance().getRestaurents();
         for (Restaurent restaurent : restaurents) {
             if(restaurent.getRestaurentName().equals("atchayas")){
-                customer.entersTheRestaurent(restaurent,Timing.MORNING);
+                customer.entersTheRestaurent(restaurent,Timing.NIGHT);
                 break;
             }
         }

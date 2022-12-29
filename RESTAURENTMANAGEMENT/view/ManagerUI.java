@@ -19,9 +19,9 @@ public class ManagerUI {
     }
 
     public void enterRestaurent() {
-        while (true) {
+        MainLoop: while (true) {
             System.out.println(
-                    " 1 for adding tablenumber to waiter \n 2 for deleting table number for waiter \n 3 for Adding items in menu \n 4 for altering the food pirce \n 5 for deleting food \n 6 for creating new menu");
+                    " 1 for adding tablenumber to waiter \n 2 for deleting table number for waiter \n 3 for Adding items in menu \n 4 for altering the food pirce \n 5 for deleting food \n 6 for creating new menu\n 7 to exit");
             int option = scanner.nextInt();
             switch (option) {
                 case 1:
@@ -64,6 +64,7 @@ public class ManagerUI {
                 case 3:
                     System.out.println("food available are ");
                     MenuList menu = managerInterface.getFullMenu();
+                    menu.showMenu();
                     System.out.println("enter foodname to add");
                     scanner.nextLine();
                     String foodname = scanner.nextLine();
@@ -149,17 +150,15 @@ public class ManagerUI {
 
                 case 6:
                     managerInterface.createNewMenu();
+                    System.out.println("menu created");
                     MenuList menu1 = managerInterface.getFullMenu();
                     Item item2 = new Item("chicken Chucka", 130, Dietery.NONVEG, Course.MAINCOURSE, Timing.NIGHT);
                     menu1.addMenusItems(item2);
+                    break;
 
-            }
-            System.out.println("if you want to exit press 1");
-            int exit = scanner.nextInt();
-            if (exit == 1) {
-                break;
-            } else {
-                continue;
+                case 7:
+                    break MainLoop;
+
             }
         }
 

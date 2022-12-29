@@ -3,7 +3,6 @@ package RESTAURENTMANAGEMENT.Model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import RESTAURENTMANAGEMENT.Interfaces.OrderHook;
@@ -14,7 +13,6 @@ import RESTAURENTMANAGEMENT.MenuList.UserMenu;
 public class Waiter extends User {
     private RestaurentWaiterInterface waiterInterface;
     private final HashMap<Integer, OrderList> orders;
-    // private final Set<String> tbnumbers;
     private final Set<String> Tablenumbers;
 
     public Waiter(String name, int iD) {
