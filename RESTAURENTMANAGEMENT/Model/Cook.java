@@ -1,27 +1,29 @@
 package RESTAURENTMANAGEMENT.Model;
 
-public class Cook extends User{
+public class Cook extends User {
 
     private Restaurent restaurent;
+
     public Cook(String name, int iD) {
         super(name, iD);
     }
 
-    protected Order getfoodAndProcess(Order order) {
+    public Order getfoodAndProcess(Order order) {
         System.out.println("food in process...");
         try {
             Thread.sleep(2000);
-        } catch (Exception e){
+        } catch (Exception e) {
         }
         System.out.println("food completed");
-        System.out.println("foodname is "+order.getFoodname()+" quantity is "+order.getQuantity());
+        System.out.println("foodname is " + order.getFoodname() + " quantity is " + order.getQuantity());
         return order;
     }
-    
-    protected Restaurent getRestaurent() {
+
+    Restaurent getRestaurent() {
         return restaurent;
     }
-    protected void setRestaurent(Restaurent restaurent) {
+
+    void setRestaurent(Restaurent restaurent) {
         this.restaurent = restaurent;
     }
 }

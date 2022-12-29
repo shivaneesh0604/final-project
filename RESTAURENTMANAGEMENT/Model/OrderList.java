@@ -3,10 +3,9 @@ package RESTAURENTMANAGEMENT.Model;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
 public class OrderList {
 
-    private int orderId=0;
+    private int orderId = 0;
 
     private ArrayList<Order> orders = new ArrayList<>();
 
@@ -24,19 +23,19 @@ public class OrderList {
             Order order = it.next();
             if (order.getFoodname().equals(foodname) && !order.isDelivered()) {
                 if (order.getQuantity() == quantity) {
-                    System.out.println(order.getFoodname()+" is totally deleted");
+                    System.out.println(order.getFoodname() + " is totally deleted");
                     it.remove();
                     break;
                 } else if (order.getQuantity() > quantity) {
                     order.setQuantity(order.getQuantity() - quantity);
                     System.out.println(
                             "Changed order is " + order.getFoodname() + " with the quantity " + order.getQuantity());
-                            break;
+                    break;
                 } else if (order.getQuantity() < quantity) {
                     System.out
                             .println("Your order is not compatible to change please enter value on or below "
-                                    + order.getQuantity()+" to delete");
-                                    break;
+                                    + order.getQuantity() + " to delete");
+                    break;
                 }
             }
         }
@@ -46,12 +45,12 @@ public class OrderList {
         return orders;
     }
 
-     int getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-     void setOrderId(int id) {
-        this.orderId = id ;
+    public void setOrderId(int id) {
+        this.orderId = id;
     }
 
 }

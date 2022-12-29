@@ -24,10 +24,10 @@ public class Chef extends User{
         return processedOrders;
     }
 
-    protected RestaurentChefInterface getRestaurent() {
+    RestaurentChefInterface getRestaurent() {
         return restaurent;
     }
-    protected void setRestaurent(Restaurent restaurent) {
+    void setRestaurent(Restaurent restaurent) {
         this.restaurent = restaurent;
     }
 }

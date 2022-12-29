@@ -8,15 +8,16 @@ import RESTAURENTMANAGEMENT.Interfaces.RestaurentCustomerInterface;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
 import RESTAURENTMANAGEMENT.MenuList.UserMenu;
 import RESTAURENTMANAGEMENT.Model.Order;
-import RESTAURENTMANAGEMENT.Model.Restaurent;
 import RESTAURENTMANAGEMENT.Model.Waiter;
 
 public class CustomerUI {
     Scanner in = new Scanner(System.in);
     private RestaurentCustomerInterface restaurentCustomerInterface;
 
-    public void entersTheRestaurent(Restaurent restaurent,Timing timing,int customerID) {
-        restaurentCustomerInterface = restaurent;
+    public CustomerUI(RestaurentCustomerInterface restaurentCustomerInterface) {
+        this.restaurentCustomerInterface = restaurentCustomerInterface;
+    }
+    public void entersTheRestaurent(Timing timing,int customerID) {
         System.out.println("enter table number to sit");
         String tablenumber = in.next();
         Waiter waiter = restaurentCustomerInterface.getIN(tablenumber, customerID);

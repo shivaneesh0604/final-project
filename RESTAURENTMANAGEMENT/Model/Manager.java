@@ -15,11 +15,11 @@ public class Manager extends User{
         managerUI.enterRestaurent(restaurent);
     }
 
-    protected Restaurent getRestaurent() {
+     Restaurent getRestaurent() {
         return restaurent;
     }
 
-    protected void setRestaurent(Restaurent restaurent) {
+     void setRestaurent(Restaurent restaurent) {
         this.restaurent = restaurent;
     }
 

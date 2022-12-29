@@ -11,8 +11,8 @@ public class Customer extends User{
     }
 
     public void entersTheRestaurent(Restaurent restaurent,Timing timing){
-        CustomerUI customerUI = new CustomerUI();
-        customerUI.entersTheRestaurent(restaurent, timing,this.getID());
+        CustomerUI customerUI = new CustomerUI(restaurent);
+        customerUI.entersTheRestaurent(timing,this.getID());
     }
 
 

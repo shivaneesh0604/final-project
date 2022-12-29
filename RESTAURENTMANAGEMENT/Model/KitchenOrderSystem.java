@@ -14,11 +14,11 @@ public class KitchenOrderSystem implements OrderHook {
         return kitchenOrderSystemInterface.getRandomChef().assignToChefAndReceieveFood(orders);
     }
 
-    protected RestaurentOrderKitchenSystemInterface getKitchenOrderSystemInterface() {
+    RestaurentOrderKitchenSystemInterface getKitchenOrderSystemInterface() {
         return kitchenOrderSystemInterface;
     }
 
-    protected void setKitchenOrderSystemInterface(Restaurent restaurent) {
+    void setKitchenOrderSystemInterface(Restaurent restaurent) {
         this.kitchenOrderSystemInterface = restaurent;
     }
     

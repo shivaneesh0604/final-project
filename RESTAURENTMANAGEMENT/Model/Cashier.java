@@ -32,10 +32,10 @@ public class Cashier extends User{
         }
     }
 
-    protected RestaurentCashierInterface getRestaurent() {
+    RestaurentCashierInterface getRestaurent() {
         return restaurent;
     }
-    protected void setRestaurent(RestaurentCashierInterface restaurent) {
+    void setRestaurent(RestaurentCashierInterface restaurent) {
         this.restaurent = restaurent;
     }
 
