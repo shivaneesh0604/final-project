@@ -22,7 +22,13 @@ public class ListOfRestaurents {
         restaurents.add(restaurent);
     }
 
-    public ArrayList<Restaurent> getRestaurents() {
+    public void showRestaurents() {
+        for (Restaurent restaurent : restaurents) {
+            System.out.println(restaurent.getRestaurentName());            
+        }
+    }
+
+    public ArrayList<Restaurent> getRestaurents(){
         return restaurents;
     }
 }

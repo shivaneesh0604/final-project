@@ -1,0 +1,11 @@
+package RESTAURENTMANAGEMENT.view;
+
+public enum ManagerOptions {
+    ADD_TABLENUMBER,
+    REMOVE_TABLENUMBER,
+    ADD_ITEMS,
+    ALTER_FOODPRICE,
+    DELETE_FOOD,
+    CREATE_NEW_MENU,
+    EXIT;
+}

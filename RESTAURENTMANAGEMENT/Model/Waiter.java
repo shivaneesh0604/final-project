@@ -15,8 +15,9 @@ public class Waiter extends User {
     private final HashMap<Integer, OrderList> orders;
     private final Set<String> Tablenumbers;
 
-    public Waiter(String name, int iD) {
+    public Waiter(String name, int iD,Restaurent restaurent) {
         super(name, iD);
+        this.waiterInterface = restaurent;
         Tablenumbers = new HashSet<String>();
         orders = new HashMap<>();
     }
@@ -36,8 +37,8 @@ public class Waiter extends User {
                 System.out.println("Enter the right foodname to order since it is not available at this time");
             } else {
                 for (Order order : orders1.getOrders()) {
-                    if(order.getFoodname().equals(foodName)&&!order.isDelivered()){
-                        order.setQuantity(order.getQuantity()+quantity);
+                    if (order.getFoodname().equals(foodName) && !order.isDelivered()) {
+                        order.setQuantity(order.getQuantity() + quantity);
                         return;
                     }
                 }
@@ -118,8 +119,6 @@ public class Waiter extends User {
         this.Tablenumbers.add(tablenumber);
     }
 
-    void setRestaurent(Restaurent restaurent) {
-        this.waiterInterface = restaurent;
-    }
+    
 
 }

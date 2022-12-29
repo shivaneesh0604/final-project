@@ -5,17 +5,18 @@ import java.util.HashMap;
 
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCashierInterface;
 
-public class Cashier extends User{
-    
-    private RestaurentCashierInterface restaurent ;
+public class Cashier extends User {
+
+    private RestaurentCashierInterface restaurent;
     private HashMap<Integer, Bill> bills = new HashMap<>();
 
-    public Cashier(String name, int iD) {
+    public Cashier(String name, int iD, Restaurent restaurent) {
         super(name, iD);
+        this.restaurent= restaurent;
     }
 
     public Bill generateBill(ArrayList<Order> listOfOrders, int orderid) {
-        Bill bill = new Bill(listOfOrders,orderid,restaurent.getMenuItems());
+        Bill bill = new Bill(listOfOrders, orderid, restaurent.getMenuItems());
         bill.calculateBill();
         bills.put(orderid, bill);
         return bill;
@@ -24,20 +25,10 @@ public class Cashier extends User{
     public void payBill(float paymentAmount, int orderid) {
         if (bills.get(orderid).getTotalAmount() == paymentAmount) {
             System.out.println("payment done");
-            System.out.println("Happy journey! \n THANK YOU");
+        } else {
+            System.out.println("payable amount is less than " + bills.get(orderid).getTotalAmount()
+                    + " so enter amount equal to " + bills.get(orderid).getTotalAmount());
         }
-        else{
-            System.out.println("payable amount is less than "+bills.get(orderid).getTotalAmount()+" so enter amount equal to "+bills.get(orderid).getTotalAmount());
-        }
     }
-
-    RestaurentCashierInterface getRestaurent() {
-        return restaurent;
-    }
-    void setRestaurent(RestaurentCashierInterface restaurent) {
-        this.restaurent = restaurent;
-    }
-
-    
 
 }

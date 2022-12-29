@@ -8,14 +8,15 @@ import RESTAURENTMANAGEMENT.MenuList.Timing;
 import RESTAURENTMANAGEMENT.MenuList.UserMenu;
 import RESTAURENTMANAGEMENT.Model.Bill;
 import RESTAURENTMANAGEMENT.Model.Order;
+import RESTAURENTMANAGEMENT.Model.Restaurent;
 import RESTAURENTMANAGEMENT.Model.Waiter;
 
 public class CustomerUI {
     Scanner in = new Scanner(System.in);
     private RestaurentCustomerInterface restaurentCustomerInterface;
 
-    public CustomerUI(RestaurentCustomerInterface restaurentCustomerInterface) {
-        this.restaurentCustomerInterface = restaurentCustomerInterface;
+    public CustomerUI(Restaurent restaurent) {
+        this.restaurentCustomerInterface = restaurent;
     }
     public void entersTheRestaurent(Timing timing,int customerID) {
         System.out.println("enter table number to sit");
@@ -68,9 +69,6 @@ public class CustomerUI {
                     System.out.println("enter the amount to pay");
                     float paymentAmount = in.nextFloat();
                     waiter.paybill(paymentAmount, customerID);
-                    break;
-
-                case 6:
                     break MainLoop;
             }
             

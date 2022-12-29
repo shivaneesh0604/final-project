@@ -4,8 +4,9 @@ public class Cook extends User {
 
     private Restaurent restaurent;
 
-    public Cook(String name, int iD) {
+    public Cook(String name, int iD,Restaurent restaurent) {
         super(name, iD);
+        this.restaurent = restaurent;
     }
 
     public Order getfoodAndProcess(Order order) {

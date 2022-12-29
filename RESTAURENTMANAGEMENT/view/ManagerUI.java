@@ -9,40 +9,44 @@ import RESTAURENTMANAGEMENT.MenuList.Dietery;
 import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.MenuList;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
+import RESTAURENTMANAGEMENT.Model.Restaurent;
 
 public class ManagerUI {
     private RestaurentManagementFunctions managerInterface;
     Scanner scanner = new Scanner(System.in);
 
-    public ManagerUI(RestaurentManagementFunctions managerInterface) {
-        this.managerInterface = managerInterface;
+    public ManagerUI(Restaurent restaurent) {
+        this.managerInterface = restaurent;
     }
 
     public void enterRestaurent() {
         MainLoop: while (true) {
-            System.out.println(
-                    " 1 for adding tablenumber to waiter \n 2 for deleting table number for waiter \n 3 for Adding items in menu \n 4 for altering the food pirce \n 5 for deleting food \n 6 for creating new menu\n 7 to exit");
-            int option = scanner.nextInt();
-            switch (option) {
-                case 1:
+
+            InputVerification.print(ManagerOptions.values());
+
+            int option = InputVerification.inputVerificationManager(ManagerOptions.values().length);
+            ManagerOptions preference = ManagerOptions.values()[option];
+            switch (preference) {
+                case ADD_TABLENUMBER:
                     System.out.println("enter waiterid to add tablenumer available ids are ");
                     int waiterid = scanner.nextInt();
-                    Set<String> tableForThisWaiter = managerInterface
-                            .returnTableNumbers(waiterid);
-                    System.out.println(tableForThisWaiter);
+                    try {
+                        Set<String> tableForThisWaiter = managerInterface
+                                .returnTableNumbers(waiterid);
+                        System.out.println(tableForThisWaiter);
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println("no tablenumbers assigned for this waiter");
+                    }
                     System.out.println("enter tablenumber to add");
                     scanner.nextLine();
                     String addtablenumber = scanner.nextLine();
 
-                    if (tableForThisWaiter.contains(addtablenumber)) {
-                        System.out.println("please enter other table number than this " + tableForThisWaiter);
-                    } else {
-                        managerInterface.addTableNumbersToWaiters(addtablenumber, waiterid);
-                    }
+                    managerInterface.addTableNumbersToWaiters(addtablenumber, waiterid);
                     break;
 
-                case 2:
-                    System.out.println("enter waiterid to add tablenumer available ids are ");
+                case REMOVE_TABLENUMBER:
+                    System.out.println("enter waiterid to delete tablenumer available ids are ");
                     int waiterid1 = scanner.nextInt();
                     Set<String> tableForThisWaiter1 = managerInterface
                             .returnTableNumbers(waiterid1);
@@ -61,7 +65,7 @@ public class ManagerUI {
 
                     break;
 
-                case 3:
+                case ADD_ITEMS:
                     System.out.println("food available are ");
                     MenuList menu = managerInterface.getFullMenu();
                     menu.showMenu();
@@ -128,7 +132,7 @@ public class ManagerUI {
                     menu.addMenusItems(item);
                     break;
 
-                case 4:
+                case ALTER_FOODPRICE:
                     System.out.println("food available are ");
                     MenuList menuList1 = managerInterface.getFullMenu();
                     System.out.println("enter foodname to alter");
@@ -139,7 +143,7 @@ public class ManagerUI {
                     menuList1.alterMenuItems(foodname2, price2);
                     break;
 
-                case 5:
+                case DELETE_FOOD:
                     System.out.println("food available are ");
                     MenuList menuList2 = managerInterface.getFullMenu();
                     System.out.println("enter foodname to delete from menu");
@@ -148,7 +152,7 @@ public class ManagerUI {
                     menuList2.deleteMenuItems(foodname3);
                     break;
 
-                case 6:
+                case CREATE_NEW_MENU:
                     managerInterface.createNewMenu();
                     System.out.println("menu created");
                     MenuList menu1 = managerInterface.getFullMenu();
@@ -156,11 +160,10 @@ public class ManagerUI {
                     menu1.addMenusItems(item2);
                     break;
 
-                case 7:
+                case EXIT:
                     break MainLoop;
 
             }
         }
-
     }
 }

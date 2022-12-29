@@ -8,8 +8,9 @@ public class Chef extends User{
     
     private RestaurentChefInterface restaurent;
 
-    public Chef(String name, int iD) {
+    public Chef(String name, int iD,Restaurent restaurent) {
         super(name, iD);
+        this.restaurent = restaurent;
     }
 
     public ArrayList<Order> assignToChefAndReceieveFood(ArrayList<Order> orders) {
@@ -22,12 +23,5 @@ public class Chef extends User{
             processedOrders.add(order1);
         }
         return processedOrders;
-    }
-
-    RestaurentChefInterface getRestaurent() {
-        return restaurent;
-    }
-    void setRestaurent(Restaurent restaurent) {
-        this.restaurent = restaurent;
     }
 }

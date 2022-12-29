@@ -25,7 +25,7 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     private final ArrayList<Waiter> waiters = new ArrayList<Waiter>();
     private final ArrayList<Cook> cooks = new ArrayList<Cook>();
     private final ArrayList<Chef> chefs = new ArrayList<Chef>();
-    private final ArrayList<Manager> managers = new ArrayList<Manager>();
+    private final ArrayList<Manager> managers = new ArrayList<>();
     private Cashier cashier;
     private MenuList menu;
     private KitchenOrderSystem kitchenOrderSystem ;
@@ -33,8 +33,7 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
         this.RestaurentID = restaurentID;
         this.restaurentName = restaurentName;
         this.owner = ownerID;
-        kitchenOrderSystem = new KitchenOrderSystem();
-        kitchenOrderSystem.setKitchenOrderSystemInterface(this);
+        kitchenOrderSystem = new KitchenOrderSystem(this);
     }
 
     public void addCookToRestaurent(Cook cook) {
@@ -47,7 +46,6 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
 
     public void addChefToRestaurent(Chef chef) {
         chefs.add(chef);
-
     }
 
     public void addManagerToRestaurent(Manager manager) {
@@ -103,7 +101,6 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     public Set<String> returnTableNumbers(int waiterid) {
         for (Waiter waiter1 : waiters) {
             if (waiterid == waiter1.getID()) {
-
                 return waiter1.getTablenumbers();
             }
         }
@@ -177,6 +174,15 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
 
     public int getOwner() {
         return owner;
+    }
+
+    public Manager getManager(int managerID) {
+        for (Manager manager : managers) {
+            if(manager.getID()==managerID){
+                return manager;
+            }
+        }
+        return null;
     }
 
 }
