@@ -2,7 +2,6 @@ package RESTAURENTMANAGEMENT.Model;
 
 import java.util.ArrayList;
 
-import RESTAURENTMANAGEMENT.App;
 
 public class Owner extends User{
 
@@ -15,7 +14,7 @@ public class Owner extends User{
 
     public void createNewRestaurent(Restaurent restaurent1) {
         this.restaurents.add(restaurent1);
-        App.restaurents.add(restaurent1);
+        ListOfRestaurents.getInstance().addRestaurent(restaurent1);
     }
 
     public void addWaiterToRestaurent(Waiter w1,int restaurentID) {
