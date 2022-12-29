@@ -2,8 +2,8 @@ package RESTAURENTMANAGEMENT.Model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentChefInterface;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCashierInterface;
@@ -100,7 +100,7 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     }
 
     @Override
-    public List<String> returnTableNumbers(int waiterid) {
+    public Set<String> returnTableNumbers(int waiterid) {
         for (Waiter waiter1 : waiters) {
             if (waiterid == waiter1.getID()) {
 
@@ -125,7 +125,7 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     }
 
     @Override
-    public ArrayList<Item> getMenuItems() {
+    public Set<Item> getMenuItems() {
         return menu.getMenuItems();
     }
 

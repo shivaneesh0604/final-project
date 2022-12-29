@@ -1,11 +1,12 @@
 package RESTAURENTMANAGEMENT.MenuList;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 public class MenuList implements UserMenu {
 
-    private ArrayList<Item> totalItems = new ArrayList<>();
+    private Set<Item> totalItems = new HashSet<Item>();
 
     public void addMenusItems(Item items) {
         totalItems.add(items);
@@ -113,7 +114,7 @@ public class MenuList implements UserMenu {
         return false;
     }
 
-    public ArrayList<Item> getMenuItems() {
+    public Set<Item> getMenuItems() {
         return totalItems;
     }
 

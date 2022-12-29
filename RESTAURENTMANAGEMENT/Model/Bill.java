@@ -1,5 +1,6 @@
 package RESTAURENTMANAGEMENT.Model;
 import java.util.ArrayList;
+import java.util.Set;
 
 import RESTAURENTMANAGEMENT.MenuList.Item;
 
@@ -7,9 +8,9 @@ public class Bill {
 
     private final ArrayList<Order> orders;
     private float totalAmount;
-    private final ArrayList<Item> menuItems;
+    private final Set<Item> menuItems;
 
-     public Bill(ArrayList<Order> order, int orderid,ArrayList<Item> menuItems) {
+     public Bill(ArrayList<Order> order, int orderid,Set<Item> menuItems) {
         this.orders = order;
         this.menuItems=menuItems;
     }

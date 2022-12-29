@@ -1,8 +1,9 @@
 package RESTAURENTMANAGEMENT.Interfaces;
 
-import java.util.ArrayList;
+import java.util.Set;
+
 import RESTAURENTMANAGEMENT.MenuList.*;
 
 public interface RestaurentCashierInterface{
-    public ArrayList<Item> getMenuItems();
+    public Set<Item> getMenuItems();
 }

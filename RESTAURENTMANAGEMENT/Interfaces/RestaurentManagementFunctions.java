@@ -1,6 +1,6 @@
 package RESTAURENTMANAGEMENT.Interfaces;
 
-import java.util.List;
+import java.util.Set;
 
 import RESTAURENTMANAGEMENT.MenuList.MenuList;
 
@@ -10,7 +10,7 @@ public interface RestaurentManagementFunctions {
 
     public void deleteTableNumberforWaiter(String tablenumber, int waiterid);
 
-    public List<String> returnTableNumbers(int waiterID);
+    public Set<String> returnTableNumbers(int waiterID);
 
     public MenuList getFullMenu();
 
