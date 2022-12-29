@@ -9,14 +9,16 @@ import RESTAURENTMANAGEMENT.MenuList.Dietery;
 import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.MenuList;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
-import RESTAURENTMANAGEMENT.Model.Restaurent;
 
 public class ManagerUI {
     private RestaurentManagementFunctions managerInterface;
     Scanner scanner = new Scanner(System.in);
 
-    public void enterRestaurent(Restaurent restaurent) {
-        managerInterface= restaurent;
+    public ManagerUI(RestaurentManagementFunctions managerInterface) {
+        this.managerInterface = managerInterface;
+    }
+
+    public void enterRestaurent() {
         while (true) {
             System.out.println(
                     " 1 for adding tablenumber to waiter \n 2 for deleting table number for waiter \n 3 for Adding items in menu \n 4 for altering the food pirce \n 5 for deleting food \n 6 for creating new menu");

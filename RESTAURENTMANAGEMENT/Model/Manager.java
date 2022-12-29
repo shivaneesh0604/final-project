@@ -11,8 +11,8 @@ public class Manager extends User{
     }
 
     public void enterRestaurent(){
-        ManagerUI managerUI = new ManagerUI();
-        managerUI.enterRestaurent(restaurent);
+        ManagerUI managerUI = new ManagerUI(restaurent);
+        managerUI.enterRestaurent();
     }
 
      Restaurent getRestaurent() {
