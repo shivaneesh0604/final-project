@@ -23,8 +23,8 @@ public class OrderList {
             Order order = it.next();
             if (order.getFoodname().equals(foodname) && !order.isDelivered()) {
                 if (order.getQuantity() == quantity) {
-                    System.out.println(order.getFoodname() + " is totally deleted");
                     it.remove();
+                    System.out.println(order.getFoodname() + " is totally deleted");
                     break;
                 } else if (order.getQuantity() > quantity) {
                     order.setQuantity(order.getQuantity() - quantity);

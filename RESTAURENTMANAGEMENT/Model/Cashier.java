@@ -3,7 +3,6 @@ package RESTAURENTMANAGEMENT.Model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import RESTAURENTMANAGEMENT.Bill.Bill;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCashierInterface;
 
 public class Cashier extends User{

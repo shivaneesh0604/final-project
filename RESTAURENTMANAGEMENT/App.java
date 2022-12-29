@@ -9,13 +9,13 @@ import RESTAURENTMANAGEMENT.Model.Cashier;
 import RESTAURENTMANAGEMENT.Model.Chef;
 import RESTAURENTMANAGEMENT.Model.Cook;
 import RESTAURENTMANAGEMENT.Model.Customer;
+import RESTAURENTMANAGEMENT.Model.ListOfRestaurents;
 import RESTAURENTMANAGEMENT.Model.Manager;
 import RESTAURENTMANAGEMENT.Model.Owner;
 import RESTAURENTMANAGEMENT.Model.Restaurent;
 import RESTAURENTMANAGEMENT.Model.Waiter;
 
 public class App {
-    public static final ArrayList<Restaurent> restaurents = new ArrayList<>();
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Owner owner1 = new Owner("raj",1);
@@ -35,6 +35,7 @@ public class App {
         manager.enterRestaurent();
 
         Customer customer = new Customer("devi", 1);
+        ArrayList<Restaurent> restaurents = ListOfRestaurents.getInstance().getRestaurents();
         for (Restaurent restaurent : restaurents) {
             if(restaurent.getRestaurentName().equals("atchayas")){
                 customer.entersTheRestaurent(restaurent,Timing.MORNING);

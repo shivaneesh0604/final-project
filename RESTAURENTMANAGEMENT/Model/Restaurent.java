@@ -29,7 +29,6 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     private Cashier cashier;
     private MenuList menu;
     private KitchenOrderSystem kitchenOrderSystem ;
-    
     public Restaurent(String restaurentName, int restaurentID, int ownerID) {
         this.RestaurentID = restaurentID;
         this.restaurentName = restaurentName;
@@ -163,10 +162,9 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     }
 
     @Override
-    public MenuList createNewMenu() {
+    public void createNewMenu() {
         // TODO Auto-generated method stub
         this.menu = new MenuList();
-        return menu;
     }
 
     public String getRestaurentName() {
@@ -180,6 +178,5 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     public int getOwner() {
         return owner;
     }
-
 
 }

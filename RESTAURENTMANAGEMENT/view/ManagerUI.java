@@ -149,6 +149,9 @@ public class ManagerUI {
 
                 case 6:
                     managerInterface.createNewMenu();
+                    MenuList menu1 = managerInterface.getFullMenu();
+                    Item item2 = new Item("chicken Chucka", 130, Dietery.NONVEG, Course.MAINCOURSE, Timing.NIGHT);
+                    menu1.addMenusItems(item2);
 
             }
             System.out.println("if you want to exit press 1");

@@ -12,6 +12,7 @@ public class MenuList implements UserMenu {
 
     }
 
+    @Override
     public void showMenu(Timing timing) {
         System.out.println("Food available are ");
         System.out.println("foodname \t price\t dietory");
@@ -102,9 +103,10 @@ public class MenuList implements UserMenu {
         }
     }
 
-    public boolean checkFoodAvailability(String foodname) {
+    @Override
+    public boolean checkFoodAvailability(String foodname,Timing timing) {
         for (Item item : totalItems) {
-            if (item.getFoodName().equals(foodname)) {
+            if (item.getFoodName().equals(foodname) && item.getTiming().equals(timing)) {
                 return true;
             }
         }

@@ -3,10 +3,10 @@ package RESTAURENTMANAGEMENT.view;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-import RESTAURENTMANAGEMENT.Bill.Bill;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCustomerInterface;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
 import RESTAURENTMANAGEMENT.MenuList.UserMenu;
+import RESTAURENTMANAGEMENT.Model.Bill;
 import RESTAURENTMANAGEMENT.Model.Order;
 import RESTAURENTMANAGEMENT.Model.Waiter;
 
@@ -37,7 +37,7 @@ public class CustomerUI {
                     String foodname = in.nextLine();
                     System.out.println("enter the quantity");
                     int quantity = in.nextInt();
-                    waiter.TakeOrders(customerID, foodname, quantity);
+                    waiter.TakeOrders(customerID, foodname, quantity,timing);
                     break;
 
                 case 3:
@@ -47,7 +47,7 @@ public class CustomerUI {
                     System.out.println("enter the quantity");
                     int quantity1 = in.nextInt();
                     try {
-                        waiter.DeleteOrder(customerID, foodname1, quantity1);
+                        waiter.DeleteOrder(customerID, foodname1, quantity1,timing);
                     } catch (Exception e) {
                         System.out.println("this food is not ordered");
                     }
