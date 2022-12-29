@@ -1,7 +1,7 @@
 package RESTAURENTMANAGEMENT.view;
 
-import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentManagementFunctions;
 import RESTAURENTMANAGEMENT.MenuList.Course;
@@ -27,7 +27,7 @@ public class ManagerUI {
                 case 1:
                     System.out.println("enter waiterid to add tablenumer available ids are ");
                     int waiterid = scanner.nextInt();
-                    List<String> tableForThisWaiter = managerInterface
+                    Set<String> tableForThisWaiter = managerInterface
                             .returnTableNumbers(waiterid);
                     System.out.println(tableForThisWaiter);
                     System.out.println("enter tablenumber to add");
@@ -44,7 +44,7 @@ public class ManagerUI {
                 case 2:
                     System.out.println("enter waiterid to add tablenumer available ids are ");
                     int waiterid1 = scanner.nextInt();
-                    List<String> tableForThisWaiter1 = managerInterface
+                    Set<String> tableForThisWaiter1 = managerInterface
                             .returnTableNumbers(waiterid1);
                     System.out.println(tableForThisWaiter1);
                     System.out.println("enter tablenumber to delete");

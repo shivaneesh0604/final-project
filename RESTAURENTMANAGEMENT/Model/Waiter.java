@@ -2,7 +2,9 @@ package RESTAURENTMANAGEMENT.Model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import RESTAURENTMANAGEMENT.Interfaces.OrderHook;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentWaiterInterface;
@@ -12,11 +14,12 @@ import RESTAURENTMANAGEMENT.MenuList.UserMenu;
 public class Waiter extends User {
     private RestaurentWaiterInterface waiterInterface;
     private final HashMap<Integer, OrderList> orders;
-    private final ArrayList<String> Tablenumbers;
+    // private final Set<String> tbnumbers;
+    private final Set<String> Tablenumbers;
 
     public Waiter(String name, int iD) {
         super(name, iD);
-        Tablenumbers = new ArrayList<>();
+        Tablenumbers = new HashSet<String>();
         orders = new HashMap<>();
     }
 
@@ -103,7 +106,7 @@ public class Waiter extends User {
         cashier.payBill(paymentAmount, orders.get(customerid).getOrderId());
     }
 
-    List<String> getTablenumbers() {
+    Set<String> getTablenumbers() {
         return Tablenumbers;
     }
 
