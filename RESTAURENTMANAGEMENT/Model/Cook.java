@@ -2,7 +2,7 @@ package RESTAURENTMANAGEMENT.Model;
 
 public class Cook extends User {
 
-    private Restaurent restaurent;
+    private final Restaurent restaurent;
 
     public Cook(String name, int iD,Restaurent restaurent) {
         super(name, iD);
@@ -18,13 +18,5 @@ public class Cook extends User {
         System.out.println("food completed");
         System.out.println("foodname is " + order.getFoodname() + " quantity is " + order.getQuantity());
         return order;
-    }
-
-    Restaurent getRestaurent() {
-        return restaurent;
-    }
-
-    void setRestaurent(Restaurent restaurent) {
-        this.restaurent = restaurent;
     }
 }

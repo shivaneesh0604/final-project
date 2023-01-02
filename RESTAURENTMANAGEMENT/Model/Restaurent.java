@@ -29,10 +29,12 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     private Cashier cashier;
     private MenuList menu;
     private KitchenOrderSystem kitchenOrderSystem ;
-    public Restaurent(String restaurentName, int restaurentID, int ownerID) {
+    private final ArrayList<String> tablesAvailable;
+    public Restaurent(String restaurentName, int restaurentID, int ownerID,ArrayList<String> tablesAvailable) {
         this.RestaurentID = restaurentID;
         this.restaurentName = restaurentName;
         this.owner = ownerID;
+        this.tablesAvailable = tablesAvailable;
         kitchenOrderSystem = new KitchenOrderSystem(this);
     }
 
@@ -174,6 +176,10 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
 
     public int getOwner() {
         return owner;
+    }
+
+    public ArrayList<String> gettablesAvailable(){
+        return tablesAvailable;
     }
 
     public Manager getManager(int managerID) {

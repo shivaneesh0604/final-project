@@ -18,7 +18,6 @@ public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Owner owner1 = new Owner("raj", 1);
-        owner1.entersOwnerUI(1);
         owners.add(owner1);
         // int managerID = 1;
 
@@ -40,12 +39,18 @@ public class App {
                     System.out.println("enter manager id of him");
                     int managerID = sc.nextInt();
                     Restaurent restaurent = ListOfRestaurents.getInstance().getRestaurents(restaurentID1);
-                    Manager manager = restaurent.getManager(managerID);
-                    manager.enterRestaurent();
+                    try {
+                        Manager manager = restaurent.getManager(managerID);
+                        manager.enterRestaurent();
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println("no manager with this id");
+                    }
                     break;
 
                 case CUSTOMER:
                     System.out.println("enter name");
+                    sc.nextLine();
                     String name = sc.nextLine();
                     int customerID1 = customerID;
                     Customer customer = new Customer(name, customerID1);
@@ -60,18 +65,39 @@ public class App {
                     customer.entersTheRestaurent(restaurent2, timingPreference);
                     break;
                 case OWNER:
+                    Owner owner = null;
                     System.out.println("enter owner id ");
                     int ownerID = sc.nextInt();
-                    System.out.println("enter restaurentID to  enter that restaurent");
-                    int restaurentID3 = sc.nextInt();
-                    for (Owner owner : owners) {
-                        if(owner.getID()==ownerID){
-                            owner.entersOwnerUI(restaurentID3);
+                    for (Owner owner2 : owners) {
+                        if (owner2.getID() == ownerID) {
+                            owner = owner2;
+                        }
+                    }
+                    if (owner == null) {
+                        System.out.println("no owner found");
+                        continue;
+                    }
+                    OwnerLoop: while (true) {
+                        System.out.println(
+                                "if you create new restaurent press 1 or enter a restaurent press 2 to exit press other");
+                        int ownerCase = sc.nextInt();
+                        switch (ownerCase) {
+                            case 1:
+                                owner.createNewRestaurent();
+                                break;
+                            // case 2:
+                            //     System.out.println("enter restaurentid to enter");
+                            //     int restaurentID3 = sc.nextInt();
+                            //     owner.entersOwnerUI(restaurentID3);
+                            //     break;
+                            default:
+                                break OwnerLoop;
                         }
                     }
                     break;
+                case EXIT:
+                    break Mainloop;
             }
-            break Mainloop;
         }
         sc.close();
     }
