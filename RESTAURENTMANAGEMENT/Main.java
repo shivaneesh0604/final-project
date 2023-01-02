@@ -12,7 +12,7 @@ import RESTAURENTMANAGEMENT.Model.Restaurent;
 import RESTAURENTMANAGEMENT.view.AppUsers;
 import RESTAURENTMANAGEMENT.view.InputVerification;
 
-public class App {
+public class Main {
     private static int customerID = 0;
     private static ArrayList<Owner> owners = new ArrayList<>();
     public static void main(String[] args) {
@@ -20,15 +20,6 @@ public class App {
         Owner owner1 = new Owner("raj", 1);
         owners.add(owner1);
         owner1.createNewRestaurent();
-        // int managerID = 1;
-
-        // for (Restaurent restaurent :
-        // ListOfRestaurents.getInstance().getRestaurents()) {
-        // if (restaurent.getRestaurentID() == restaurentID) {
-        // Manager manager = restaurent.getManager(managerID);
-        // manager.enterRestaurent();
-        // }
-        // }
         Mainloop: while (true) {
             InputVerification.print(AppUsers.values());
             int option = InputVerification.inputVerificationApp(AppUsers.values().length);
@@ -51,7 +42,6 @@ public class App {
 
                 case CUSTOMER:
                     System.out.println("enter name");
-                    sc.nextLine();
                     String name = sc.nextLine();
                     int customerID1 = customerID;
                     Customer customer = new Customer(name, customerID1);
