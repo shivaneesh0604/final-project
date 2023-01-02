@@ -9,7 +9,7 @@ public class Item {
     private Timing timing;
 
     public Item(String foodName, int price,Dietery dietery,Course course,Timing timing) {
-        this.foodName = foodName;
+        this.foodName = foodName.toUpperCase();
         this.price = price;
         this.dietery=dietery;
         this.course=course;

@@ -19,6 +19,7 @@ public class App {
         Scanner sc = new Scanner(System.in);
         Owner owner1 = new Owner("raj", 1);
         owners.add(owner1);
+        owner1.createNewRestaurent();
         // int managerID = 1;
 
         // for (Restaurent restaurent :
@@ -42,7 +43,7 @@ public class App {
                     try {
                         Manager manager = restaurent.getManager(managerID);
                         manager.enterRestaurent();
-                    } catch (Exception e) {
+                    } catch (NullPointerException e) {
                         // TODO: handle exception
                         System.out.println("no manager with this id");
                     }
@@ -85,11 +86,11 @@ public class App {
                             case 1:
                                 owner.createNewRestaurent();
                                 break;
-                            // case 2:
-                            //     System.out.println("enter restaurentid to enter");
-                            //     int restaurentID3 = sc.nextInt();
-                            //     owner.entersOwnerUI(restaurentID3);
-                            //     break;
+                            case 2:
+                                System.out.println("enter restaurentid to enter");
+                                int restaurentID3 = sc.nextInt();
+                                owner.entersOwnerUI(restaurentID3);
+                                break;
                             default:
                                 break OwnerLoop;
                         }

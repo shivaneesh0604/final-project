@@ -6,7 +6,7 @@ public class Order {
     private int quantity;
     private boolean delivered = false;
     public Order(String foodname, int quantity) {
-        this.foodname = foodname;
+        this.foodname = foodname.toUpperCase();
         this.quantity = quantity;
     }
     

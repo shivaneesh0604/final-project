@@ -11,31 +11,26 @@ import RESTAURENTMANAGEMENT.MenuList.Timing;
 import RESTAURENTMANAGEMENT.MenuList.UserMenu;
 
 public class Waiter extends User {
-    private RestaurentWaiterInterface waiterInterface;
+    private RestaurentWaiterInterface restaurentWaiterInterface;
     private final HashMap<Integer, OrderList> orders;
     private final Set<String> Tablenumbers;
 
     public Waiter(String name, int iD, Restaurent restaurent) {
         super(name, iD);
-        this.waiterInterface = restaurent;
+        this.restaurentWaiterInterface = restaurent;
         Tablenumbers = new HashSet<String>();
         orders = new HashMap<>();
     }
 
     public UserMenu providesMenu() {
-        UserMenu menu = waiterInterface.getUserMenu();
+        UserMenu menu = restaurentWaiterInterface.getUserMenu();
         return menu;
     }
 
     public void TakeOrders(int customerid, String foodName, int quantity, Timing timing) {
-
-        if (orders.containsKey(customerid)) {
-            OrderList orders1 = orders.get(customerid);
-            boolean foodExists = false;
-            foodExists = waiterInterface.getUserMenu().checkFoodAvailability(foodName, timing);
-            if (foodExists == false) {
-                System.out.println("Enter the right foodname to order since it is not available at this time");
-            } else {
+        if (restaurentWaiterInterface.getUserMenu().checkFoodAvailability(foodName, timing)) {
+            if (orders.containsKey(customerid)) {
+                OrderList orders1 = orders.get(customerid);
                 for (Order order : orders1.getOrders()) {
                     if (order.getFoodname().equals(foodName) && !order.isDelivered()) {
                         order.setQuantity(order.getQuantity() + quantity);
@@ -44,12 +39,39 @@ public class Waiter extends User {
                 }
                 Order order = new Order(foodName, quantity);
                 orders1.AddtoOrders(order);
+
+            } else {
+                OrderList order = new OrderList();
+                this.orders.put(customerid, order);
+                Order order2 = new Order(foodName, quantity);
+                order.AddtoOrders(order2);
             }
         } else {
-            OrderList order = new OrderList();
-            this.orders.put(customerid, order);
-            Order order2 = new Order(foodName, quantity);
-            order.AddtoOrders(order2);
+            System.out.println("Enter the right foodname to order since it is not available at this time");
+        }
+    }
+
+    public void DeleteOrder(int customerid, String foodName, int quantity, Timing timing) {
+        if(restaurentWaiterInterface.getUserMenu().checkFoodAvailability(foodName, timing)){
+            OrderList o = orders.get(customerid);
+    
+            boolean checkfoodprocessed = false;
+            for (Order order : o.getOrders()) {
+                if (!order.isDelivered() && order.getFoodname().equals(foodName)) {
+                    checkfoodprocessed = true;
+                    break;
+                }
+            }
+            if (checkfoodprocessed == false) {
+                throw new NullPointerException();
+            } else {
+                System.out.println("Orders in main orders are");
+                o.deleteOrder(foodName, quantity);
+            }
+        }
+        else{
+            System.out.println(
+                    "Enter the right foodname to delete order since this food in not available in menu at this time");
         }
     }
 
@@ -71,43 +93,26 @@ public class Waiter extends User {
                 order.setDelivered(true);
             }
         }
-        OrderHook kitchensystem = waiterInterface.getKitchenorderSystem();
+        OrderHook kitchensystem = restaurentWaiterInterface.getKitchenorderSystem();
         return kitchensystem.assignToChefAndReceieveFood(orders);
     }
 
-    public void DeleteOrder(int customerid, String foodName, int quantity, Timing timing) {
-        boolean foodExists = false;
-        foodExists = waiterInterface.getUserMenu().checkFoodAvailability(foodName, timing);
-        if (foodExists == false) {
-            System.out.println(
-                    "Enter the right foodname to delete order since this food in not available in menu at this time");
-            return;
-        }
-        OrderList o = orders.get(customerid);
-
-        boolean checkfoodprocessed = false;
-        for (Order order : o.getOrders()) {
-            if (!order.isDelivered() && order.getFoodname().equals(foodName)) {
-                checkfoodprocessed = true;
-                break;
+    public Bill askbill(int customerid) {
+        OrderList orders = this.orders.get(customerid);
+        for (Order order : orders.getOrders()) {
+            if(order.isDelivered()){
+                continue;
+            }
+            else{
+                throw new RuntimeException();
             }
         }
-        if (checkfoodprocessed == false) {
-            throw new RuntimeException();
-        } else {
-            System.out.println("Orders in main orders are");
-            o.deleteOrder(foodName, quantity);
-        }
-    }
-
-    public Bill askbill(int customerid) {
-        OrderList order = this.orders.get(customerid);
-        Cashier cashier = waiterInterface.returnCashier();
-        return cashier.generateBill(order.getOrders(), order.getOrderId());
+        Cashier cashier = restaurentWaiterInterface.returnCashier();
+        return cashier.generateBill(orders.getOrders(), orders.getOrderId());
     }
 
     public void paybill(float paymentAmount, int customerid) {
-        Cashier cashier = waiterInterface.returnCashier();
+        Cashier cashier = restaurentWaiterInterface.returnCashier();
         cashier.payBill(paymentAmount, orders.get(customerid).getOrderId());
     }
 

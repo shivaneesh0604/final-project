@@ -28,6 +28,7 @@ public class Cashier extends User {
         } else {
             System.out.println("payable amount is less than " + bills.get(orderid).getTotalAmount()
                     + " so enter amount equal to " + bills.get(orderid).getTotalAmount());
+                    throw new RuntimeException();
         }
     }
 

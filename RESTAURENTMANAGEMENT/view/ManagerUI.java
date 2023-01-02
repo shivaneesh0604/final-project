@@ -1,5 +1,6 @@
 package RESTAURENTMANAGEMENT.view;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -28,21 +29,26 @@ public class ManagerUI {
             ManagerOptions preference = ManagerOptions.values()[option];
             switch (preference) {
                 case ADD_TABLENUMBER:
-                    System.out.println("enter waiterid to add tablenumer available ids are ");
-                    int waiterid = scanner.nextInt();
+                    System.out.print("enter waiterid to add tablenumer ");
                     try {
+                        int waiterid = scanner.nextInt();
                         Set<String> tableForThisWaiter = managerInterface
                                 .returnTableNumbers(waiterid);
                         System.out.println(tableForThisWaiter);
-                    } catch (Exception e) {
-                        // TODO: handle exception
-                        System.out.println("no tablenumbers assigned for this waiter");
-                    }
-                    System.out.println("enter tablenumber to add");
-                    scanner.nextLine();
-                    String addtablenumber = scanner.nextLine();
+                        if(tableForThisWaiter==null){
+                            System.out.println("no waiter available");
+                            break;
+                        }
+                        System.out.println("enter tablenumber to add");
+                        scanner.nextLine();
+                        String addtablenumber = scanner.nextLine();
+                        managerInterface.addTableNumbersToWaiters(addtablenumber, waiterid);
 
-                    managerInterface.addTableNumbersToWaiters(addtablenumber, waiterid);
+                    } catch (InputMismatchException e) {
+                        // TODO: handle exception
+                        System.out.println("you have entered wrong input");
+
+                    }
                     break;
 
                 case REMOVE_TABLENUMBER:

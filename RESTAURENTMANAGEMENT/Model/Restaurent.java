@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
 
+import javax.management.RuntimeErrorException;
+
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentChefInterface;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCashierInterface;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCustomerInterface;
@@ -77,7 +79,14 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
                     System.out.println("Table number already added to another waiter so can't add");
                     break;
                 } else {
-                    waiter1.setTableNumber(tablenumber);
+                    if(tablesAvailable.contains(tablenumber)){
+                        System.out.println("table number"+tablenumber+" is added");
+                        waiter1.setTableNumber(tablenumber);
+                    }
+                    else{
+                        System.out.println("no tablenumber available");
+                    }
+                    
                     break;
                 }
             }
@@ -147,7 +156,11 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
 
     @Override
     public Waiter getIN(String tablenumber, int customerid) {
-        return getWaiter(tablenumber, customerid);
+        if(tablesAvailable.contains(tablenumber)){
+            return getWaiter(tablenumber, customerid);
+        }
+        System.out.println("available table numbers are"+tablesAvailable);
+        return null;
 
     }
 

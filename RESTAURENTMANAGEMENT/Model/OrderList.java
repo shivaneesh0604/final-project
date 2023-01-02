@@ -21,7 +21,7 @@ public class OrderList {
         Iterator<Order> it = orders.iterator();
         while (it.hasNext()) {
             Order order = it.next();
-            if (order.getFoodname().equals(foodname) && !order.isDelivered()) {
+            if (order.getFoodname().equals(foodname.toUpperCase()) && !order.isDelivered()) {
                 if (order.getQuantity() == quantity) {
                     it.remove();
                     System.out.println(order.getFoodname() + " is totally deleted");
