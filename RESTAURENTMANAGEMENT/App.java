@@ -1,5 +1,6 @@
 package RESTAURENTMANAGEMENT;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import RESTAURENTMANAGEMENT.MenuList.Timing;
@@ -8,42 +9,69 @@ import RESTAURENTMANAGEMENT.Model.ListOfRestaurents;
 import RESTAURENTMANAGEMENT.Model.Manager;
 import RESTAURENTMANAGEMENT.Model.Owner;
 import RESTAURENTMANAGEMENT.Model.Restaurent;
+import RESTAURENTMANAGEMENT.view.AppUsers;
+import RESTAURENTMANAGEMENT.view.InputVerification;
 
 public class App {
+    private static int customerID = 0;
+    private static ArrayList<Owner> owners = new ArrayList<>();
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Owner owner1 = new Owner("raj", 1);
-        // Cashier cashier = new Cashier("ram", 1);
-        // Chef chef = new Chef("ramu", 1);
-        // Cook cook = new Cook("sathya", 1);
-        // Manager manager = new Manager("sankar", 1);
-        // Waiter waiter = new Waiter("shiva", 1);
-
-        owner1.createNewRestaurent();
         owner1.entersOwnerUI(1);
-        // owner1.addCashierToRestaurent(cashier,1);
-        // owner1.addChefToRestaurent(chef,1);
-        // owner1.addCookToRestaurent(cook, 1);
-        // owner1.addManagerToRestaurent(manager, 1);
-        // owner1.addWaiterToRestaurent(waiter, 1);
+        owners.add(owner1);
+        // int managerID = 1;
 
-        int restaurentID = 1;
-        int managerID = 1;
+        // for (Restaurent restaurent :
+        // ListOfRestaurents.getInstance().getRestaurents()) {
+        // if (restaurent.getRestaurentID() == restaurentID) {
+        // Manager manager = restaurent.getManager(managerID);
+        // manager.enterRestaurent();
+        // }
+        // }
+        Mainloop: while (true) {
+            InputVerification.print(AppUsers.values());
+            int option = InputVerification.inputVerificationApp(AppUsers.values().length);
+            AppUsers preference = AppUsers.values()[option];
+            switch (preference) {
+                case MANAGER:
+                    System.out.println("enter restaurentID to enter the restaurent");
+                    int restaurentID1 = sc.nextInt();
+                    System.out.println("enter manager id of him");
+                    int managerID = sc.nextInt();
+                    Restaurent restaurent = ListOfRestaurents.getInstance().getRestaurents(restaurentID1);
+                    Manager manager = restaurent.getManager(managerID);
+                    manager.enterRestaurent();
+                    break;
 
-        for (Restaurent restaurent : ListOfRestaurents.getInstance().getRestaurents()) {
-            if(restaurent.getRestaurentID()==restaurentID){
-                Manager manager=restaurent.getManager(managerID);
-                manager.enterRestaurent();
+                case CUSTOMER:
+                    System.out.println("enter name");
+                    String name = sc.nextLine();
+                    int customerID1 = customerID;
+                    Customer customer = new Customer(name, customerID1);
+                    customerID++;
+                    System.out.println("enter restaurent id to enter ");
+                    int restaurentID2 = sc.nextInt();
+                    System.out.println("enter which timing you are entering");
+                    InputVerification.print(Timing.values());
+                    int option1 = InputVerification.InputVerificationTiming(Timing.values().length);
+                    Timing timingPreference = Timing.values()[option1];
+                    Restaurent restaurent2 = ListOfRestaurents.getInstance().getRestaurents(restaurentID2);
+                    customer.entersTheRestaurent(restaurent2, timingPreference);
+                    break;
+                case OWNER:
+                    System.out.println("enter owner id ");
+                    int ownerID = sc.nextInt();
+                    System.out.println("enter restaurentID to  enter that restaurent");
+                    int restaurentID3 = sc.nextInt();
+                    for (Owner owner : owners) {
+                        if(owner.getID()==ownerID){
+                            owner.entersOwnerUI(restaurentID3);
+                        }
+                    }
+                    break;
             }
-        }
-
-        Customer customer = new Customer("devi", 1);
-        ListOfRestaurents.getInstance().showRestaurents();
-        for (Restaurent restaurent : ListOfRestaurents.getInstance().getRestaurents()) {
-            if (restaurent.getRestaurentName().equals("atchayas")) {
-                customer.entersTheRestaurent(restaurent, Timing.NIGHT);
-                break;
-            }
+            break Mainloop;
         }
         sc.close();
     }

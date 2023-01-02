@@ -9,8 +9,8 @@ public class Owner extends User{
 
     private ArrayList<Restaurent> restaurents;
 
-    public Owner(String restaurentName, int restaurentID) {
-        super(restaurentName, restaurentID);
+    public Owner(String restaurentName, int ownerID) {
+        super(restaurentName, ownerID);
         restaurents = new ArrayList<>();
     }
 
@@ -18,14 +18,10 @@ public class Owner extends User{
         for (Restaurent restaurent : restaurents) {
             if(restaurent.getRestaurentID()==restaurentID){
                 OwnerUI ownerUI = new OwnerUI();
+                restaurents.add(ownerUI.createNewRestaurent(getID()));
                 ownerUI.entersRestaurent(restaurent);
             }
         }
-    }
-
-    public void createNewRestaurent(){
-        OwnerUI ownerUI = new OwnerUI();
-        restaurents.add(ownerUI.createNewRestaurent(getID()));
     }
 
     // public void addWaiterToRestaurent(Waiter w1,int restaurentID) {

@@ -19,7 +19,7 @@ public class ManagerUI {
         this.managerInterface = restaurent;
     }
 
-    public void enterRestaurent() {
+    public void entersUI() {
         MainLoop: while (true) {
 
             InputVerification.print(ManagerOptions.values());

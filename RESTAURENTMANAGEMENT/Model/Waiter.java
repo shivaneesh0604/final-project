@@ -15,7 +15,7 @@ public class Waiter extends User {
     private final HashMap<Integer, OrderList> orders;
     private final Set<String> Tablenumbers;
 
-    public Waiter(String name, int iD,Restaurent restaurent) {
+    public Waiter(String name, int iD, Restaurent restaurent) {
         super(name, iD);
         this.waiterInterface = restaurent;
         Tablenumbers = new HashSet<String>();
@@ -118,7 +118,4 @@ public class Waiter extends User {
     void setTableNumber(String tablenumber) {
         this.Tablenumbers.add(tablenumber);
     }
-
-    
-
 }

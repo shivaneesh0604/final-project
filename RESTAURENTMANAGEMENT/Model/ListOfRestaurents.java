@@ -28,7 +28,16 @@ public class ListOfRestaurents {
         }
     }
 
-    public ArrayList<Restaurent> getRestaurents(){
+    private ArrayList<Restaurent> getFullRestaurents(){
         return restaurents;
+    }
+
+    public Restaurent getRestaurents(int restaurentID){
+        for (Restaurent restaurent : getFullRestaurents()) {
+            if (restaurent.getRestaurentID() == restaurentID) {
+                return restaurent;
+            }
+        }
+        return null;
     }
 }
