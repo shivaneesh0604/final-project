@@ -1,6 +1,7 @@
 package RESTAURENTMANAGEMENT;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import RESTAURENTMANAGEMENT.MenuList.Timing;
@@ -10,7 +11,9 @@ import RESTAURENTMANAGEMENT.Model.Manager;
 import RESTAURENTMANAGEMENT.Model.Owner;
 import RESTAURENTMANAGEMENT.Model.Restaurent;
 import RESTAURENTMANAGEMENT.view.AppUsers;
+import RESTAURENTMANAGEMENT.view.CustomerUI;
 import RESTAURENTMANAGEMENT.view.InputVerification;
+import RESTAURENTMANAGEMENT.view.ManagerUI;
 
 public class Main {
     private static int customerID = 0;
@@ -33,7 +36,7 @@ public class Main {
                     Restaurent restaurent = ListOfRestaurents.getInstance().getRestaurents(restaurentID1);
                     try {
                         Manager manager = restaurent.getManager(managerID);
-                        manager.enterRestaurent();
+                        new ManagerUI(restaurent,manager).entersUI();;
                     } catch (NullPointerException e) {
                         // TODO: handle exception
                         System.out.println("no manager with this id");
@@ -44,17 +47,27 @@ public class Main {
                     System.out.println("enter name");
                     String name = sc.nextLine();
                     int customerID1 = customerID;
-                    Customer customer = new Customer(name, customerID1);
-                    customerID++;
-                    System.out.println("enter restaurent id to enter ");
-                    int restaurentID2 = sc.nextInt();
                     System.out.println("enter which timing you are entering");
                     InputVerification.print(Timing.values());
                     int option1 = InputVerification.InputVerificationTiming(Timing.values().length);
                     Timing timingPreference = Timing.values()[option1];
-                    Restaurent restaurent2 = ListOfRestaurents.getInstance().getRestaurents(restaurentID2);
-                    customer.entersTheRestaurent(restaurent2, timingPreference);
-                    break;
+                    Customer customer = new Customer(name, customerID1,timingPreference);
+                    customerID++;
+                    System.out.println("enter restaurent id to enter ");
+                    try {
+                        int restaurentID2 = sc.nextInt();
+                        if(ListOfRestaurents.getInstance().getRestaurents(restaurentID2)==null){
+                            System.out.println("no restaurents available");
+                            continue;
+                        }
+                        Restaurent restaurent2 = ListOfRestaurents.getInstance().getRestaurents(restaurentID2);
+                        new CustomerUI(restaurent2,customer).entersTheRestaurent(timingPreference);
+                        break;
+                    } catch (InputMismatchException e) {
+                        // TODO: handle exception
+                        System.out.println("input missmatched enter integer value");
+                        break;
+                    }
                 case OWNER:
                     Owner owner = null;
                     System.out.println("enter owner id ");

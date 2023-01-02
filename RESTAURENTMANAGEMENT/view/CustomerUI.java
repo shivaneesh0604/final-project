@@ -6,8 +6,8 @@ import java.util.InputMismatchException;
 
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCustomerInterface;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
-import RESTAURENTMANAGEMENT.MenuList.UserMenu;
 import RESTAURENTMANAGEMENT.Model.Bill;
+import RESTAURENTMANAGEMENT.Model.Customer;
 import RESTAURENTMANAGEMENT.Model.Order;
 import RESTAURENTMANAGEMENT.Model.Restaurent;
 import RESTAURENTMANAGEMENT.Model.Waiter;
@@ -15,17 +15,19 @@ import RESTAURENTMANAGEMENT.Model.Waiter;
 public class CustomerUI {
     Scanner in = new Scanner(System.in);
     private RestaurentCustomerInterface restaurentCustomerInterface;
+    private final Customer customer;
 
-    public CustomerUI(Restaurent restaurent) {
+    public CustomerUI(Restaurent restaurent,Customer customer) {
         this.restaurentCustomerInterface = restaurent;
+        this.customer = customer;
     }
 
-    public void entersTheRestaurent(Timing timing, int customerID) {
+    public void entersTheRestaurent(Timing timing) {
         MainLoops: while (true) {
             System.out.println("enter table number to sit");
             String tablenumber = in.next();
 
-            Waiter waiter = restaurentCustomerInterface.getIN(tablenumber, customerID);
+            Waiter waiter = restaurentCustomerInterface.getIN(tablenumber, customer.getID());
             if (waiter == null) {
                 System.out.println("you have entered wrong tablenumber");
                 continue;
@@ -38,8 +40,7 @@ public class CustomerUI {
 
                 switch (preference) {
                     case ASKING_MENU:
-                        UserMenu menu = waiter.providesMenu();
-                        menu.showMenu(timing);
+                        customer.askMenu(waiter);
                         break;
 
                     case ADD_ORDERS:
@@ -48,7 +49,7 @@ public class CustomerUI {
                         String foodname = in.nextLine();
                         System.out.println("enter the quantity");
                         int quantity = in.nextInt();
-                        waiter.TakeOrders(customerID, foodname.toUpperCase(), quantity, timing);
+                        customer.addOrders(waiter, foodname.toUpperCase(), quantity);
                         break;
 
                     case DELETE_ORDER:
@@ -59,7 +60,7 @@ public class CustomerUI {
                         try {
                             int quantity1 = in.nextInt();
                             try {
-                                waiter.DeleteOrder(customerID, foodname1.toUpperCase(), quantity1, timing);
+                                customer.deleteOrder(waiter, foodname1.toUpperCase(), quantity1);
                             } catch (NullPointerException e) {
                                 System.out.println("this food is not ordered");
                             }
@@ -70,7 +71,7 @@ public class CustomerUI {
 
                     case CONFIRM_ORDER:
                         try {
-                            ArrayList<Order> orders = waiter.processOrder(customerID);
+                            ArrayList<Order> orders = customer.confirmOrder(waiter);
                             receiveOrder(orders);
                         } catch (Exception e) {
                             System.out.println("add an order first");
@@ -79,12 +80,12 @@ public class CustomerUI {
 
                     case ASKING_BILL:
                         try {
-                            Bill bill = waiter.askbill(customerID);
+                            Bill bill = customer.askBill(waiter);
                             bill.ReadBill();
                             System.out.println("enter the amount to pay");
                             float paymentAmount = in.nextFloat();
                             try {
-                                waiter.paybill(paymentAmount, customerID);
+                                customer.paybill(waiter,paymentAmount);
                             } catch (RuntimeException e) {
                                 // TODO: handle exception
                                 break;

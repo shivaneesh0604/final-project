@@ -28,12 +28,8 @@ public class ListOfRestaurents {
         }
     }
 
-    private ArrayList<Restaurent> getFullRestaurents(){
-        return restaurents;
-    }
-
     public Restaurent getRestaurents(int restaurentID){
-        for (Restaurent restaurent : getFullRestaurents()) {
+        for (Restaurent restaurent : restaurents) {
             if (restaurent.getRestaurentID() == restaurentID) {
                 return restaurent;
             }

@@ -10,14 +10,17 @@ import RESTAURENTMANAGEMENT.MenuList.Dietery;
 import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.MenuList;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
+import RESTAURENTMANAGEMENT.Model.Manager;
 import RESTAURENTMANAGEMENT.Model.Restaurent;
 
 public class ManagerUI {
-    private RestaurentManagementFunctions managerInterface;
+    private RestaurentManagementFunctions restaurentManagerInterface;
+    private final Manager manager;
     Scanner scanner = new Scanner(System.in);
 
-    public ManagerUI(Restaurent restaurent) {
-        this.managerInterface = restaurent;
+    public ManagerUI(Restaurent restaurent,Manager manager) {
+        this.restaurentManagerInterface = restaurent;
+        this.manager = manager;
     }
 
     public void entersUI() {
@@ -32,7 +35,7 @@ public class ManagerUI {
                     System.out.print("enter waiterid to add tablenumer ");
                     try {
                         int waiterid = scanner.nextInt();
-                        Set<String> tableForThisWaiter = managerInterface
+                        Set<String> tableForThisWaiter = restaurentManagerInterface
                                 .returnTableNumbers(waiterid);
                         System.out.println(tableForThisWaiter);
                         if(tableForThisWaiter==null){
@@ -42,7 +45,7 @@ public class ManagerUI {
                         System.out.println("enter tablenumber to add");
                         scanner.nextLine();
                         String addtablenumber = scanner.nextLine();
-                        managerInterface.addTableNumbersToWaiters(addtablenumber, waiterid);
+                        restaurentManagerInterface.addTableNumbersToWaiters(addtablenumber, waiterid);
 
                     } catch (InputMismatchException e) {
                         // TODO: handle exception
@@ -54,7 +57,7 @@ public class ManagerUI {
                 case REMOVE_TABLENUMBER:
                     System.out.println("enter waiterid to delete tablenumer available ids are ");
                     int waiterid1 = scanner.nextInt();
-                    Set<String> tableForThisWaiter1 = managerInterface
+                    Set<String> tableForThisWaiter1 = restaurentManagerInterface
                             .returnTableNumbers(waiterid1);
                     System.out.println(tableForThisWaiter1);
                     System.out.println("enter tablenumber to delete");
@@ -62,8 +65,8 @@ public class ManagerUI {
                     String deletetablenumber = scanner.nextLine();
 
                     if (tableForThisWaiter1.contains(deletetablenumber)) {
-                        System.out.println(managerInterface.returnTableNumbers(waiterid1));
-                        managerInterface.deleteTableNumberforWaiter(deletetablenumber, waiterid1);
+                        System.out.println(restaurentManagerInterface.returnTableNumbers(waiterid1));
+                        restaurentManagerInterface.deleteTableNumberforWaiter(deletetablenumber, waiterid1);
                     } else {
                         System.out.println("please enter available table number");
                         System.out.println("Available tablenumbers are " + tableForThisWaiter1);
@@ -73,7 +76,7 @@ public class ManagerUI {
 
                 case ADD_ITEMS:
                     System.out.println("food available are ");
-                    MenuList menu = managerInterface.getFullMenu();
+                    MenuList menu = restaurentManagerInterface.getFullMenu();
                     menu.showMenu();
                     System.out.println("enter foodname to add");
                     scanner.nextLine();
@@ -140,7 +143,7 @@ public class ManagerUI {
 
                 case ALTER_FOODPRICE:
                     System.out.println("food available are ");
-                    MenuList menuList1 = managerInterface.getFullMenu();
+                    MenuList menuList1 = restaurentManagerInterface.getFullMenu();
                     System.out.println("enter foodname to alter");
                     scanner.nextLine();
                     String foodname2 = scanner.nextLine();
@@ -151,7 +154,7 @@ public class ManagerUI {
 
                 case DELETE_FOOD:
                     System.out.println("food available are ");
-                    MenuList menuList2 = managerInterface.getFullMenu();
+                    MenuList menuList2 = restaurentManagerInterface.getFullMenu();
                     System.out.println("enter foodname to delete from menu");
                     scanner.nextLine();
                     String foodname3 = scanner.nextLine();
@@ -159,9 +162,9 @@ public class ManagerUI {
                     break;
 
                 case CREATE_NEW_MENU:
-                    managerInterface.createNewMenu();
+                    restaurentManagerInterface.createNewMenu();
                     System.out.println("menu created");
-                    MenuList menu1 = managerInterface.getFullMenu();
+                    MenuList menu1 = restaurentManagerInterface.getFullMenu();
                     Item item2 = new Item("chicken Chucka", 130, Dietery.NONVEG, Course.MAINCOURSE, Timing.NIGHT);
                     menu1.addMenusItems(item2);
                     break;
