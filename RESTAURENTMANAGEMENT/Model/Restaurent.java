@@ -125,7 +125,7 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     }
     
     @Override
-    public MenuList getFullMenu() {
+    public MenuList getFullMenuAccess() {
         return this.menu;
     }
     

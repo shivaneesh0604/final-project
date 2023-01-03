@@ -24,27 +24,27 @@ public class Manager extends User {
     }
 
     public void addMenusItems(Item item) {
-        restaurent.getFullMenu().addMenusItems(item);
+        restaurent.getFullMenuAccess().addMenusItems(item);
     }
 
     public void alterMenuItems(String foodname, int price) {
-        restaurent.getFullMenu().alterMenuItems(foodname, price);
+        restaurent.getFullMenuAccess().alterMenuItems(foodname, price);
     }
 
     public void deleteMenuItems(String foodname) {
-        restaurent.getFullMenu().deleteMenuItems(foodname);
+        restaurent.getFullMenuAccess().deleteMenuItems(foodname);
     }
 
     public void createNewMenu() {
         restaurent.createNewMenu();
         //simply adding dummy values
-        MenuList menu1 = restaurent.getFullMenu();
+        MenuList menu1 = restaurent.getFullMenuAccess();
         Item item2 = new Item("chicken Chucka", 130, Dietery.NONVEG, Course.MAINCOURSE, Timing.NIGHT);
         menu1.addMenusItems(item2);
     }
 
     public void setTimingForFood(String foodname,Timing timing){
-        MenuList menu1 = restaurent.getFullMenu();
+        MenuList menu1 = restaurent.getFullMenuAccess();
         menu1.setTimingForFood(foodname, timing);
     }
 

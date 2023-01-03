@@ -1,9 +1,7 @@
 package RESTAURENTMANAGEMENT.Interfaces;
 
-import java.util.HashMap;
 import java.util.Set;
 
-import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.MenuList;
 
 public interface RestaurentManagementFunctions {
@@ -14,9 +12,7 @@ public interface RestaurentManagementFunctions {
 
     public Set<String> returnTableNumbers(int waiterID);
 
-    public MenuList getFullMenu();
-
-    public HashMap<String,Item> getMenuItems();
+    public MenuList getFullMenuAccess();
 
     public void createNewMenu();
 
