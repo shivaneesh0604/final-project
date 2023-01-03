@@ -130,7 +130,7 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     }
     
     @Override
-    public Cashier returnCashier() {
+    public Cashier getCashier() {
         return this.cashier;
     }
 

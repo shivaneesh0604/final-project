@@ -104,12 +104,12 @@ public class Waiter extends User {
                 throw new RuntimeException();
             }
         }
-        Cashier cashier = restaurentWaiterInterface.returnCashier();
+        Cashier cashier = restaurentWaiterInterface.getCashier();
         return cashier.generateBill(orders.getOrders(), orders.getOrderId());
     }
 
     public void paybill(float paymentAmount, int customerid) {
-        Cashier cashier = restaurentWaiterInterface.returnCashier();
+        Cashier cashier = restaurentWaiterInterface.getCashier();
         cashier.payBill(paymentAmount, orders.get(customerid).getOrderId());
     }
 

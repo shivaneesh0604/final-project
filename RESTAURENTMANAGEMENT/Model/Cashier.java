@@ -20,6 +20,7 @@ public class Cashier extends User {
         Bill bill = new Bill();
         for (Order order : listOfOrders) {
             Item item = restaurent.getMenuItems().get(order.getFoodname());
+            System.out.println(item.getPrice());
             bill.addItem(order.getFoodname(), order.getQuantity(), item.getPrice());
         }
         bill.total();

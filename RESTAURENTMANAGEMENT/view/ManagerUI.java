@@ -202,6 +202,7 @@ public class ManagerUI {
                         }
                     }
                     manager.setTimingForFood(foodname4, timing1);
+                    break;
 
                 case EXIT:
                     break MainLoop;

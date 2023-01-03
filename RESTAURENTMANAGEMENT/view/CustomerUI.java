@@ -88,17 +88,18 @@ public class CustomerUI {
                         try {
                             Bill bill = customer.askBill(waiter);
                             System.out.format(
-                                    "-----------------------------------------------------------------------------------------------------------------------------------");
+                                    "-------------------------------------------------------------------------------------------------------------------------------");
                             System.out.print("\nProductName\t\tQuantity\t\tRate \t\t\tTotal Price\n");
                             System.out.format(
-                                    "-----------------------------------------------------------------------------------------------------------------------------------\n");
+                                    "-------------------------------------------------------------------------------------------------------------------------------\n");
                             for (Bill.BillItem order : bill.getItems()) {
 
-                                System.out.format("  %-9s             %-9d          %5d               %9f\n",
+                                System.out.format("  %-9s             %-9d          %5d               %9d\n",
                                         order.itemName,
-                                        order.quantity, order.price / order.quantity, order.price);
+                                        order.quantity, order.price , order.price * order.quantity);
 
                             }
+                            System.out.println("total amount to be paid is "+bill.total());
                             System.out.println("enter the amount to pay");
                             float paymentAmount = in.nextFloat();
                             try {
@@ -106,7 +107,7 @@ public class CustomerUI {
                             } catch (RuntimeException e) {
                                 break;
                             }
-                        } catch (RuntimeException e) {
+                        } catch (NullPointerException e) {
                             System.out.println("confirm the order first");
                             break;
                         }
