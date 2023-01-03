@@ -34,12 +34,18 @@ public class Main {
                     System.out.println("enter manager id of him");
                     int managerID = sc.nextInt();
                     Restaurent restaurent = ListOfRestaurents.getInstance().getRestaurents(restaurentID1);
-                    try {
-                        Manager manager = restaurent.getManager(managerID);
-                        new ManagerUI(restaurent,manager).entersUI();;
-                    } catch (NullPointerException e) {
-                        // TODO: handle exception
-                        System.out.println("no manager with this id");
+                    if(restaurent!=null){
+                        try {
+                            Manager manager = restaurent.getManager(managerID);
+                            new ManagerUI(restaurent,manager).entersUI();;
+                        } catch (NullPointerException e) {
+                            // TODO: handle exception
+                            System.out.println("no manager with this id");
+                        }
+                    }
+                    else{
+                        System.out.println("no restaurent found");
+                        continue;
                     }
                     break;
 
@@ -56,11 +62,11 @@ public class Main {
                     System.out.println("enter restaurent id to enter ");
                     try {
                         int restaurentID2 = sc.nextInt();
-                        if(ListOfRestaurents.getInstance().getRestaurents(restaurentID2)==null){
-                            System.out.println("no restaurents available");
+                        Restaurent restaurent2 = ListOfRestaurents.getInstance().getRestaurents(restaurentID2);
+                        if(restaurent2==null){
+                            System.out.println("no restaurents available with this id");
                             continue;
                         }
-                        Restaurent restaurent2 = ListOfRestaurents.getInstance().getRestaurents(restaurentID2);
                         new CustomerUI(restaurent2,customer).entersTheRestaurent(timingPreference);
                         break;
                     } catch (InputMismatchException e) {
@@ -94,7 +100,12 @@ public class Main {
                                 System.out.println("enter restaurentid to enter");
                                 int restaurentID3 = sc.nextInt();
                                 Restaurent restaurent4 = ListOfRestaurents.getInstance().getRestaurents(restaurentID3);
-                                ownerUI.entersRestaurent(restaurent4);
+                                if(restaurent4!=null){
+                                    ownerUI.entersRestaurent(restaurent4);
+                                }
+                                else{
+                                    System.out.println("no restaurent available with this id");
+                                }
                                 break;
                             default:
                                 break OwnerLoop;

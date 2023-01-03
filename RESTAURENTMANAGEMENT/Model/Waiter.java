@@ -7,8 +7,8 @@ import java.util.Set;
 
 import RESTAURENTMANAGEMENT.Interfaces.OrderHook;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentWaiterInterface;
+import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
-import RESTAURENTMANAGEMENT.MenuList.UserMenu;
 
 public class Waiter extends User {
     private RestaurentWaiterInterface restaurentWaiterInterface;
@@ -22,9 +22,8 @@ public class Waiter extends User {
         orders = new HashMap<>();
     }
 
-    public UserMenu providesMenu() {
-        UserMenu menu = restaurentWaiterInterface.getUserMenu();
-        return menu;
+    public Set<Item> providesMenu() {
+        return restaurentWaiterInterface.getMenuItems();
     }
 
     public void TakeOrders(int customerid, String foodName, int quantity, Timing timing) {
@@ -65,7 +64,6 @@ public class Waiter extends User {
             if (checkfoodprocessed == false) {
                 throw new NullPointerException();
             } else {
-                System.out.println("Orders in main orders are");
                 o.deleteOrder(foodName, quantity);
             }
         }

@@ -18,7 +18,7 @@ public class ListOfRestaurents {
         return listOfRestaurents;
     }
 
-    public void addRestaurent(Restaurent restaurent) {
+    void addRestaurent(Restaurent restaurent) {
         restaurents.add(restaurent);
     }
 

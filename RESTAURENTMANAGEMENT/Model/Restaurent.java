@@ -12,9 +12,9 @@ import RESTAURENTMANAGEMENT.Interfaces.RestaurentCustomerInterface;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentManagementFunctions;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentOrderKitchenSystemInterface;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentWaiterInterface;
+import RESTAURENTMANAGEMENT.Interfaces.UserMenu;
 import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.MenuList;
-import RESTAURENTMANAGEMENT.MenuList.UserMenu;
 
 public class Restaurent implements RestaurentWaiterInterface, RestaurentManagementFunctions, RestaurentCashierInterface,
         RestaurentOrderKitchenSystemInterface, RestaurentChefInterface,RestaurentCustomerInterface {
@@ -57,11 +57,6 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
 
     public void addCashierToRestaurent(Cashier cashier) {
         this.cashier = cashier;
-    }
-
-    @Override
-    public UserMenu getUserMenu() {
-        return this.menu;
     }
 
     @Override
@@ -178,18 +173,6 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
         this.menu = new MenuList();
     }
 
-    public String getRestaurentName() {
-        return restaurentName;
-    }
-
-    public int getRestaurentID() {
-        return RestaurentID;
-    }
-
-    public int getOwner() {
-        return owner;
-    }
-
     public ArrayList<String> gettablesAvailable(){
         return tablesAvailable;
     }
@@ -201,6 +184,23 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
             }
         }
         return null;
+    }
+
+    @Override
+    public UserMenu getUserMenu() {
+        return (UserMenu) this.menu;
+    }
+
+    public String getRestaurentName() {
+        return restaurentName;
+    }
+
+    public int getRestaurentID() {
+        return RestaurentID;
+    }
+
+    public int getOwner() {
+        return owner;
     }
 
 }

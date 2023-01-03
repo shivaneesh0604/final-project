@@ -1,10 +1,15 @@
 package RESTAURENTMANAGEMENT.view;
 
 import java.util.Scanner;
+import java.util.Set;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCustomerInterface;
+import RESTAURENTMANAGEMENT.Interfaces.UserMenu;
+import RESTAURENTMANAGEMENT.MenuList.Course;
+import RESTAURENTMANAGEMENT.MenuList.Dietery;
+import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
 import RESTAURENTMANAGEMENT.Model.Bill;
 import RESTAURENTMANAGEMENT.Model.Customer;
@@ -40,7 +45,8 @@ public class CustomerUI {
 
                 switch (preference) {
                     case ASKING_MENU:
-                        customer.askMenu(waiter);
+                        Set<Item> menuItems = customer.askMenu(waiter);
+                        showMenu(menuItems,timing);
                         break;
 
                     case ADD_ORDERS:
@@ -105,6 +111,75 @@ public class CustomerUI {
     private void receiveOrder(ArrayList<Order> order) {
         for (Order orders : order) {
             System.out.println("Foodname received is " + orders.getFoodname() + " quantity is " + orders.getQuantity());
+        }
+    }
+
+    private void showMenu(Set<Item> menuItems,Timing timing){
+        System.out.println("Food available are ");
+        System.out.println("foodname \t price\t dietory");
+        System.out.println("veg starters are");
+        for (Item item : menuItems) {
+            if(item.getTiming().equals(timing)){
+                if (item.getCourse().equals(Course.STARTER)) {
+                    if (item.getDietery().equals(Dietery.VEG)){
+                        System.out.println(item.getFoodName() + "\t" + item.getPrice() + "\t " + item.getDietery());
+                    }
+                }
+            }
+        }
+
+        System.out.println("nonveg starters are");
+        for (Item item : menuItems) {
+            if(item.getTiming().equals(timing)){
+                if (item.getCourse().equals(Course.STARTER)) {
+                    if (item.getDietery().equals(Dietery.NONVEG)){
+                        System.out.println(item.getFoodName() + " " + item.getPrice() + " " + item.getDietery());
+                    }
+                }
+            }
+        }
+
+        System.out.println("maincourse veg items are");
+        for (Item item : menuItems) {
+            if(item.getTiming().equals(timing)){
+                if (item.getCourse().equals(Course.MAINCOURSE)) {
+                    if (item.getDietery().equals(Dietery.VEG)){
+                        System.out.println(item.getFoodName() + " " + item.getPrice() + " " + item.getDietery());
+                    }
+                }
+            }
+        }
+        System.out.println("maincourse nonveg items are");
+        for (Item item : menuItems) {
+            if(item.getTiming().equals(timing)){
+                if (item.getCourse().equals(Course.MAINCOURSE)) {
+                    if (item.getDietery().equals(Dietery.NONVEG)){
+                        System.out.println(item.getFoodName() + " " + item.getPrice() + " " + item.getDietery());
+                    }
+                }
+            }
+        }
+        System.out.println("dessert veg items are ");
+
+        for (Item item : menuItems) {
+            if(item.getTiming().equals(timing)){
+                if (item.getCourse().equals(Course.DESSERT)) {
+                    if (item.getDietery().equals(Dietery.VEG)){
+                        System.out.println(item.getFoodName() + " " + item.getPrice() + " " + item.getDietery());
+                    }
+                }
+            }
+        }
+        System.out.println("dessert nonveg items items are");
+
+        for (Item item : menuItems) {
+            if(item.getTiming().equals(timing)){
+                if (item.getCourse().equals(Course.DESSERT)) {
+                    if (item.getDietery().equals(Dietery.NONVEG)){
+                        System.out.println(item.getFoodName() + " " + item.getPrice() + " " + item.getDietery());
+                    }
+                }
+            }
         }
     }
 }

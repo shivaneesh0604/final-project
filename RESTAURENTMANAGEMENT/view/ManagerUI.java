@@ -18,7 +18,7 @@ public class ManagerUI {
     private final Manager manager;
     Scanner scanner = new Scanner(System.in);
 
-    public ManagerUI(Restaurent restaurent,Manager manager) {
+    public ManagerUI(Restaurent restaurent, Manager manager) {
         this.restaurentManagerInterface = restaurent;
         this.manager = manager;
     }
@@ -38,7 +38,7 @@ public class ManagerUI {
                         Set<String> tableForThisWaiter = restaurentManagerInterface
                                 .returnTableNumbers(waiterid);
                         System.out.println(tableForThisWaiter);
-                        if(tableForThisWaiter==null){
+                        if (tableForThisWaiter == null) {
                             System.out.println("no waiter available");
                             break;
                         }
@@ -77,7 +77,7 @@ public class ManagerUI {
                 case ADD_ITEMS:
                     System.out.println("food available are ");
                     MenuList menu = restaurentManagerInterface.getFullMenu();
-                    menu.showMenu();
+                    showMenu(menu);
                     System.out.println("enter foodname to add");
                     scanner.nextLine();
                     String foodname = scanner.nextLine();
@@ -144,7 +144,7 @@ public class ManagerUI {
                 case ALTER_FOODPRICE:
                     System.out.println("food available are ");
                     MenuList menuList1 = restaurentManagerInterface.getFullMenu();
-                    menuList1.showMenu();
+                    showMenu(menuList1);
                     System.out.println("enter foodname to alter");
                     scanner.nextLine();
                     String foodname2 = scanner.nextLine();
@@ -156,7 +156,7 @@ public class ManagerUI {
                 case DELETE_ITEM:
                     System.out.println("food available are ");
                     MenuList menuList2 = restaurentManagerInterface.getFullMenu();
-                    menuList2.showMenu();
+                    showMenu(menuList2);
                     System.out.println("enter foodname to delete from menu");
                     scanner.nextLine();
                     String foodname3 = scanner.nextLine();
@@ -172,6 +172,12 @@ public class ManagerUI {
                     break MainLoop;
 
             }
+        }
+    }
+
+    private void showMenu(MenuList menu) {
+        for (Item item : menu.getMenuItems()) {
+            System.out.println(item.getFoodName() + " " + item.getPrice() + " " + item.getTiming());
         }
     }
 }

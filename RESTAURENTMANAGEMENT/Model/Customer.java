@@ -1,9 +1,10 @@
 package RESTAURENTMANAGEMENT.Model;
 
 import java.util.ArrayList;
+import java.util.Set;
 
+import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
-import RESTAURENTMANAGEMENT.MenuList.UserMenu;
 import RESTAURENTMANAGEMENT.view.AppUsers;
 
 public class Customer extends User {
@@ -17,9 +18,8 @@ public class Customer extends User {
         this.timing = timing;
     }
 
-    public void askMenu(Waiter waiter) {
-        UserMenu menu = waiter.providesMenu();
-        menu.showMenu(timing);
+    public Set<Item> askMenu(Waiter waiter) {
+        return waiter.providesMenu();
     }
 
     public void addOrders(Waiter waiter,String foodname,int quantity){
