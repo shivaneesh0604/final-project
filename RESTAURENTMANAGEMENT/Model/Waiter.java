@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-import RESTAURENTMANAGEMENT.Interfaces.OrderHook;
+import RESTAURENTMANAGEMENT.Interfaces.KitchenSystem;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentWaiterInterface;
 import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
@@ -91,7 +91,7 @@ public class Waiter extends User {
                 order.setDelivered(true);
             }
         }
-        OrderHook kitchensystem = restaurentWaiterInterface.getKitchenorderSystem();
+        KitchenSystem kitchensystem = restaurentWaiterInterface.getKitchenorderSystem();
         return kitchensystem.assignToChefAndReceieveFood(orders);
     }
 

@@ -2,10 +2,10 @@ package RESTAURENTMANAGEMENT.Model;
 
 import java.util.ArrayList;
 
-import RESTAURENTMANAGEMENT.Interfaces.OrderHook;
+import RESTAURENTMANAGEMENT.Interfaces.KitchenSystem;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentKitchenOrderSystemInterface;
 
-public class KitchenOrderSystem implements OrderHook {
+public class KitchenOrderSystem implements KitchenSystem {
 
     private RestaurentKitchenOrderSystemInterface kitchenOrderSystemInterface;
 
