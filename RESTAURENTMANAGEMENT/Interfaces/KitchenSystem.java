@@ -4,6 +4,6 @@ import java.util.ArrayList;
 
 import RESTAURENTMANAGEMENT.Model.Order;
 
-public interface OrderHook {
+public interface KitchenSystem {
     public ArrayList<Order> assignToChefAndReceieveFood(ArrayList<Order> orders);
 }
