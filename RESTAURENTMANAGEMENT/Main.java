@@ -14,6 +14,7 @@ import RESTAURENTMANAGEMENT.view.AppUsers;
 import RESTAURENTMANAGEMENT.view.CustomerUI;
 import RESTAURENTMANAGEMENT.view.InputVerification;
 import RESTAURENTMANAGEMENT.view.ManagerUI;
+import RESTAURENTMANAGEMENT.view.OwnerUI;
 
 public class Main {
     private static int customerID = 0;
@@ -22,7 +23,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Owner owner1 = new Owner("raj", 1);
         owners.add(owner1);
-        owner1.createNewRestaurent();
         Mainloop: while (true) {
             InputVerification.print(AppUsers.values());
             int option = InputVerification.inputVerificationApp(AppUsers.values().length);
@@ -85,14 +85,16 @@ public class Main {
                         System.out.println(
                                 "if you create new restaurent press 1 or enter a restaurent press 2 to exit press other");
                         int ownerCase = sc.nextInt();
+                        OwnerUI ownerUI = new OwnerUI(owner);
                         switch (ownerCase) {
                             case 1:
-                                owner.createNewRestaurent();
+                                ownerUI.createNewRestaurent();
                                 break;
                             case 2:
                                 System.out.println("enter restaurentid to enter");
                                 int restaurentID3 = sc.nextInt();
-                                owner.entersOwnerUI(restaurentID3);
+                                Restaurent restaurent4 = ListOfRestaurents.getInstance().getRestaurents(restaurentID3);
+                                ownerUI.entersRestaurent(restaurent4);
                                 break;
                             default:
                                 break OwnerLoop;

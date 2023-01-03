@@ -2,7 +2,6 @@ package RESTAURENTMANAGEMENT.Model;
 
 import java.util.ArrayList;
 
-import RESTAURENTMANAGEMENT.view.OwnerUI;
 
 public class Owner extends User {
 
@@ -13,30 +12,29 @@ public class Owner extends User {
         restaurents = new ArrayList<>();
     }
 
-    public void entersOwnerUI(int restaurentID) {
-        for (Restaurent restaurent : restaurents) {
-            if (restaurent.getRestaurentID() == restaurentID) {
-                OwnerUI ownerUI = new OwnerUI();
-                ownerUI.entersRestaurent(restaurent);
-            }
-        }
+    public void addCashierToRestaurent(Restaurent restaurent,Cashier cashier) {
+        restaurent.addCashierToRestaurent(cashier);
     }
 
-    public void createNewRestaurent() {
-        // System.out.println("enter restaurent name");
-        ArrayList<String> tableAvailable = new ArrayList<String>() {
-            {
-                add("t1");
-                add("t2");
-                add("t3");
-            }
-        };
+    public void addChefToRestaurent(Restaurent restaurent,Chef chef){
+        restaurent.addChefToRestaurent(chef);
+    }
 
-        Restaurent restaurent = new Restaurent("atchayas", 1, this.getID(), tableAvailable);
-        System.out.println("created atchayas restaurent");
+    public void addCookToRestaurent(Restaurent restaurent,Cook cook){
+        restaurent.addCookToRestaurent(cook);
+    }
+
+    public void addManagerToRestaurent(Restaurent restaurent,Manager manager){
+        restaurent.addManagerToRestaurent(manager);
+    }
+
+    public void addWaitersToRestaurent(Restaurent restaurent,Waiter waiter){
+        restaurent.addWaitersToRestaurent(waiter);
+    }
+
+    public void createNewRestaurent(Restaurent restaurent) {
+        // System.out.println("enter restaurent name");
         restaurents.add(restaurent);
         ListOfRestaurents.getInstance().addRestaurent(restaurent);
-        OwnerUI ownerUI = new OwnerUI();
-        ownerUI.entersRestaurent(restaurent);
     }
 }

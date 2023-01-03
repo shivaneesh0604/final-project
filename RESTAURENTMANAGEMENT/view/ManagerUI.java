@@ -45,7 +45,7 @@ public class ManagerUI {
                         System.out.println("enter tablenumber to add");
                         scanner.nextLine();
                         String addtablenumber = scanner.nextLine();
-                        restaurentManagerInterface.addTableNumbersToWaiters(addtablenumber, waiterid);
+                        manager.addTableNumbersToWaiter(addtablenumber, waiterid);
 
                     } catch (InputMismatchException e) {
                         // TODO: handle exception
@@ -66,7 +66,7 @@ public class ManagerUI {
 
                     if (tableForThisWaiter1.contains(deletetablenumber)) {
                         System.out.println(restaurentManagerInterface.returnTableNumbers(waiterid1));
-                        restaurentManagerInterface.deleteTableNumberforWaiter(deletetablenumber, waiterid1);
+                        manager.deleteTableNumberforWaiter(deletetablenumber, waiterid1);
                     } else {
                         System.out.println("please enter available table number");
                         System.out.println("Available tablenumbers are " + tableForThisWaiter1);
@@ -138,35 +138,34 @@ public class ManagerUI {
                         }
                     }
                     Item item = new Item(foodname, price, dietery, courses, timing);
-                    menu.addMenusItems(item);
+                    manager.addMenusItems(item);
                     break;
 
                 case ALTER_FOODPRICE:
                     System.out.println("food available are ");
                     MenuList menuList1 = restaurentManagerInterface.getFullMenu();
+                    menuList1.showMenu();
                     System.out.println("enter foodname to alter");
                     scanner.nextLine();
                     String foodname2 = scanner.nextLine();
                     System.out.println("enter price to alter");
                     int price2 = scanner.nextInt();
-                    menuList1.alterMenuItems(foodname2, price2);
+                    manager.alterMenuItems(foodname2, price2);
                     break;
 
-                case DELETE_FOOD:
+                case DELETE_ITEM:
                     System.out.println("food available are ");
                     MenuList menuList2 = restaurentManagerInterface.getFullMenu();
+                    menuList2.showMenu();
                     System.out.println("enter foodname to delete from menu");
                     scanner.nextLine();
                     String foodname3 = scanner.nextLine();
-                    menuList2.deleteMenuItems(foodname3);
+                    manager.deleteMenuItems(foodname3);
                     break;
 
                 case CREATE_NEW_MENU:
-                    restaurentManagerInterface.createNewMenu();
+                    manager.createNewMenu();
                     System.out.println("menu created");
-                    MenuList menu1 = restaurentManagerInterface.getFullMenu();
-                    Item item2 = new Item("chicken Chucka", 130, Dietery.NONVEG, Course.MAINCOURSE, Timing.NIGHT);
-                    menu1.addMenusItems(item2);
                     break;
 
                 case EXIT:

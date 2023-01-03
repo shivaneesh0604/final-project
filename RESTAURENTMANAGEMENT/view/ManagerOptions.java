@@ -5,7 +5,7 @@ public enum ManagerOptions {
     REMOVE_TABLENUMBER,
     ADD_ITEMS,
     ALTER_FOODPRICE,
-    DELETE_FOOD,
+    DELETE_ITEM,
     CREATE_NEW_MENU,
     EXIT;
 }
