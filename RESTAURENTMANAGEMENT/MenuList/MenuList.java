@@ -1,58 +1,42 @@
 package RESTAURENTMANAGEMENT.MenuList;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.HashMap;
 
 import RESTAURENTMANAGEMENT.Interfaces.UserMenu;
 
-public class MenuList implements UserMenu  {
+public class MenuList implements UserMenu {
 
-    private Set<Item> totalItems = new HashSet<Item>();
+    private HashMap<String, Item> totalItems = new HashMap<>();
 
     public void addMenusItems(Item items) {
-        totalItems.add(items);
+        totalItems.put(items.getFoodName(), items);
     }
 
     public void alterMenuItems(String foodname, int price) {
-        for (Item item : totalItems) {
-            if (item.getFoodName().equals(foodname)) {
-                item.setPrice(price);
-            }
-        }
-
+        Item item = totalItems.get(foodname);
+        if (item == null)
+            return;
+        item.setPrice(price);
     }
 
     public void deleteMenuItems(String foodname) {
-        Iterator<Item> it = totalItems.iterator();
-        while (it.hasNext()) {
-            Item item = it.next();
-            if (item.getFoodName().equals(foodname)) {
-                it.remove();
-            }
-        }
+        totalItems.remove(foodname);
     }
 
     @Override
-    public boolean checkFoodAvailability(String foodname,Timing timing) {
-        for (Item item : totalItems) {
-            if (item.getFoodName().equals(foodname) && item.getTiming().equals(timing)) {
-                return true;
-            }
-        }
-        return false;
+    public boolean checkFoodAvailability(String foodname, Timing timing) {
+        return totalItems.containsKey(foodname);
     }
 
-    public Set<Item> getMenuItems() {
+    public void setTimingForFood(String foodname, Timing timing) {
+        Item item = totalItems.get(foodname);
+        if (item == null)
+            return;
+        item.setTiming(timing);
+    }
+
+    public HashMap<String, Item> getTotalItems() {
         return totalItems;
-    }
-
-    public void setTimingForFood(String foodname,Timing timing){
-        for (Item item : totalItems) {
-            if(item.getFoodName().equals(foodname)){
-                item.setTiming(timing);
-            }
-        }
     }
 
 }

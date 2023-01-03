@@ -1,5 +1,6 @@
 package RESTAURENTMANAGEMENT.view;
 
+import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Set;
@@ -48,7 +49,6 @@ public class ManagerUI {
                         System.out.println(manager.addTableNumbersToWaiter(addtablenumber, waiterid)); 
 
                     } catch (InputMismatchException e) {
-                        // TODO: handle exception
                         System.out.println("you have entered wrong input");
 
                     }
@@ -77,7 +77,7 @@ public class ManagerUI {
                 case ADD_ITEMS:
                     System.out.println("food available are ");
                     MenuList menu = restaurentManagerInterface.getFullMenu();
-                    showMenu(menu);
+                    showMenu(menu.getTotalItems());
                     System.out.println("enter foodname to add");
                     scanner.nextLine();
                     String foodname = scanner.nextLine();
@@ -144,7 +144,7 @@ public class ManagerUI {
                 case ALTER_FOODPRICE:
                     System.out.println("food available are ");
                     MenuList menuList1 = restaurentManagerInterface.getFullMenu();
-                    showMenu(menuList1);
+                    showMenu(menuList1.getTotalItems());
                     System.out.println("enter foodname to alter");
                     scanner.nextLine();
                     String foodname2 = scanner.nextLine();
@@ -157,7 +157,7 @@ public class ManagerUI {
                 case DELETE_ITEM:
                     System.out.println("food available are ");
                     MenuList menuList2 = restaurentManagerInterface.getFullMenu();
-                    showMenu(menuList2);
+                    showMenu(menuList2.getTotalItems());
                     System.out.println("enter foodname to delete from menu");
                     scanner.nextLine();
                     String foodname3 = scanner.nextLine();
@@ -201,9 +201,7 @@ public class ManagerUI {
         }
     }
 
-    private void showMenu(MenuList menu) {
-        for (Item item : menu.getMenuItems()) {
-            System.out.println(item.getFoodName() + " " + item.getPrice() + " " + item.getTiming());
-        }
+    private void showMenu(HashMap<String,Item> menu) {
+        System.out.println(menu);
     }
 }

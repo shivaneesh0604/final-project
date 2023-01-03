@@ -1,6 +1,7 @@
 package RESTAURENTMANAGEMENT.Model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
@@ -126,8 +127,8 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     }
 
     @Override
-    public Set<Item> getMenuItems() {
-        return menu.getMenuItems();
+    public HashMap<String,Item> getMenuItems() {
+        return menu.getTotalItems();
     }
 
     @Override

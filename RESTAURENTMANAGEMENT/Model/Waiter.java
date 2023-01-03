@@ -22,7 +22,7 @@ public class Waiter extends User {
         orders = new HashMap<>();
     }
 
-    public Set<Item> providesMenu() {
+    public HashMap<String,Item> providesMenu() {
         return restaurentWaiterInterface.getMenuItems();
     }
 

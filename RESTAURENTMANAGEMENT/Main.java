@@ -40,7 +40,6 @@ public class Main {
                             Manager manager = restaurent.getManager(managerID);
                             new ManagerUI(restaurent,manager).entersUI();;
                         } catch (NullPointerException e) {
-                            // TODO: handle exception
                             System.out.println("no manager with this id");
                         }
                     }
@@ -49,7 +48,6 @@ public class Main {
                         continue;
                     }
                 } catch (InputMismatchException e) {
-                    // TODO: handle exception
                     System.out.println("enter only integer values");
                     break;
                 }
@@ -76,7 +74,6 @@ public class Main {
                         new CustomerUI(restaurent2,customer).entersTheRestaurent(timingPreference);
                         break;
                     } catch (InputMismatchException e) {
-                        // TODO: handle exception
                         System.out.println("input missmatched enter integer value");
                         break;
                     }

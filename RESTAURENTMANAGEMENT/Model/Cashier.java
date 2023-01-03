@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCashierInterface;
+import RESTAURENTMANAGEMENT.MenuList.Item;
 
 public class Cashier extends User {
 
@@ -12,23 +13,27 @@ public class Cashier extends User {
 
     public Cashier(String name, int iD, Restaurent restaurent) {
         super(name, iD);
-        this.restaurent= restaurent;
+        this.restaurent = restaurent;
     }
 
     public Bill generateBill(ArrayList<Order> listOfOrders, int orderid) {
-        Bill bill = new Bill(listOfOrders, orderid, restaurent.getMenuItems());
-        bill.calculateBill();
+        Bill bill = new Bill();
+        for (Order order : listOfOrders) {
+            Item item = restaurent.getMenuItems().get(order.getFoodname());
+            bill.addItem(order.getFoodname(), order.getQuantity(), item.getPrice());
+        }
+        bill.total();
         bills.put(orderid, bill);
         return bill;
     }
 
     public void payBill(float paymentAmount, int orderid) {
-        if (bills.get(orderid).getTotalAmount() == paymentAmount) {
+        if (bills.get(orderid).total() == paymentAmount) {
             System.out.println("payment done");
         } else {
-            System.out.println("payable amount is less than " + bills.get(orderid).getTotalAmount()
-                    + " so enter amount equal to " + bills.get(orderid).getTotalAmount());
-                    throw new RuntimeException();
+            System.out.println("payable amount is less than " + bills.get(orderid).total()
+                    + " so enter amount equal to " + bills.get(orderid).total());
+            throw new RuntimeException();
         }
     }
 
