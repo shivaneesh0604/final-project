@@ -11,34 +11,28 @@ public class OrderList {
 
     public void AddtoOrders(Order order) {
         orders.add(order);
-        for (Order order1 : orders) {
-            System.out.println(order1.getFoodname());
-            System.out.println(order1.getQuantity());
-        }
     }
 
-    public void deleteOrder(String foodname, int quantity) {
+    public String deleteOrder(String foodname, int quantity) {
         Iterator<Order> it = orders.iterator();
         while (it.hasNext()) {
             Order order = it.next();
             if (order.getFoodname().equals(foodname.toUpperCase()) && !order.isDelivered()) {
                 if (order.getQuantity() == quantity) {
                     it.remove();
-                    System.out.println(order.getFoodname() + " is totally deleted");
-                    break;
+                    return order.getFoodname() + " is totally deleted";
                 } else if (order.getQuantity() > quantity) {
                     order.setQuantity(order.getQuantity() - quantity);
-                    System.out.println(
-                            "Changed order is " + order.getFoodname() + " with the quantity " + order.getQuantity());
-                    break;
+                    return
+                            "Changed order is " + order.getFoodname() + " with the quantity " + order.getQuantity();
                 } else if (order.getQuantity() < quantity) {
-                    System.out
-                            .println("Your order is not compatible to change please enter value on or below "
-                                    + order.getQuantity() + " to delete");
-                    break;
+                    return "Your order is not compatible to change please enter value on or below "
+                                    + order.getQuantity() + " to delete";
+                    
                 }
             }
         }
+        return null;
     }
 
     public ArrayList<Order> getOrders() {

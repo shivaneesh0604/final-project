@@ -65,26 +65,25 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     }
 
     @Override
-    public void addTableNumbersToWaiters(String tablenumber, int waiterid) {
+    public String addTableNumbersToWaiters(String tablenumber, int waiterid) {
         for (Waiter waiter1 : waiters) {
             if (waiter1.getID() == waiterid) {
                 boolean check = checkTableNumbersForAllWaiters(tablenumber);
                 if (check) {
-                    System.out.println("Table number already added to another waiter so can't add");
-                    break;
+                        return "Table number already added to another waiter so can't add";
                 } else {
                     if(tablesAvailable.contains(tablenumber)){
-                        System.out.println("table number"+tablenumber+" is added");
                         waiter1.setTableNumber(tablenumber);
+                        return "table number"+tablenumber+" is added";
                     }
                     else{
-                        System.out.println("no tablenumber available");
+                        return "no tablenumber available";
                     }
                     
-                    break;
                 }
             }
         }
+        return null;
     }
 
     @Override

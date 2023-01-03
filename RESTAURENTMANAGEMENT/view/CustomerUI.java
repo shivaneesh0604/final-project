@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCustomerInterface;
-import RESTAURENTMANAGEMENT.Interfaces.UserMenu;
 import RESTAURENTMANAGEMENT.MenuList.Course;
 import RESTAURENTMANAGEMENT.MenuList.Dietery;
 import RESTAURENTMANAGEMENT.MenuList.Item;
@@ -66,7 +65,7 @@ public class CustomerUI {
                         try {
                             int quantity1 = in.nextInt();
                             try {
-                                customer.deleteOrder(waiter, foodname1.toUpperCase(), quantity1);
+                                System.out.println(customer.deleteOrder(waiter, foodname1.toUpperCase(), quantity1)); 
                             } catch (NullPointerException e) {
                                 System.out.println("this food is not ordered");
                             }

@@ -45,7 +45,7 @@ public class ManagerUI {
                         System.out.println("enter tablenumber to add");
                         scanner.nextLine();
                         String addtablenumber = scanner.nextLine();
-                        manager.addTableNumbersToWaiter(addtablenumber, waiterid);
+                        System.out.println(manager.addTableNumbersToWaiter(addtablenumber, waiterid)); 
 
                     } catch (InputMismatchException e) {
                         // TODO: handle exception
@@ -151,6 +151,7 @@ public class ManagerUI {
                     System.out.println("enter price to alter");
                     int price2 = scanner.nextInt();
                     manager.alterMenuItems(foodname2, price2);
+                    System.out.println("changed food name is " + foodname2 + "price is " + price2);
                     break;
 
                 case DELETE_ITEM:

@@ -15,8 +15,8 @@ public class Manager extends User {
         this.restaurent = restaurent;
     }
 
-    public void addTableNumbersToWaiter(String tablenumber, int waiterid) {
-        restaurent.addTableNumbersToWaiters(tablenumber, waiterid);
+    public String addTableNumbersToWaiter(String tablenumber, int waiterid) {
+        return restaurent.addTableNumbersToWaiters(tablenumber, waiterid);
     }
 
     public void deleteTableNumberforWaiter(String deletetablenumber, int waiterid1) {
@@ -37,6 +37,7 @@ public class Manager extends User {
 
     public void createNewMenu() {
         restaurent.createNewMenu();
+        //simply adding dummy values
         MenuList menu1 = restaurent.getFullMenu();
         Item item2 = new Item("chicken Chucka", 130, Dietery.NONVEG, Course.MAINCOURSE, Timing.NIGHT);
         menu1.addMenusItems(item2);
