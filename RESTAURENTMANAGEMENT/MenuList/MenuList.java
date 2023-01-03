@@ -4,7 +4,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class MenuList  {
+import RESTAURENTMANAGEMENT.Interfaces.UserMenu;
+
+public class MenuList implements UserMenu  {
 
     private Set<Item> totalItems = new HashSet<Item>();
 
@@ -31,6 +33,7 @@ public class MenuList  {
         }
     }
 
+    @Override
     public boolean checkFoodAvailability(String foodname,Timing timing) {
         for (Item item : totalItems) {
             if (item.getFoodName().equals(foodname) && item.getTiming().equals(timing)) {
@@ -42,6 +45,14 @@ public class MenuList  {
 
     public Set<Item> getMenuItems() {
         return totalItems;
+    }
+
+    public void setTimingForFood(String foodname,Timing timing){
+        for (Item item : totalItems) {
+            if(item.getFoodName().equals(foodname)){
+                item.setTiming(timing);
+            }
+        }
     }
 
 }

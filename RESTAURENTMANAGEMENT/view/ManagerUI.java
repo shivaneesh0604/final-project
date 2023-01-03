@@ -169,6 +169,31 @@ public class ManagerUI {
                     System.out.println("menu created");
                     break;
 
+                case SET_TIMING:
+                    System.out.println("enter foodname to set timing");
+                    String foodname4 = scanner.nextLine();
+                    System.out.println("enter which timing you need");
+                    Timing timing1;
+                    Timing: while (true) {
+                        System.out.println(
+                                "enter which timing to have this food -press 1 for morning 2 for afternoon and 3 for night");
+                        int time = scanner.nextInt();
+                        switch (time) {
+                            case 1:
+                                timing1 = Timing.MORNING;
+                                break Timing;
+                            case 2:
+                                timing1 = Timing.EVENING;
+                                break Timing;
+                            case 3:
+                                timing1 = Timing.NIGHT;
+                                break Timing;
+                            default:
+                                System.out.println("enter correct option to select");
+                        }
+                    }
+                    manager.setTimingForFood(foodname4, timing1);
+
                 case EXIT:
                     break MainLoop;
 

@@ -48,7 +48,7 @@ public class Waiter extends User {
         } else {
             return "Enter the right foodname to order since it is not available at this time" ;
         }
-        return null;
+        return "";
     }
 
     public String DeleteOrder(int customerid, String foodName, int quantity, Timing timing) {

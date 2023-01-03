@@ -7,5 +7,6 @@ public enum ManagerOptions {
     ALTER_FOODPRICE,
     DELETE_ITEM,
     CREATE_NEW_MENU,
+    SET_TIMING,
     EXIT;
 }

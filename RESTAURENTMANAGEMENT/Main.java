@@ -29,6 +29,7 @@ public class Main {
             AppUsers preference = AppUsers.values()[option];
             switch (preference) {
                 case MANAGER:
+                try {
                     System.out.println("enter restaurentID to enter the restaurent");
                     int restaurentID1 = sc.nextInt();
                     System.out.println("enter manager id of him");
@@ -47,6 +48,11 @@ public class Main {
                         System.out.println("no restaurent found");
                         continue;
                     }
+                } catch (InputMismatchException e) {
+                    // TODO: handle exception
+                    System.out.println("enter only integer values");
+                    break;
+                }
                     break;
 
                 case CUSTOMER:

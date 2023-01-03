@@ -43,4 +43,9 @@ public class Manager extends User {
         menu1.addMenusItems(item2);
     }
 
+    public void setTimingForFood(String foodname,Timing timing){
+        MenuList menu1 = restaurent.getFullMenu();
+        menu1.setTimingForFood(foodname, timing);
+    }
+
 }

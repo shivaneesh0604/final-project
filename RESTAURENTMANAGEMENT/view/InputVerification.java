@@ -6,7 +6,7 @@ public class InputVerification {
     private static final Scanner sc = new Scanner(System.in);
     public static int inputVerificationManager(int noOfOptions){
         String input = sc.nextLine();
-        if(input.matches("[0-6]")&&(Integer.parseInt(input)<=noOfOptions)){
+        if(input.matches("[0-7]")&&(Integer.parseInt(input)<=noOfOptions)){
             return Integer.parseInt(input);
         }
         else{

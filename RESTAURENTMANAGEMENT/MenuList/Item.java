@@ -8,11 +8,11 @@ public class Item {
     private final Course course;
     private Timing timing;
 
-    public Item(String foodName, int price,Dietery dietery,Course course,Timing timing) {
+    public Item(String foodName, int price, Dietery dietery, Course course, Timing timing) {
         this.foodName = foodName.toUpperCase();
         this.price = price;
-        this.dietery=dietery;
-        this.course=course;
+        this.dietery = dietery;
+        this.course = course;
         this.timing = timing;
     }
 
@@ -24,7 +24,7 @@ public class Item {
         return price;
     }
 
-    public void setPrice(int price) {
+    void setPrice(int price) {
         this.price = price;
     }
 
@@ -40,7 +40,7 @@ public class Item {
         return timing;
     }
 
-    public void setTiming(Timing timing) {
+    void setTiming(Timing timing) {
         this.timing = timing;
     }
 

@@ -187,7 +187,7 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
 
     @Override
     public UserMenu getUserMenu() {
-        return (UserMenu) this.menu;
+        return this.menu;
     }
 
     public String getRestaurentName() {
