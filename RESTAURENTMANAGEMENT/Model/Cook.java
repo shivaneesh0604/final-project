@@ -1,8 +1,10 @@
 package RESTAURENTMANAGEMENT.Model;
 
+import RESTAURENTMANAGEMENT.Interfaces.RestaurentCookinterface;
+
 public class Cook extends User {
 
-    private final Restaurent restaurent;
+    private final RestaurentCookinterface restaurent;
 
     public Cook(String name, int iD,Restaurent restaurent) {
         super(name, iD);
@@ -18,5 +20,9 @@ public class Cook extends User {
         System.out.println("food completed");
         System.out.println("foodname is " + order.getFoodname() + " quantity is " + order.getQuantity());
         return order;
+    }
+
+    public RestaurentCookinterface getRestaurent() {
+        return restaurent;
     }
 }

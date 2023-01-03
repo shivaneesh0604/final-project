@@ -8,6 +8,7 @@ import java.util.Set;
 
 
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentChefInterface;
+import RESTAURENTMANAGEMENT.Interfaces.RestaurentCookinterface;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCashierInterface;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCustomerInterface;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentManagementFunctions;
@@ -18,7 +19,7 @@ import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.MenuList;
 
 public class Restaurent implements RestaurentWaiterInterface, RestaurentManagementFunctions, RestaurentCashierInterface,
-        RestaurentKitchenOrderSystemInterface, RestaurentChefInterface,RestaurentCustomerInterface {
+        RestaurentKitchenOrderSystemInterface, RestaurentChefInterface,RestaurentCustomerInterface,RestaurentCookinterface {
 
     private final String restaurentName;
     private final int RestaurentID;
