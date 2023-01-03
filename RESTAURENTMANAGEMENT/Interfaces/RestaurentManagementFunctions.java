@@ -6,7 +6,7 @@ import RESTAURENTMANAGEMENT.MenuList.MenuList;
 
 public interface RestaurentManagementFunctions {
 
-    public void addTableNumbersToWaiters(String tablenumber, int waiterid);
+    public String addTableNumbersToWaiters(String tablenumber, int waiterid);
 
     public void deleteTableNumberforWaiter(String tablenumber, int waiterid);
 

@@ -26,14 +26,14 @@ public class Waiter extends User {
         return restaurentWaiterInterface.getMenuItems();
     }
 
-    public void TakeOrders(int customerid, String foodName, int quantity, Timing timing) {
+    public String TakeOrders(int customerid, String foodName, int quantity, Timing timing) {
         if (restaurentWaiterInterface.getUserMenu().checkFoodAvailability(foodName, timing)) {
             if (orders.containsKey(customerid)) {
                 OrderList orders1 = orders.get(customerid);
                 for (Order order : orders1.getOrders()) {
                     if (order.getFoodname().equals(foodName) && !order.isDelivered()) {
                         order.setQuantity(order.getQuantity() + quantity);
-                        return;
+                        return "qunatity changed to "+order.getQuantity();
                     }
                 }
                 Order order = new Order(foodName, quantity);
@@ -46,14 +46,15 @@ public class Waiter extends User {
                 order.AddtoOrders(order2);
             }
         } else {
-            System.out.println("Enter the right foodname to order since it is not available at this time");
+            return "Enter the right foodname to order since it is not available at this time" ;
         }
+        return null;
     }
 
-    public void DeleteOrder(int customerid, String foodName, int quantity, Timing timing) {
-        if(restaurentWaiterInterface.getUserMenu().checkFoodAvailability(foodName, timing)){
+    public String DeleteOrder(int customerid, String foodName, int quantity, Timing timing) {
+        if (restaurentWaiterInterface.getUserMenu().checkFoodAvailability(foodName, timing)) {
             OrderList o = orders.get(customerid);
-    
+
             boolean checkfoodprocessed = false;
             for (Order order : o.getOrders()) {
                 if (!order.isDelivered() && order.getFoodname().equals(foodName)) {
@@ -64,13 +65,12 @@ public class Waiter extends User {
             if (checkfoodprocessed == false) {
                 throw new NullPointerException();
             } else {
-                o.deleteOrder(foodName, quantity);
+                return o.deleteOrder(foodName, quantity);
             }
         }
-        else{
-            System.out.println(
-                    "Enter the right foodname to delete order since this food in not available in menu at this time");
-        }
+
+        return "Enter the right foodname to delete order since this food in not available in menu at this time";
+
     }
 
     public ArrayList<Order> processOrder(int customerid) {
@@ -98,10 +98,9 @@ public class Waiter extends User {
     public Bill askbill(int customerid) {
         OrderList orders = this.orders.get(customerid);
         for (Order order : orders.getOrders()) {
-            if(order.isDelivered()){
+            if (order.isDelivered()) {
                 continue;
-            }
-            else{
+            } else {
                 throw new RuntimeException();
             }
         }

@@ -10,19 +10,12 @@ public class MenuList  {
 
     public void addMenusItems(Item items) {
         totalItems.add(items);
-
-    }
-
-    public void showMenu(Timing timing) {
-        
-        
     }
 
     public void alterMenuItems(String foodname, int price) {
         for (Item item : totalItems) {
             if (item.getFoodName().equals(foodname)) {
                 item.setPrice(price);
-                System.out.println("changed food name is " + item.getFoodName() + "price is " + item.getPrice());
             }
         }
 

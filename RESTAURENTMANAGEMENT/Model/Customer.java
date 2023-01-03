@@ -22,8 +22,8 @@ public class Customer extends User {
         return waiter.providesMenu();
     }
 
-    public void addOrders(Waiter waiter, String foodname, int quantity) {
-        waiter.TakeOrders(getID(), foodname, quantity, timing);
+    public String addOrders(Waiter waiter, String foodname, int quantity) {
+        return waiter.TakeOrders(getID(), foodname, quantity, timing);
     }
 
     public String deleteOrder(Waiter waiter, String foodname, int quantity) {

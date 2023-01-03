@@ -54,7 +54,7 @@ public class CustomerUI {
                         String foodname = in.nextLine();
                         System.out.println("enter the quantity");
                         int quantity = in.nextInt();
-                        customer.addOrders(waiter, foodname.toUpperCase(), quantity);
+                        System.out.println(customer.addOrders(waiter, foodname.toUpperCase(), quantity)); 
                         break;
 
                     case DELETE_ORDER:
@@ -117,6 +117,7 @@ public class CustomerUI {
         System.out.println("Food available are ");
         System.out.println("foodname \t price\t dietory");
         System.out.println("veg starters are");
+        System.out.println();
         for (Item item : menuItems) {
             if(item.getTiming().equals(timing)){
                 if (item.getCourse().equals(Course.STARTER)) {
@@ -128,6 +129,7 @@ public class CustomerUI {
         }
 
         System.out.println("nonveg starters are");
+        System.out.println();
         for (Item item : menuItems) {
             if(item.getTiming().equals(timing)){
                 if (item.getCourse().equals(Course.STARTER)) {
@@ -139,6 +141,7 @@ public class CustomerUI {
         }
 
         System.out.println("maincourse veg items are");
+        System.out.println();
         for (Item item : menuItems) {
             if(item.getTiming().equals(timing)){
                 if (item.getCourse().equals(Course.MAINCOURSE)) {
@@ -149,6 +152,7 @@ public class CustomerUI {
             }
         }
         System.out.println("maincourse nonveg items are");
+        System.out.println();
         for (Item item : menuItems) {
             if(item.getTiming().equals(timing)){
                 if (item.getCourse().equals(Course.MAINCOURSE)) {
@@ -159,7 +163,7 @@ public class CustomerUI {
             }
         }
         System.out.println("dessert veg items are ");
-
+        System.out.println();
         for (Item item : menuItems) {
             if(item.getTiming().equals(timing)){
                 if (item.getCourse().equals(Course.DESSERT)) {
@@ -170,7 +174,7 @@ public class CustomerUI {
             }
         }
         System.out.println("dessert nonveg items items are");
-
+        System.out.println();
         for (Item item : menuItems) {
             if(item.getTiming().equals(timing)){
                 if (item.getCourse().equals(Course.DESSERT)) {

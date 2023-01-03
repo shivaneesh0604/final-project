@@ -74,7 +74,7 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
                 } else {
                     if(tablesAvailable.contains(tablenumber)){
                         waiter1.setTableNumber(tablenumber);
-                        return "table number"+tablenumber+" is added";
+                        return "table number "+tablenumber+" is added";
                     }
                     else{
                         return "no tablenumber available";
