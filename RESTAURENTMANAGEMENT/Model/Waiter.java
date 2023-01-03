@@ -22,8 +22,8 @@ public class Waiter extends User {
         orders = new HashMap<>();
     }
 
-    public HashMap<String,Item> providesMenu() {
-        return restaurentWaiterInterface.getMenuItems();
+    public HashMap<String,Item> providesMenu(Timing timing) {
+        return restaurentWaiterInterface.getMenuItems(timing);
     }
 
     public String TakeOrders(int customerid, String foodName, int quantity, Timing timing) {

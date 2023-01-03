@@ -86,7 +86,7 @@ public class ManagerUI {
                 case ADD_ITEMS:
                     System.out.println("food available are ");
                     MenuList menu = restaurentManagerInterface.getFullMenuAccess();
-                    showMenu(menu.getTotalItems());
+                    showMenu(menu.getItems());
                     System.out.println("enter foodname to add");
                     scanner.nextLine();
                     String foodname = scanner.nextLine();
@@ -153,7 +153,7 @@ public class ManagerUI {
                 case ALTER_FOODPRICE:
                     System.out.println("food available are ");
                     MenuList menuList1 = restaurentManagerInterface.getFullMenuAccess();
-                    showMenu(menuList1.getTotalItems());
+                    showMenu(menuList1.getItems());
                     System.out.println("enter foodname to alter");
                     scanner.nextLine();
                     String foodname2 = scanner.nextLine();
@@ -166,7 +166,7 @@ public class ManagerUI {
                 case DELETE_ITEM:
                     System.out.println("food available are ");
                     MenuList menuList2 = restaurentManagerInterface.getFullMenuAccess();
-                    showMenu(menuList2.getTotalItems());
+                    showMenu(menuList2.getItems());
                     System.out.println("enter foodname to delete from menu");
                     scanner.nextLine();
                     String foodname3 = scanner.nextLine();

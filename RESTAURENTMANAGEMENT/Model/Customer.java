@@ -18,8 +18,8 @@ public class Customer extends User {
         this.timing = timing;
     }
 
-    public HashMap<String, Item> askMenu(Waiter waiter) {
-        return waiter.providesMenu();
+    public HashMap<String, Item> askMenu(Waiter waiter,Timing timing) {
+        return waiter.providesMenu(timing);
     }
 
     public String addOrders(Waiter waiter, String foodname, int quantity) {

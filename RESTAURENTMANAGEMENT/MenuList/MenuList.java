@@ -1,5 +1,6 @@
 package RESTAURENTMANAGEMENT.MenuList;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 import RESTAURENTMANAGEMENT.Interfaces.UserMenu;
@@ -35,7 +36,18 @@ public class MenuList implements UserMenu {
         item.setTiming(timing);
     }
 
-    public HashMap<String, Item> getTotalItems() {
+    public HashMap<String, Item> getItems(Timing timing) {
+        HashMap<String,Item> availableTimingItems=new HashMap<>();
+        Collection<Item> menuItems_values = totalItems.values();
+        for (Item item : menuItems_values) {
+            if(item.getTiming()==timing){
+                availableTimingItems.put(item.getFoodName(), item);
+            }
+        }
+        return availableTimingItems;
+    }
+
+    public HashMap<String,Item> getItems(){
         return totalItems;
     }
 

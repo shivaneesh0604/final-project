@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.InputMismatchException;
+import java.util.Map;
 
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCustomerInterface;
 import RESTAURENTMANAGEMENT.MenuList.Course;
@@ -45,8 +46,8 @@ public class CustomerUI {
 
                 switch (preference) {
                     case ASKING_MENU:
-                        HashMap<String, Item> menuItems = customer.askMenu(waiter);
-                        showMenu(menuItems, timing);
+                        HashMap<String, Item> menuItems = customer.askMenu(waiter, timing);
+                        showMenu(menuItems);
                         break;
 
                     case ADD_ORDERS:
@@ -96,22 +97,25 @@ public class CustomerUI {
 
                                 System.out.format("  %-9s             %-9d          %5d               %9d\n",
                                         order.itemName,
-                                        order.quantity, order.price , order.price * order.quantity);
+                                        order.quantity, order.price, order.price * order.quantity);
 
                             }
-                            System.out.println("total amount to be paid is "+bill.total());
-                            System.out.println("enter the amount to pay");
-                            float paymentAmount = in.nextFloat();
-                            try {
-                                customer.paybill(waiter, paymentAmount);
-                            } catch (RuntimeException e) {
-                                break;
+                            while (true) {
+                                System.out.println("total amount to be paid is " + bill.total());
+                                System.out.println("enter the amount to pay");
+                                float paymentAmount = in.nextFloat();
+                                try {
+                                    customer.paybill(waiter, paymentAmount);
+                                    break InnerLoop;
+                                } catch (RuntimeException e) {
+                                    continue;
+                                }
+
                             }
                         } catch (NullPointerException e) {
                             System.out.println("confirm the order first");
                             break;
                         }
-                        break InnerLoop;
                 }
             }
             break MainLoops;
@@ -124,75 +128,41 @@ public class CustomerUI {
         }
     }
 
-    private void showMenu(HashMap<String, Item> menuItems, Timing timing) {
+    private void showMenu(HashMap<String, Item> menuItems) {
         System.out.println("Food available are ");
         System.out.println("foodname \t price\t dietory");
         System.out.println("veg starters are");
         System.out.println();
-        Collection<Item> menuItems_values = menuItems.values();
-        for (Item item : menuItems_values) {
-            if (item.getTiming().equals(timing)) {
-                if (item.getCourse().equals(Course.STARTER)) {
-                    if (item.getDietery().equals(Dietery.VEG)) {
-                        System.out.println(item.getFoodName() + "\t" + item.getPrice() + "\t " + item.getDietery());
-                    }
-                }
+        HashMap<Course, HashMap<Dietery, ArrayList<Item>>> items = new HashMap<>();
+
+        for (Course course : Course.values()) {
+            HashMap<Dietery, ArrayList<Item>> map = new HashMap<>();
+            for (Dietery d : Dietery.values()) {
+                map.put(d, new ArrayList<>());
             }
+            items.put(course, map);
         }
 
-        System.out.println("nonveg starters are");
-        System.out.println();
-        for (Item item : menuItems_values) {
-            if (item.getTiming().equals(timing)) {
-                if (item.getCourse().equals(Course.STARTER)) {
-                    if (item.getDietery().equals(Dietery.NONVEG)) {
-                        System.out.println(item.getFoodName() + " " + item.getPrice() + " " + item.getDietery());
-                    }
-                }
-            }
-        }
+        menuItems.forEach((itemName, item) -> {
+            HashMap<Dietery, ArrayList<Item>> dieteryMap = items.get(item.getCourse());
+            ArrayList<Item> dieteryItem = dieteryMap.get(item.getDietery());
+            dieteryItem.add(item);
+            items.get(item.getCourse()).get(item.getDietery()).add(item);
+        });
 
-        System.out.println("maincourse veg items are");
-        System.out.println();
-        for (Item item : menuItems_values) {
-            if (item.getTiming().equals(timing)) {
-                if (item.getCourse().equals(Course.MAINCOURSE)) {
-                    if (item.getDietery().equals(Dietery.VEG)) {
-                        System.out.println(item.getFoodName() + " " + item.getPrice() + " " + item.getDietery());
-                    }
-                }
-            }
-        }
-        System.out.println("maincourse nonveg items are");
-        System.out.println();
-        for (Item item : menuItems_values) {
-            if (item.getTiming().equals(timing)) {
-                if (item.getCourse().equals(Course.MAINCOURSE)) {
-                    if (item.getDietery().equals(Dietery.NONVEG)) {
-                        System.out.println(item.getFoodName() + " " + item.getPrice() + " " + item.getDietery());
-                    }
-                }
-            }
-        }
-        System.out.println("dessert veg items are ");
-        System.out.println();
-        for (Item item : menuItems_values) {
-            if (item.getTiming().equals(timing)) {
-                if (item.getCourse().equals(Course.DESSERT)) {
-                    if (item.getDietery().equals(Dietery.VEG)) {
-                        System.out.println(item.getFoodName() + " " + item.getPrice() + " " + item.getDietery());
-                    }
-                }
-            }
-        }
-        System.out.println("dessert nonveg items items are");
-        System.out.println();
-        for (Item item : menuItems_values) {
-            if (item.getTiming().equals(timing)) {
-                if (item.getCourse().equals(Course.DESSERT)) {
-                    if (item.getDietery().equals(Dietery.NONVEG)) {
-                        System.out.println(item.getFoodName() + " " + item.getPrice() + " " + item.getDietery());
-                    }
+        for (Map.Entry<Course, HashMap<Dietery, ArrayList<Item>>> outerEntry : items.entrySet()) {
+            Course course = outerEntry.getKey();
+            HashMap<Dietery, ArrayList<Item>> innerMap = outerEntry.getValue();
+            System.out.println(course+":");
+            System.out.println();
+            for (Map.Entry<Dietery, ArrayList<Item>> innerEntry : innerMap.entrySet()) {
+                Dietery dietery = innerEntry.getKey();
+                ArrayList<Item> items1 = innerEntry.getValue();
+                System.out.println( dietery+" ARE");
+                System.out.println();
+                for (Item item : items1) {
+                    System.out.println(item.getFoodName()+" price is "+item.getPrice());
+                    System.out.println();
                 }
             }
         }

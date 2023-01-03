@@ -17,6 +17,7 @@ import RESTAURENTMANAGEMENT.Interfaces.RestaurentWaiterInterface;
 import RESTAURENTMANAGEMENT.Interfaces.UserMenu;
 import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.MenuList;
+import RESTAURENTMANAGEMENT.MenuList.Timing;
 
 public class Restaurent implements RestaurentWaiterInterface, RestaurentManagementFunctions, RestaurentCashierInterface,
         RestaurentKitchenOrderSystemInterface, RestaurentChefInterface,RestaurentCustomerInterface,RestaurentCookinterface {
@@ -61,7 +62,6 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
         this.cashier = cashier;
     }
 
-    
     @Override
     public String addTableNumbersToWaiters(String tablenumber, int waiterid) {
         for (Waiter waiter1 : waiters) {
@@ -135,8 +135,14 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     }
 
     @Override
-    public HashMap<String,Item> getMenuItems() {
-        return menu.getTotalItems();
+    public HashMap<String, Item> getMenuItems() {
+        // TODO Auto-generated method stub
+        return menu.getItems();
+    }
+
+    @Override
+    public HashMap<String,Item> getMenuItems(Timing timing) {
+        return menu.getItems(timing);
     }
 
     @Override
@@ -205,5 +211,6 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     public int getOwner() {
         return owner;
     }
+
 
 }
