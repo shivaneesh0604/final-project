@@ -11,14 +11,14 @@ import RESTAURENTMANAGEMENT.Interfaces.RestaurentChefInterface;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCashierInterface;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCustomerInterface;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentManagementFunctions;
-import RESTAURENTMANAGEMENT.Interfaces.RestaurentOrderKitchenSystemInterface;
+import RESTAURENTMANAGEMENT.Interfaces.RestaurentKitchenOrderSystemInterface;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentWaiterInterface;
 import RESTAURENTMANAGEMENT.Interfaces.UserMenu;
 import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.MenuList;
 
 public class Restaurent implements RestaurentWaiterInterface, RestaurentManagementFunctions, RestaurentCashierInterface,
-        RestaurentOrderKitchenSystemInterface, RestaurentChefInterface,RestaurentCustomerInterface {
+        RestaurentKitchenOrderSystemInterface, RestaurentChefInterface,RestaurentCustomerInterface {
 
     private final String restaurentName;
     private final int RestaurentID;
@@ -60,18 +60,14 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
         this.cashier = cashier;
     }
 
-    @Override
-    public Cashier returnCashier() {
-        return this.cashier;
-    }
-
+    
     @Override
     public String addTableNumbersToWaiters(String tablenumber, int waiterid) {
         for (Waiter waiter1 : waiters) {
             if (waiter1.getID() == waiterid) {
                 boolean check = checkTableNumbersForAllWaiters(tablenumber);
                 if (check) {
-                        return "Table number already added to another waiter so can't add";
+                    return "Table number already added to another waiter so can't add";
                 } else {
                     if(tablesAvailable.contains(tablenumber)){
                         waiter1.setTableNumber(tablenumber);
@@ -86,7 +82,7 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
         }
         return null;
     }
-
+    
     @Override
     public void deleteTableNumberforWaiter(String tablenumber, int waiterid) {
         for (Waiter waiter1 : waiters) {
@@ -101,7 +97,7 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
             }
         }
     }
-
+    
     @Override
     public Set<String> returnTableNumbers(int waiterid) {
         for (Waiter waiter1 : waiters) {
@@ -111,7 +107,7 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
         }
         return null;
     }
-
+    
     private boolean checkTableNumbersForAllWaiters(String tableNumber) {
         for (Waiter waiters : waiters) {
             if (waiters.getTablenumbers().contains(tableNumber)) {
@@ -120,10 +116,21 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
         }
         return false;
     }
-
+    
+    @Override
+    public void createNewMenu() {
+        // TODO Auto-generated method stub
+        this.menu = new MenuList();
+    }
+    
     @Override
     public MenuList getFullMenu() {
         return this.menu;
+    }
+    
+    @Override
+    public Cashier returnCashier() {
+        return this.cashier;
     }
 
     @Override
@@ -167,11 +174,6 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
         return null;
     }
 
-    @Override
-    public void createNewMenu() {
-        // TODO Auto-generated method stub
-        this.menu = new MenuList();
-    }
 
     public ArrayList<String> gettablesAvailable(){
         return tablesAvailable;

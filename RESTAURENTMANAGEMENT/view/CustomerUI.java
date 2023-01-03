@@ -45,7 +45,7 @@ public class CustomerUI {
 
                 switch (preference) {
                     case ASKING_MENU:
-                        HashMap<String,Item> menuItems = customer.askMenu(waiter);
+                        HashMap<String, Item> menuItems = customer.askMenu(waiter);
                         showMenu(menuItems, timing);
                         break;
 
@@ -93,12 +93,11 @@ public class CustomerUI {
                             System.out.format(
                                     "-----------------------------------------------------------------------------------------------------------------------------------\n");
                             for (Bill.BillItem order : bill.getItems()) {
-                                
-                                        System.out.format("  %-9s             %-9d          %5d               %9f\n",
-                                                order.itemName,
-                                                order.quantity, order.price/order.quantity, order.price);
-                                    
-                                
+
+                                System.out.format("  %-9s             %-9d          %5d               %9f\n",
+                                        order.itemName,
+                                        order.quantity, order.price / order.quantity, order.price);
+
                             }
                             System.out.println("enter the amount to pay");
                             float paymentAmount = in.nextFloat();
@@ -124,12 +123,12 @@ public class CustomerUI {
         }
     }
 
-    private void showMenu(HashMap<String,Item> menuItems, Timing timing) {
+    private void showMenu(HashMap<String, Item> menuItems, Timing timing) {
         System.out.println("Food available are ");
         System.out.println("foodname \t price\t dietory");
         System.out.println("veg starters are");
         System.out.println();
-        Collection<Item> menuItems_values =  menuItems.values();
+        Collection<Item> menuItems_values = menuItems.values();
         for (Item item : menuItems_values) {
             if (item.getTiming().equals(timing)) {
                 if (item.getCourse().equals(Course.STARTER)) {

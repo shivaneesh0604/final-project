@@ -3,11 +3,11 @@ package RESTAURENTMANAGEMENT.Model;
 import java.util.ArrayList;
 
 import RESTAURENTMANAGEMENT.Interfaces.OrderHook;
-import RESTAURENTMANAGEMENT.Interfaces.RestaurentOrderKitchenSystemInterface;
+import RESTAURENTMANAGEMENT.Interfaces.RestaurentKitchenOrderSystemInterface;
 
 public class KitchenOrderSystem implements OrderHook {
 
-    private RestaurentOrderKitchenSystemInterface kitchenOrderSystemInterface;
+    private RestaurentKitchenOrderSystemInterface kitchenOrderSystemInterface;
 
     public KitchenOrderSystem(Restaurent restaurent) {
         this.kitchenOrderSystemInterface = restaurent;

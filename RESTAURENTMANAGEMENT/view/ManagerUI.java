@@ -56,23 +56,32 @@ public class ManagerUI {
 
                 case REMOVE_TABLENUMBER:
                     System.out.println("enter waiterid to delete tablenumer available ids are ");
-                    int waiterid1 = scanner.nextInt();
-                    Set<String> tableForThisWaiter1 = restaurentManagerInterface
-                            .returnTableNumbers(waiterid1);
-                    System.out.println(tableForThisWaiter1);
-                    System.out.println("enter tablenumber to delete");
-                    scanner.nextLine();
-                    String deletetablenumber = scanner.nextLine();
-
-                    if (tableForThisWaiter1.contains(deletetablenumber)) {
-                        System.out.println(restaurentManagerInterface.returnTableNumbers(waiterid1));
-                        manager.deleteTableNumberforWaiter(deletetablenumber, waiterid1);
-                    } else {
-                        System.out.println("please enter available table number");
-                        System.out.println("Available tablenumbers are " + tableForThisWaiter1);
+                    try {
+                        int waiterid1 = scanner.nextInt();
+                        Set<String> tableForThisWaiter1 = restaurentManagerInterface
+                                .returnTableNumbers(waiterid1);
+                        System.out.println(tableForThisWaiter1);
+                        if(tableForThisWaiter1==null){
+                            System.out.println("no waiter available");
+                            break;
+                        }
+                        System.out.println("enter tablenumber to delete");
+                        scanner.nextLine();
+                        String deletetablenumber = scanner.nextLine();
+    
+                        if (tableForThisWaiter1.contains(deletetablenumber)) {
+                            manager.deleteTableNumberforWaiter(deletetablenumber, waiterid1);
+                            System.out.println(restaurentManagerInterface.returnTableNumbers(waiterid1));
+                        } else {
+                            System.out.println("please enter available table number");
+                            System.out.println("Available tablenumbers are " + tableForThisWaiter1);
+                        }
+                        
+                    } catch (Exception e) {
+                        System.out.println("you have entered wrong input");
                     }
-
                     break;
+
 
                 case ADD_ITEMS:
                     System.out.println("food available are ");
