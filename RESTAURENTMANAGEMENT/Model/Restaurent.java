@@ -51,20 +51,41 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
         this.cooks.add(cook);
     }
 
+    public void removeCookFromRestaurent(Cook cook) {
+        this.cooks.remove(cook);
+    }
+
     public void addWaitersToRestaurent(Waiter waiter) {
         waiters.add(waiter);
+    }
+
+    public void removeWaiterFromRestaurent(Waiter waiter) {
+        this.waiters.remove(waiter);
     }
 
     public void addChefToRestaurent(Chef chef) {
         chefs.add(chef);
     }
 
+    public void removeChefFromRestaurent(Chef chef) {
+        this.chefs.remove(chef);
+    }
+
     public void addManagerToRestaurent(Manager manager) {
         this.managers.add(manager);
     }
 
+    public void removeManagerFromRestaurent(Manager manager) {
+        this.managers.remove(manager);
+    }
+
     public void addCashierToRestaurent(Cashier cashier) {
         this.cashier = cashier;
+    }
+
+    public void removeCashierFromRestaurent(Cashier cashier) {
+        if (this.cashier == cashier)
+            this.cashier = null;
     }
 
     @Override
