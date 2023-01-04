@@ -5,10 +5,10 @@ import java.util.HashMap;
 
 import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
-import RESTAURENTMANAGEMENT.Model.Bill;
 import RESTAURENTMANAGEMENT.Model.Order;
 import RESTAURENTMANAGEMENT.Model.User;
 import RESTAURENTMANAGEMENT.Model.Waiter;
+import RESTAURENTMANAGEMENT.Model.Cashier.Bill;
 import RESTAURENTMANAGEMENT.view.AppUsers;
 
 public class Customer extends User {

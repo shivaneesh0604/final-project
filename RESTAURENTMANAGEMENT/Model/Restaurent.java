@@ -17,6 +17,10 @@ import RESTAURENTMANAGEMENT.Interfaces.UserMenu;
 import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.MenuList;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
+import RESTAURENTMANAGEMENT.Model.Cashier.Cashier;
+import RESTAURENTMANAGEMENT.Model.KitchenSystems.Chef;
+import RESTAURENTMANAGEMENT.Model.KitchenSystems.Cook;
+import RESTAURENTMANAGEMENT.Model.KitchenSystems.KitchenOrderSystem;
 
 public class Restaurent implements RestaurentWaiterInterface, RestaurentManagementFunctions, RestaurentCashierInterface,
         RestaurentKitchenOrderSystemInterface, RestaurentChefInterface, RestaurentCustomerInterface,

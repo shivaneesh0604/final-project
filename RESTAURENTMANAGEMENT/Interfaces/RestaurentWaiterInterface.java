@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
-import RESTAURENTMANAGEMENT.Model.Cashier;
-import RESTAURENTMANAGEMENT.Model.KitchenOrderSystem;
+import RESTAURENTMANAGEMENT.Model.Cashier.Cashier;
+import RESTAURENTMANAGEMENT.Model.KitchenSystems.KitchenOrderSystem;
 
 public interface RestaurentWaiterInterface {
     public UserMenu getUserMenu();

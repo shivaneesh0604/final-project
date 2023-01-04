@@ -11,10 +11,10 @@ import RESTAURENTMANAGEMENT.MenuList.Course;
 import RESTAURENTMANAGEMENT.MenuList.Dietery;
 import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
-import RESTAURENTMANAGEMENT.Model.Bill;
 import RESTAURENTMANAGEMENT.Model.Order;
 import RESTAURENTMANAGEMENT.Model.Restaurent;
 import RESTAURENTMANAGEMENT.Model.Waiter;
+import RESTAURENTMANAGEMENT.Model.Cashier.Bill;
 import RESTAURENTMANAGEMENT.Model.Customer.Customer;
 
 public class CustomerUI {

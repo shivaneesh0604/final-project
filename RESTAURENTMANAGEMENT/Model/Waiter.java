@@ -9,6 +9,8 @@ import RESTAURENTMANAGEMENT.Interfaces.KitchenSystem;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentWaiterInterface;
 import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
+import RESTAURENTMANAGEMENT.Model.Cashier.Bill;
+import RESTAURENTMANAGEMENT.Model.Cashier.Cashier;
 
 public class Waiter extends User {
     private RestaurentWaiterInterface restaurentWaiterInterface;
