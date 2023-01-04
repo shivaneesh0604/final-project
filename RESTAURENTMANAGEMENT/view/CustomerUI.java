@@ -2,7 +2,6 @@ package RESTAURENTMANAGEMENT.view;
 
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Map;
@@ -13,10 +12,10 @@ import RESTAURENTMANAGEMENT.MenuList.Dietery;
 import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
 import RESTAURENTMANAGEMENT.Model.Bill;
-import RESTAURENTMANAGEMENT.Model.Customer;
 import RESTAURENTMANAGEMENT.Model.Order;
 import RESTAURENTMANAGEMENT.Model.Restaurent;
 import RESTAURENTMANAGEMENT.Model.Waiter;
+import RESTAURENTMANAGEMENT.Model.Customer.Customer;
 
 public class CustomerUI {
     Scanner in = new Scanner(System.in);

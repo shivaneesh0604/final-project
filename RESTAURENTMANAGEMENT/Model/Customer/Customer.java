@@ -1,10 +1,14 @@
-package RESTAURENTMANAGEMENT.Model;
+package RESTAURENTMANAGEMENT.Model.Customer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
+import RESTAURENTMANAGEMENT.Model.Bill;
+import RESTAURENTMANAGEMENT.Model.Order;
+import RESTAURENTMANAGEMENT.Model.User;
+import RESTAURENTMANAGEMENT.Model.Waiter;
 import RESTAURENTMANAGEMENT.view.AppUsers;
 
 public class Customer extends User {
