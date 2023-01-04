@@ -1,6 +1,6 @@
 package RESTAURENTMANAGEMENT.Model;
 
-public class User {
+public abstract class User {
     private final String name;
     private final int ID;
 
