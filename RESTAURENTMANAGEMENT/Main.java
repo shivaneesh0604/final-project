@@ -39,7 +39,7 @@ public class Main {
                         if (restaurent != null) {
                             try {
                                 Manager manager = restaurent.getManager(managerID);
-                                new ManagerUI(restaurent, manager).entersUI();
+                                new ManagerUI(manager).entersUI();
                                 ;
                             } catch (NullPointerException e) {
                                 System.out.println("no manager with this id");

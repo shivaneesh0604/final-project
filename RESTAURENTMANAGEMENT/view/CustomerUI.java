@@ -152,15 +152,15 @@ public class CustomerUI {
         for (Map.Entry<Course, HashMap<Dietery, ArrayList<Item>>> outerEntry : items.entrySet()) {
             Course course = outerEntry.getKey();
             HashMap<Dietery, ArrayList<Item>> innerMap = outerEntry.getValue();
-            System.out.println(course+":");
+            System.out.println(course + ":");
             System.out.println();
             for (Map.Entry<Dietery, ArrayList<Item>> innerEntry : innerMap.entrySet()) {
                 Dietery dietery = innerEntry.getKey();
                 ArrayList<Item> items1 = innerEntry.getValue();
-                System.out.println( dietery+" ARE");
+                System.out.println(dietery + " ARE");
                 System.out.println();
                 for (Item item : items1) {
-                    System.out.println(item.getFoodName()+" price is "+item.getPrice());
+                    System.out.println(item.getFoodName() + " price is " + item.getPrice());
                     System.out.println();
                 }
             }

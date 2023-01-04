@@ -1,5 +1,7 @@
 package RESTAURENTMANAGEMENT.Model;
 
+import java.util.Set;
+
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentManagementFunctions;
 import RESTAURENTMANAGEMENT.MenuList.Course;
 import RESTAURENTMANAGEMENT.MenuList.Dietery;
@@ -35,14 +37,12 @@ public class Manager extends User {
         restaurent.getFullMenuAccess().deleteMenuItems(foodname);
     }
 
-    public void createNewMenu() {
-        restaurent.createNewMenu();
-        // simply adding dummy values
-        MenuList menu1 = restaurent.getFullMenuAccess();
-        Item item2 = new Item("chicken Chucka", 130, Dietery.NONVEG, Course.MAINCOURSE, Timing.EVENING);
-        menu1.addMenusItems(item2);
-        Item item3 = new Item("rice", 100, Dietery.VEG, Course.MAINCOURSE, Timing.EVENING);
-        menu1.addMenusItems(item3);
+    public MenuList getFullMenuAccess(){
+        return restaurent.getFullMenuAccess();
+    }
+
+    public Set<String> returnTableNumbers(int waiterid){
+        return restaurent.returnTableNumbers(waiterid);
     }
 
     public void setTimingForFood(String foodname, Timing timing) {

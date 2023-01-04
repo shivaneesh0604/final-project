@@ -5,22 +5,18 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Set;
 
-import RESTAURENTMANAGEMENT.Interfaces.RestaurentManagementFunctions;
 import RESTAURENTMANAGEMENT.MenuList.Course;
 import RESTAURENTMANAGEMENT.MenuList.Dietery;
 import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.MenuList;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
 import RESTAURENTMANAGEMENT.Model.Manager;
-import RESTAURENTMANAGEMENT.Model.Restaurent;
 
 public class ManagerUI {
-    private RestaurentManagementFunctions restaurentManagerInterface;
     private final Manager manager;
     Scanner scanner = new Scanner(System.in);
 
-    public ManagerUI(Restaurent restaurent, Manager manager) {
-        this.restaurentManagerInterface = restaurent;
+    public ManagerUI(Manager manager) {
         this.manager = manager;
     }
 
@@ -36,7 +32,7 @@ public class ManagerUI {
                     System.out.print("enter waiterid to add tablenumer ");
                     try {
                         int waiterid = scanner.nextInt();
-                        Set<String> tableForThisWaiter = restaurentManagerInterface
+                        Set<String> tableForThisWaiter = manager
                                 .returnTableNumbers(waiterid);
                         System.out.println(tableForThisWaiter);
                         if (tableForThisWaiter == null) {
@@ -46,7 +42,7 @@ public class ManagerUI {
                         System.out.println("enter tablenumber to add");
                         scanner.nextLine();
                         String addtablenumber = scanner.nextLine();
-                        System.out.println(manager.addTableNumbersToWaiter(addtablenumber, waiterid)); 
+                        System.out.println(manager.addTableNumbersToWaiter(addtablenumber, waiterid));
 
                     } catch (InputMismatchException e) {
                         System.out.println("you have entered wrong input");
@@ -58,101 +54,60 @@ public class ManagerUI {
                     System.out.println("enter waiterid to delete tablenumer available ids are ");
                     try {
                         int waiterid1 = scanner.nextInt();
-                        Set<String> tableForThisWaiter1 = restaurentManagerInterface
+                        Set<String> tableForThisWaiter1 = manager
                                 .returnTableNumbers(waiterid1);
                         System.out.println(tableForThisWaiter1);
-                        if(tableForThisWaiter1==null){
+                        if (tableForThisWaiter1 == null) {
                             System.out.println("no waiter available");
                             break;
                         }
                         System.out.println("enter tablenumber to delete");
                         scanner.nextLine();
                         String deletetablenumber = scanner.nextLine();
-    
+
                         if (tableForThisWaiter1.contains(deletetablenumber)) {
                             manager.deleteTableNumberforWaiter(deletetablenumber, waiterid1);
-                            System.out.println(restaurentManagerInterface.returnTableNumbers(waiterid1));
+                            System.out.println(manager.returnTableNumbers(waiterid1));
                         } else {
                             System.out.println("please enter available table number");
                             System.out.println("Available tablenumbers are " + tableForThisWaiter1);
                         }
-                        
+
                     } catch (Exception e) {
                         System.out.println("you have entered wrong input");
                     }
                     break;
 
-
                 case ADD_ITEMS:
                     System.out.println("food available are ");
-                    MenuList menu = restaurentManagerInterface.getFullMenuAccess();
+                    MenuList menu = manager.getFullMenuAccess();
                     showMenu(menu.getItems());
                     System.out.println("enter foodname to add");
-                    scanner.nextLine();
                     String foodname = scanner.nextLine();
                     System.out.println("enter price to add");
                     int price = scanner.nextInt();
-                    Dietery dietery;
-                    DietryLoop: while (true) {
-                        System.out.println("Press 1 for Veg and 2 for NonVeg");
-                        int diet = scanner.nextInt();
-                        switch (diet) {
-                            case 1:
-                                dietery = Dietery.VEG;
-                                break DietryLoop;
-                            case 2:
-                                dietery = Dietery.NONVEG;
-                                break DietryLoop;
-                            default:
-                                System.out.println("enter correct option to select");
-                        }
-                    }
-                    Timing timing;
-                    Timing: while (true) {
-                        System.out.println(
-                                "enter which timing to have this food -press 1 for morning 2 for afternoon and 3 for night");
-                        int time = scanner.nextInt();
-                        switch (time) {
-                            case 1:
-                                timing = Timing.MORNING;
-                                break Timing;
-                            case 2:
-                                timing = Timing.EVENING;
-                                break Timing;
-                            case 3:
-                                timing = Timing.NIGHT;
-                                break Timing;
-                            default:
-                                System.out.println("enter correct option to select");
-                        }
-                    }
-                    Course courses;
-                    Course: while (true) {
-                        System.out.println(
-                                "enter which course do you need - pres 1 for starter ,2 for maincourse,3 for dessert");
-                        int course = scanner.nextInt();
-                        switch (course) {
-                            case 1:
-                                courses = Course.STARTER;
-                                break Course;
-                            case 2:
-                                courses = Course.MAINCOURSE;
-                                break Course;
-                            case 3:
-                                courses = Course.DESSERT;
-                                break Course;
-                            default:
-                                System.out.println("enter correct option to select");
+                    InputVerification.print(Dietery.values());
 
-                        }
-                    }
-                    Item item = new Item(foodname, price, dietery, courses, timing);
+                    int option2 = InputVerification.InputVerificationDietery(Dietery.values().length);
+                    Dietery dietoryPreference = Dietery.values()[option2];
+                    
+                    InputVerification.print(Course.values());
+
+                    int option3 = InputVerification.InputVerificationCourse(Course.values().length);
+                    Course coursepreference = Course.values()[option3];
+                    
+                    InputVerification.print(Timing.values());
+
+                    int option4 = InputVerification.InputVerificationTiming(Timing.values().length);
+                    Timing timingPreference = Timing.values()[option4];
+
+                    Item item = new Item(foodname, price, dietoryPreference, coursepreference, timingPreference);
                     manager.addMenusItems(item);
                     break;
 
                 case ALTER_FOODPRICE:
                     System.out.println("food available are ");
-                    MenuList menuList1 = restaurentManagerInterface.getFullMenuAccess();
+                    MenuList menuList1 = manager.getFullMenuAccess();
                     showMenu(menuList1.getItems());
                     System.out.println("enter foodname to alter");
                     scanner.nextLine();
@@ -165,7 +120,7 @@ public class ManagerUI {
 
                 case DELETE_ITEM:
                     System.out.println("food available are ");
-                    MenuList menuList2 = restaurentManagerInterface.getFullMenuAccess();
+                    MenuList menuList2 = manager.getFullMenuAccess();
                     showMenu(menuList2.getItems());
                     System.out.println("enter foodname to delete from menu");
                     scanner.nextLine();
@@ -173,35 +128,15 @@ public class ManagerUI {
                     manager.deleteMenuItems(foodname3);
                     break;
 
-                case CREATE_NEW_MENU:
-                    manager.createNewMenu();
-                    System.out.println("menu created");
-                    break;
-
                 case SET_TIMING:
                     System.out.println("enter foodname to set timing");
                     String foodname4 = scanner.nextLine();
                     System.out.println("enter which timing you need");
-                    Timing timing1;
-                    Timing: while (true) {
-                        System.out.println(
-                                "enter which timing to have this food -press 1 for morning 2 for afternoon and 3 for night");
-                        int time = scanner.nextInt();
-                        switch (time) {
-                            case 1:
-                                timing1 = Timing.MORNING;
-                                break Timing;
-                            case 2:
-                                timing1 = Timing.EVENING;
-                                break Timing;
-                            case 3:
-                                timing1 = Timing.NIGHT;
-                                break Timing;
-                            default:
-                                System.out.println("enter correct option to select");
-                        }
-                    }
-                    manager.setTimingForFood(foodname4, timing1);
+                    InputVerification.print(Timing.values());
+
+                    int option5 = InputVerification.InputVerificationTiming(Timing.values().length);
+                    Timing timingPreference1 = Timing.values()[option5];
+                    manager.setTimingForFood(foodname4, timingPreference1);
                     break;
 
                 case EXIT:
@@ -209,9 +144,10 @@ public class ManagerUI {
 
             }
         }
+
     }
 
-    private void showMenu(HashMap<String,Item> menu) {
+    private void showMenu(HashMap<String, Item> menu) {
         System.out.println(menu);
     }
 }

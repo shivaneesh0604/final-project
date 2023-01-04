@@ -35,7 +35,7 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     private final ArrayList<Chef> chefs = new ArrayList<Chef>();
     private final ArrayList<Manager> managers = new ArrayList<>();
     private Cashier cashier;
-    private MenuList menu;
+    private final MenuList menu;
     private KitchenOrderSystem kitchenOrderSystem;
     private final ArrayList<String> tablesAvailable;
 
@@ -44,6 +44,7 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
         this.restaurentName = restaurentName;
         this.owner = ownerID;
         this.tablesAvailable = tablesAvailable;
+        this.menu = new MenuList();
         kitchenOrderSystem = new KitchenOrderSystem(this);
     }
 
@@ -141,12 +142,6 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
             }
         }
         return false;
-    }
-
-    @Override
-    public void createNewMenu() {
-        // TODO Auto-generated method stub
-        this.menu = new MenuList();
     }
 
     @Override

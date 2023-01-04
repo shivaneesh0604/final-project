@@ -33,7 +33,6 @@ public class Owner extends User {
 
     public void addManagerToRestaurent(Restaurent restaurent, Manager manager) {
         restaurent.addManagerToRestaurent(manager);
-        manager.createNewMenu();
     }
 
     public void addWaitersToRestaurent(Restaurent restaurent, Waiter waiter) {

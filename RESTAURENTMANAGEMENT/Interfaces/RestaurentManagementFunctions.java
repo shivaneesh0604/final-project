@@ -14,6 +14,4 @@ public interface RestaurentManagementFunctions {
 
     public MenuList getFullMenuAccess();
 
-    public void createNewMenu();
-
 }
