@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
 
-
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentChefInterface;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCookinterface;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCashierInterface;
@@ -20,7 +19,8 @@ import RESTAURENTMANAGEMENT.MenuList.MenuList;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
 
 public class Restaurent implements RestaurentWaiterInterface, RestaurentManagementFunctions, RestaurentCashierInterface,
-        RestaurentKitchenOrderSystemInterface, RestaurentChefInterface,RestaurentCustomerInterface,RestaurentCookinterface {
+        RestaurentKitchenOrderSystemInterface, RestaurentChefInterface, RestaurentCustomerInterface,
+        RestaurentCookinterface {
 
     private final String restaurentName;
     private final int RestaurentID;
@@ -32,9 +32,10 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     private final ArrayList<Manager> managers = new ArrayList<>();
     private Cashier cashier;
     private MenuList menu;
-    private KitchenOrderSystem kitchenOrderSystem ;
+    private KitchenOrderSystem kitchenOrderSystem;
     private final ArrayList<String> tablesAvailable;
-    public Restaurent(String restaurentName, int restaurentID, int ownerID,ArrayList<String> tablesAvailable) {
+
+    public Restaurent(String restaurentName, int restaurentID, int ownerID, ArrayList<String> tablesAvailable) {
         this.RestaurentID = restaurentID;
         this.restaurentName = restaurentName;
         this.owner = ownerID;
@@ -70,20 +71,19 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
                 if (check) {
                     return "Table number already added to another waiter so can't add";
                 } else {
-                    if(tablesAvailable.contains(tablenumber)){
+                    if (tablesAvailable.contains(tablenumber)) {
                         waiter1.setTableNumber(tablenumber);
-                        return "table number "+tablenumber+" is added";
-                    }
-                    else{
+                        return "table number " + tablenumber + " is added";
+                    } else {
                         return "no tablenumber available";
                     }
-                    
+
                 }
             }
         }
         return null;
     }
-    
+
     @Override
     public void deleteTableNumberforWaiter(String tablenumber, int waiterid) {
         for (Waiter waiter1 : waiters) {
@@ -98,7 +98,7 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
             }
         }
     }
-    
+
     @Override
     public Set<String> returnTableNumbers(int waiterid) {
         for (Waiter waiter1 : waiters) {
@@ -108,7 +108,7 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
         }
         return null;
     }
-    
+
     private boolean checkTableNumbersForAllWaiters(String tableNumber) {
         for (Waiter waiters : waiters) {
             if (waiters.getTablenumbers().contains(tableNumber)) {
@@ -117,18 +117,18 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
         }
         return false;
     }
-    
+
     @Override
     public void createNewMenu() {
         // TODO Auto-generated method stub
         this.menu = new MenuList();
     }
-    
+
     @Override
     public MenuList getFullMenuAccess() {
         return this.menu;
     }
-    
+
     @Override
     public Cashier getCashier() {
         return this.cashier;
@@ -141,7 +141,7 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     }
 
     @Override
-    public HashMap<String,Item> getMenuItems(Timing timing) {
+    public HashMap<String, Item> getMenuItems(Timing timing) {
         return menu.getItems(timing);
     }
 
@@ -164,10 +164,10 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
 
     @Override
     public Waiter getIN(String tablenumber, int customerid) {
-        if(tablesAvailable.contains(tablenumber)){
+        if (tablesAvailable.contains(tablenumber)) {
             return getWaiter(tablenumber, customerid);
         }
-        System.out.println("available table numbers are"+tablesAvailable);
+        System.out.println("available table numbers are" + tablesAvailable);
         return null;
 
     }
@@ -181,14 +181,13 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
         return null;
     }
 
-
-    public ArrayList<String> gettablesAvailable(){
+    public ArrayList<String> gettablesAvailable() {
         return tablesAvailable;
     }
 
     public Manager getManager(int managerID) {
         for (Manager manager : managers) {
-            if(manager.getID()==managerID){
+            if (manager.getID() == managerID) {
                 return manager;
             }
         }
@@ -211,6 +210,5 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     public int getOwner() {
         return owner;
     }
-
 
 }

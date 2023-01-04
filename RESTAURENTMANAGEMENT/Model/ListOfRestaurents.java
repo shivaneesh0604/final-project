@@ -24,11 +24,11 @@ public class ListOfRestaurents {
 
     public void showRestaurents() {
         for (Restaurent restaurent : restaurents) {
-            System.out.println(restaurent.getRestaurentName());            
+            System.out.println(restaurent.getRestaurentName());
         }
     }
 
-    public Restaurent getRestaurents(int restaurentID){
+    public Restaurent getRestaurents(int restaurentID) {
         for (Restaurent restaurent : restaurents) {
             if (restaurent.getRestaurentID() == restaurentID) {
                 return restaurent;

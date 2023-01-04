@@ -23,12 +23,11 @@ public class OrderList {
                     return order.getFoodname() + " is totally deleted";
                 } else if (order.getQuantity() > quantity) {
                     order.setQuantity(order.getQuantity() - quantity);
-                    return
-                            "Changed order is " + order.getFoodname() + " with the quantity " + order.getQuantity();
+                    return "Changed order is " + order.getFoodname() + " with the quantity " + order.getQuantity();
                 } else if (order.getQuantity() < quantity) {
                     return "Your order is not compatible to change please enter value on or below "
-                                    + order.getQuantity() + " to delete";
-                    
+                            + order.getQuantity() + " to delete";
+
                 }
             }
         }

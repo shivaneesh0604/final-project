@@ -2,7 +2,6 @@ package RESTAURENTMANAGEMENT.Model;
 
 import java.util.ArrayList;
 
-
 public class Owner extends User {
 
     private ArrayList<Restaurent> restaurents;
@@ -12,24 +11,24 @@ public class Owner extends User {
         restaurents = new ArrayList<>();
     }
 
-    public void addCashierToRestaurent(Restaurent restaurent,Cashier cashier) {
+    public void addCashierToRestaurent(Restaurent restaurent, Cashier cashier) {
         restaurent.addCashierToRestaurent(cashier);
     }
 
-    public void addChefToRestaurent(Restaurent restaurent,Chef chef){
+    public void addChefToRestaurent(Restaurent restaurent, Chef chef) {
         restaurent.addChefToRestaurent(chef);
     }
 
-    public void addCookToRestaurent(Restaurent restaurent,Cook cook){
+    public void addCookToRestaurent(Restaurent restaurent, Cook cook) {
         restaurent.addCookToRestaurent(cook);
     }
 
-    public void addManagerToRestaurent(Restaurent restaurent,Manager manager){
+    public void addManagerToRestaurent(Restaurent restaurent, Manager manager) {
         restaurent.addManagerToRestaurent(manager);
         manager.createNewMenu();
     }
 
-    public void addWaitersToRestaurent(Restaurent restaurent,Waiter waiter){
+    public void addWaitersToRestaurent(Restaurent restaurent, Waiter waiter) {
         waiter.setTableNumber("t1");
         restaurent.addWaitersToRestaurent(waiter);
     }

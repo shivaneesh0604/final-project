@@ -22,7 +22,7 @@ public class Waiter extends User {
         orders = new HashMap<>();
     }
 
-    public HashMap<String,Item> providesMenu(Timing timing) {
+    public HashMap<String, Item> providesMenu(Timing timing) {
         return restaurentWaiterInterface.getMenuItems(timing);
     }
 
@@ -33,7 +33,7 @@ public class Waiter extends User {
                 for (Order order : orders1.getOrders()) {
                     if (order.getFoodname().equals(foodName) && !order.isDelivered()) {
                         order.setQuantity(order.getQuantity() + quantity);
-                        return "qunatity changed to "+order.getQuantity();
+                        return "qunatity changed to " + order.getQuantity();
                     }
                 }
                 Order order = new Order(foodName, quantity);
@@ -46,7 +46,7 @@ public class Waiter extends User {
                 order.AddtoOrders(order2);
             }
         } else {
-            return "Enter the right foodname to order since it is not available at this time" ;
+            return "Enter the right foodname to order since it is not available at this time";
         }
         return "";
     }

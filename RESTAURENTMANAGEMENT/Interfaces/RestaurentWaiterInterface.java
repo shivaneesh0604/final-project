@@ -9,7 +9,10 @@ import RESTAURENTMANAGEMENT.Model.KitchenOrderSystem;
 
 public interface RestaurentWaiterInterface {
     public UserMenu getUserMenu();
-    public HashMap<String,Item> getMenuItems(Timing timing);
+
+    public HashMap<String, Item> getMenuItems(Timing timing);
+
     public Cashier getCashier();
+
     public KitchenOrderSystem getKitchenorderSystem();
 }

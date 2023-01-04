@@ -22,7 +22,7 @@ public class Customer extends User {
         this.timing = timing;
     }
 
-    public HashMap<String, Item> askMenu(Waiter waiter,Timing timing) {
+    public HashMap<String, Item> askMenu(Waiter waiter, Timing timing) {
         return waiter.providesMenu(timing);
     }
 

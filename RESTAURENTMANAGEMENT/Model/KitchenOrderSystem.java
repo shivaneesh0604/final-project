@@ -17,5 +17,5 @@ public class KitchenOrderSystem implements KitchenSystem {
     public ArrayList<Order> assignToChefAndReceieveFood(ArrayList<Order> orders) {
         return kitchenOrderSystemInterface.getRandomChef().assignToChefAndReceieveFood(orders);
     }
-    
+
 }

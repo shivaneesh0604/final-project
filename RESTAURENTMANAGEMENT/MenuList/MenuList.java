@@ -37,17 +37,17 @@ public class MenuList implements UserMenu {
     }
 
     public HashMap<String, Item> getItems(Timing timing) {
-        HashMap<String,Item> availableTimingItems=new HashMap<>();
+        HashMap<String, Item> availableTimingItems = new HashMap<>();
         Collection<Item> menuItems_values = totalItems.values();
         for (Item item : menuItems_values) {
-            if(item.getTiming()==timing){
+            if (item.getTiming() == timing) {
                 availableTimingItems.put(item.getFoodName(), item);
             }
         }
         return availableTimingItems;
     }
 
-    public HashMap<String,Item> getItems(){
+    public HashMap<String, Item> getItems() {
         return totalItems;
     }
 

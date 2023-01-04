@@ -1,4 +1,5 @@
 package RESTAURENTMANAGEMENT.Model;
+
 import java.util.ArrayList;
 
 public class Bill {
@@ -29,7 +30,7 @@ public class Bill {
 
     public int total() {
         int total = 0;
-        for(BillItem item: items) {
+        for (BillItem item : items) {
             total += item.price * item.quantity;
         }
         return total;

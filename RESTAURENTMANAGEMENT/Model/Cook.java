@@ -6,7 +6,7 @@ public class Cook extends User {
 
     private final RestaurentCookinterface restaurent;
 
-    public Cook(String name, int iD,Restaurent restaurent) {
+    public Cook(String name, int iD, Restaurent restaurent) {
         super(name, iD);
         this.restaurent = restaurent;
     }

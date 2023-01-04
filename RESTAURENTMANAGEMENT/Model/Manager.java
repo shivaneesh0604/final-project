@@ -37,7 +37,7 @@ public class Manager extends User {
 
     public void createNewMenu() {
         restaurent.createNewMenu();
-        //simply adding dummy values
+        // simply adding dummy values
         MenuList menu1 = restaurent.getFullMenuAccess();
         Item item2 = new Item("chicken Chucka", 130, Dietery.NONVEG, Course.MAINCOURSE, Timing.EVENING);
         menu1.addMenusItems(item2);
@@ -45,7 +45,7 @@ public class Manager extends User {
         menu1.addMenusItems(item3);
     }
 
-    public void setTimingForFood(String foodname,Timing timing){
+    public void setTimingForFood(String foodname, Timing timing) {
         MenuList menu1 = restaurent.getFullMenuAccess();
         menu1.setTimingForFood(foodname, timing);
     }

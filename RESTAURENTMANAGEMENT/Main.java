@@ -19,6 +19,7 @@ import RESTAURENTMANAGEMENT.view.OwnerUI;
 public class Main {
     private static int customerID = 0;
     private static ArrayList<Owner> owners = new ArrayList<>();
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Owner owner1 = new Owner("raj", 1);
@@ -29,28 +30,28 @@ public class Main {
             AppUsers preference = AppUsers.values()[option];
             switch (preference) {
                 case MANAGER:
-                try {
-                    System.out.println("enter restaurentID to enter the restaurent");
-                    int restaurentID1 = sc.nextInt();
-                    System.out.println("enter manager id of him");
-                    int managerID = sc.nextInt();
-                    Restaurent restaurent = ListOfRestaurents.getInstance().getRestaurents(restaurentID1);
-                    if(restaurent!=null){
-                        try {
-                            Manager manager = restaurent.getManager(managerID);
-                            new ManagerUI(restaurent,manager).entersUI();;
-                        } catch (NullPointerException e) {
-                            System.out.println("no manager with this id");
+                    try {
+                        System.out.println("enter restaurentID to enter the restaurent");
+                        int restaurentID1 = sc.nextInt();
+                        System.out.println("enter manager id of him");
+                        int managerID = sc.nextInt();
+                        Restaurent restaurent = ListOfRestaurents.getInstance().getRestaurents(restaurentID1);
+                        if (restaurent != null) {
+                            try {
+                                Manager manager = restaurent.getManager(managerID);
+                                new ManagerUI(restaurent, manager).entersUI();
+                                ;
+                            } catch (NullPointerException e) {
+                                System.out.println("no manager with this id");
+                            }
+                        } else {
+                            System.out.println("no restaurent found");
+                            continue;
                         }
+                    } catch (InputMismatchException e) {
+                        System.out.println("enter only integer values");
+                        break;
                     }
-                    else{
-                        System.out.println("no restaurent found");
-                        continue;
-                    }
-                } catch (InputMismatchException e) {
-                    System.out.println("enter only integer values");
-                    break;
-                }
                     break;
 
                 case CUSTOMER:
@@ -61,17 +62,17 @@ public class Main {
                     InputVerification.print(Timing.values());
                     int option1 = InputVerification.InputVerificationTiming(Timing.values().length);
                     Timing timingPreference = Timing.values()[option1];
-                    Customer customer = new Customer(name, customerID1,timingPreference);
+                    Customer customer = new Customer(name, customerID1, timingPreference);
                     customerID++;
                     System.out.println("enter restaurent id to enter ");
                     try {
                         int restaurentID2 = sc.nextInt();
                         Restaurent restaurent2 = ListOfRestaurents.getInstance().getRestaurents(restaurentID2);
-                        if(restaurent2==null){
+                        if (restaurent2 == null) {
                             System.out.println("no restaurents available with this id");
                             continue;
                         }
-                        new CustomerUI(restaurent2,customer).entersTheRestaurent(timingPreference);
+                        new CustomerUI(restaurent2, customer).entersTheRestaurent(timingPreference);
                         break;
                     } catch (InputMismatchException e) {
                         System.out.println("input missmatched enter integer value");
@@ -103,10 +104,9 @@ public class Main {
                                 System.out.println("enter restaurentid to enter");
                                 int restaurentID3 = sc.nextInt();
                                 Restaurent restaurent4 = ListOfRestaurents.getInstance().getRestaurents(restaurentID3);
-                                if(restaurent4!=null){
+                                if (restaurent4 != null) {
                                     ownerUI.entersRestaurent(restaurent4);
-                                }
-                                else{
+                                } else {
                                     System.out.println("no restaurent available with this id");
                                 }
                                 break;
