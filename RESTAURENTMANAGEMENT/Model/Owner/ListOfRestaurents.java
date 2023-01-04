@@ -24,6 +24,12 @@ public class ListOfRestaurents {
         restaurents.add(restaurent);
     }
 
+    void removeRestaurent(Restaurent restaurent){
+        if(restaurents.contains(restaurent)){
+            restaurents.remove(restaurent);
+        }
+    }
+
     public void showRestaurents() {
         for (Restaurent restaurent : restaurents) {
             System.out.println(restaurent.getRestaurentName());

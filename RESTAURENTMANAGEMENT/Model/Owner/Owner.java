@@ -45,4 +45,11 @@ public class Owner extends User {
         restaurents.add(restaurent);
         ListOfRestaurents.getInstance().addRestaurent(restaurent);
     }
+
+    public void deleteRestaurent(Restaurent restaurent){
+        if(restaurents.contains(restaurent)){
+            restaurents.remove(restaurent);
+            ListOfRestaurents.getInstance().removeRestaurent(restaurent);
+        }
+    }
 }
