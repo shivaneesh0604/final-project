@@ -1,10 +1,13 @@
-package RESTAURENTMANAGEMENT.Model;
+package RESTAURENTMANAGEMENT.Model.Cashier;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCashierInterface;
 import RESTAURENTMANAGEMENT.MenuList.Item;
+import RESTAURENTMANAGEMENT.Model.Order;
+import RESTAURENTMANAGEMENT.Model.Restaurent;
+import RESTAURENTMANAGEMENT.Model.User;
 
 public class Cashier extends User {
 

@@ -1,8 +1,11 @@
-package RESTAURENTMANAGEMENT.Model;
+package RESTAURENTMANAGEMENT.Model.KitchenSystems;
 
 import java.util.ArrayList;
 
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentChefInterface;
+import RESTAURENTMANAGEMENT.Model.Order;
+import RESTAURENTMANAGEMENT.Model.Restaurent;
+import RESTAURENTMANAGEMENT.Model.User;
 
 public class Chef extends User {
 
@@ -13,7 +16,7 @@ public class Chef extends User {
         this.restaurent = restaurent;
     }
 
-    public ArrayList<Order> assignToChefAndReceieveFood(ArrayList<Order> orders) {
+    ArrayList<Order> assignToChefAndReceieveFood(ArrayList<Order> orders) {
 
         Cook cook = restaurent.getRandomCook();
 

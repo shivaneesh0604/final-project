@@ -1,6 +1,9 @@
-package RESTAURENTMANAGEMENT.Model;
+package RESTAURENTMANAGEMENT.Model.KitchenSystems;
 
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentCookinterface;
+import RESTAURENTMANAGEMENT.Model.Order;
+import RESTAURENTMANAGEMENT.Model.Restaurent;
+import RESTAURENTMANAGEMENT.Model.User;
 
 public class Cook extends User {
 
@@ -11,7 +14,7 @@ public class Cook extends User {
         this.restaurent = restaurent;
     }
 
-    public Order getfoodAndProcess(Order order) {
+    Order getfoodAndProcess(Order order) {
         System.out.println("food in process...");
         try {
             Thread.sleep(2000);

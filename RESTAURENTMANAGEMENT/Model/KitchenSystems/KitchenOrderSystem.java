@@ -1,9 +1,11 @@
-package RESTAURENTMANAGEMENT.Model;
+package RESTAURENTMANAGEMENT.Model.KitchenSystems;
 
 import java.util.ArrayList;
 
 import RESTAURENTMANAGEMENT.Interfaces.KitchenSystem;
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentKitchenOrderSystemInterface;
+import RESTAURENTMANAGEMENT.Model.Order;
+import RESTAURENTMANAGEMENT.Model.Restaurent;
 
 public class KitchenOrderSystem implements KitchenSystem {
 

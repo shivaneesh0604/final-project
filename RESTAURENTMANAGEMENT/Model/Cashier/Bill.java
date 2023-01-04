@@ -1,4 +1,4 @@
-package RESTAURENTMANAGEMENT.Model;
+package RESTAURENTMANAGEMENT.Model.Cashier;
 
 import java.util.ArrayList;
 

@@ -2,13 +2,13 @@ package RESTAURENTMANAGEMENT.view;
 
 import java.util.ArrayList;
 
-import RESTAURENTMANAGEMENT.Model.Cashier;
-import RESTAURENTMANAGEMENT.Model.Chef;
-import RESTAURENTMANAGEMENT.Model.Cook;
 import RESTAURENTMANAGEMENT.Model.Manager;
-import RESTAURENTMANAGEMENT.Model.Owner;
 import RESTAURENTMANAGEMENT.Model.Restaurent;
 import RESTAURENTMANAGEMENT.Model.Waiter;
+import RESTAURENTMANAGEMENT.Model.Cashier.Cashier;
+import RESTAURENTMANAGEMENT.Model.KitchenSystems.Chef;
+import RESTAURENTMANAGEMENT.Model.KitchenSystems.Cook;
+import RESTAURENTMANAGEMENT.Model.Owner.Owner;
 
 public class OwnerUI {
 
