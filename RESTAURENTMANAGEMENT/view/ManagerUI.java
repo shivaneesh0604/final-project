@@ -1,5 +1,6 @@
 package RESTAURENTMANAGEMENT.view;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -148,6 +149,9 @@ public class ManagerUI {
     }
 
     private void showMenu(HashMap<String, Item> menu) {
-        System.out.println(menu);
+        Collection<Item> items = menu.values();
+        for (Item item : items) {
+            System.out.println(item.getFoodName()+" "+item.getPrice());
+        }
     }
 }

@@ -3,8 +3,6 @@ package RESTAURENTMANAGEMENT.Model;
 import java.util.Set;
 
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentManagementFunctions;
-import RESTAURENTMANAGEMENT.MenuList.Course;
-import RESTAURENTMANAGEMENT.MenuList.Dietery;
 import RESTAURENTMANAGEMENT.MenuList.Item;
 import RESTAURENTMANAGEMENT.MenuList.MenuList;
 import RESTAURENTMANAGEMENT.MenuList.Timing;
