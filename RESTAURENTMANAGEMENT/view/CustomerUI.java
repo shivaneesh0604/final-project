@@ -146,7 +146,7 @@ public class CustomerUI {
             HashMap<Dietery, ArrayList<Item>> dieteryMap = items.get(item.getCourse());
             ArrayList<Item> dieteryItem = dieteryMap.get(item.getDietery());
             dieteryItem.add(item);
-            items.get(item.getCourse()).get(item.getDietery()).add(item);
+            // items.get(item.getCourse()).get(item.getDietery()).add(item); single line code
         });
 
         for (Map.Entry<Course, HashMap<Dietery, ArrayList<Item>>> outerEntry : items.entrySet()) {
