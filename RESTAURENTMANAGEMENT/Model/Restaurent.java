@@ -156,7 +156,6 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
 
     @Override
     public HashMap<String, Item> getMenuItems() {
-        // TODO Auto-generated method stub
         return menu.getItems();
     }
 
