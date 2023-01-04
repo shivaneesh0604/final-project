@@ -1,6 +1,8 @@
-package RESTAURENTMANAGEMENT.Model;
+package RESTAURENTMANAGEMENT.Model.Owner;
 
 import java.util.ArrayList;
+
+import RESTAURENTMANAGEMENT.Model.Restaurent;
 
 public class ListOfRestaurents {
     private final ArrayList<Restaurent> restaurents = new ArrayList<>();

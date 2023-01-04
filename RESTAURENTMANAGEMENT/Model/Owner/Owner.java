@@ -1,6 +1,14 @@
-package RESTAURENTMANAGEMENT.Model;
+package RESTAURENTMANAGEMENT.Model.Owner;
 
 import java.util.ArrayList;
+
+import RESTAURENTMANAGEMENT.Model.Cashier;
+import RESTAURENTMANAGEMENT.Model.Chef;
+import RESTAURENTMANAGEMENT.Model.Cook;
+import RESTAURENTMANAGEMENT.Model.Manager;
+import RESTAURENTMANAGEMENT.Model.Restaurent;
+import RESTAURENTMANAGEMENT.Model.User;
+import RESTAURENTMANAGEMENT.Model.Waiter;
 
 public class Owner extends User {
 
@@ -29,7 +37,6 @@ public class Owner extends User {
     }
 
     public void addWaitersToRestaurent(Restaurent restaurent, Waiter waiter) {
-        waiter.setTableNumber("t1");
         restaurent.addWaitersToRestaurent(waiter);
     }
 

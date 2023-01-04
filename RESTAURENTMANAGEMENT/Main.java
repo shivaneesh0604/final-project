@@ -5,11 +5,11 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import RESTAURENTMANAGEMENT.MenuList.Timing;
-import RESTAURENTMANAGEMENT.Model.ListOfRestaurents;
 import RESTAURENTMANAGEMENT.Model.Manager;
-import RESTAURENTMANAGEMENT.Model.Owner;
 import RESTAURENTMANAGEMENT.Model.Restaurent;
 import RESTAURENTMANAGEMENT.Model.Customer.Customer;
+import RESTAURENTMANAGEMENT.Model.Owner.ListOfRestaurents;
+import RESTAURENTMANAGEMENT.Model.Owner.Owner;
 import RESTAURENTMANAGEMENT.view.AppUsers;
 import RESTAURENTMANAGEMENT.view.CustomerUI;
 import RESTAURENTMANAGEMENT.view.InputVerification;
