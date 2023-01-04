@@ -19,7 +19,7 @@ public class Order {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -27,7 +27,7 @@ public class Order {
         return delivered;
     }
 
-    public void setDelivered(boolean delivered) {
+    void setDelivered(boolean delivered) {
         this.delivered = delivered;
     }
 
