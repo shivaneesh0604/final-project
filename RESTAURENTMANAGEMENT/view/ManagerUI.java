@@ -31,7 +31,7 @@ public class ManagerUI {
             ManagerOptions preference = ManagerOptions.values()[option];
             switch (preference) {
                 case ADD_TABLENUMBER:
-                    System.out.println("available tablenumbers are");
+                    System.out.println("available waiter ID's are");
                     ArrayList<Integer> waiterIDs = manager.getWaiterIDs();
                     for (Integer integer : waiterIDs) {
                         System.out.println(integer);
@@ -40,7 +40,7 @@ public class ManagerUI {
                     try {
                         int waiterid = scanner.nextInt();
                         Set<String> tableForThisWaiter = manager
-                                .returnTableNumbers(waiterid);
+                        .returnTableNumbers(waiterid);
                         System.out.println(tableForThisWaiter);
                         if (tableForThisWaiter == null) {
                             System.out.println("no waiter available");
@@ -50,13 +50,14 @@ public class ManagerUI {
                         scanner.nextLine();
                         String addtablenumber = scanner.nextLine();
                         System.out.println(manager.addTableNumbersToWaiter(addtablenumber, waiterid));
-
+                        
                     } catch (InputMismatchException e) {
                         System.out.println("you have entered wrong input");
                     }
                     break;
-
-                case REMOVE_TABLENUMBER:
+                    
+                    case REMOVE_TABLENUMBER:
+                    System.out.println("available waiter ID's are");
                     ArrayList<Integer> waiterIDs1 = manager.getWaiterIDs();
                     for (Integer integer : waiterIDs1) {
                         System.out.println(integer);
