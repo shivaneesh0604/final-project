@@ -1,5 +1,6 @@
 package RESTAURENTMANAGEMENT.view;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.InputMismatchException;
@@ -30,6 +31,11 @@ public class ManagerUI {
             ManagerOptions preference = ManagerOptions.values()[option];
             switch (preference) {
                 case ADD_TABLENUMBER:
+                    System.out.println("available tablenumbers are");
+                    ArrayList<Integer> waiterIDs = manager.getWaiterIDs();
+                    for (Integer integer : waiterIDs) {
+                        System.out.println(integer);
+                    }
                     System.out.print("enter waiterid to add tablenumer ");
                     try {
                         int waiterid = scanner.nextInt();
@@ -52,6 +58,10 @@ public class ManagerUI {
                     break;
 
                 case REMOVE_TABLENUMBER:
+                    ArrayList<Integer> waiterIDs1 = manager.getWaiterIDs();
+                    for (Integer integer : waiterIDs1) {
+                        System.out.println(integer);
+                    }
                     System.out.println("enter waiterid to delete tablenumer available ids are ");
                     try {
                         int waiterid1 = scanner.nextInt();
@@ -91,12 +101,12 @@ public class ManagerUI {
 
                     int option2 = InputVerification.InputVerificationDietery(Dietery.values().length);
                     Dietery dietoryPreference = Dietery.values()[option2];
-                    
+
                     InputVerification.print(Course.values());
 
                     int option3 = InputVerification.InputVerificationCourse(Course.values().length);
                     Course coursepreference = Course.values()[option3];
-                    
+
                     InputVerification.print(Timing.values());
 
                     int option4 = InputVerification.InputVerificationTiming(Timing.values().length);
@@ -151,7 +161,7 @@ public class ManagerUI {
     private void showMenu(HashMap<String, Item> menu) {
         Collection<Item> items = menu.values();
         for (Item item : items) {
-            System.out.println(item.getFoodName()+" "+item.getPrice());
+            System.out.println(item.getFoodName() + " " + item.getPrice());
         }
     }
 }

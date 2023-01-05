@@ -1,5 +1,6 @@
 package RESTAURENTMANAGEMENT.Model;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 import RESTAURENTMANAGEMENT.Interfaces.RestaurentManagementFunctions;
@@ -41,6 +42,10 @@ public class Manager extends User {
 
     public Set<String> returnTableNumbers(int waiterid){
         return restaurent.returnTableNumbers(waiterid);
+    }
+
+    public ArrayList<Integer> getWaiterIDs(){
+        return restaurent.getWaiterIDs();
     }
 
     public void setTimingForFood(String foodname, Timing timing) {

@@ -188,7 +188,16 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
         }
         System.out.println("available table numbers are" + tablesAvailable);
         return null;
-
+        
+    }
+    
+    @Override
+    public ArrayList<Integer> getWaiterIDs() {
+        ArrayList<Integer> waiterIds = new ArrayList<>();
+        for (Waiter waiter : waiters) {
+            waiterIds.add(waiter.getID());
+        }
+        return waiterIds;
     }
 
     private Waiter getWaiter(String TableNumber, int customerid) {
@@ -229,5 +238,6 @@ public class Restaurent implements RestaurentWaiterInterface, RestaurentManageme
     public int getOwner() {
         return owner;
     }
+
 
 }
