@@ -26,6 +26,15 @@ public class MenuList implements UserMenu {
 
     @Override
     public boolean checkFoodAvailability(String foodname, Timing timing) {
+        Item item = totalItems.get(foodname);
+        if(item.getTiming()==timing){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean checkFoodAvailability(String foodname){
         return totalItems.containsKey(foodname);
     }
 

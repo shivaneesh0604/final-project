@@ -4,4 +4,5 @@ import RESTAURENTMANAGEMENT.MenuList.Timing;
 
 public interface UserMenu {
     public boolean checkFoodAvailability(String foodname, Timing timing);
+    public boolean checkFoodAvailability(String foodname);
 }

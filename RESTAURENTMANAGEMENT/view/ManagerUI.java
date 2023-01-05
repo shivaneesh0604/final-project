@@ -53,7 +53,6 @@ public class ManagerUI {
 
                     } catch (InputMismatchException e) {
                         System.out.println("you have entered wrong input");
-
                     }
                     break;
 
@@ -93,30 +92,37 @@ public class ManagerUI {
                     System.out.println("food available are ");
                     MenuList menu = manager.getFullMenuAccess();
                     showMenu(menu.getItems());
-                    System.out.println("enter foodname to add");
-                    String foodname = scanner.nextLine();
-                    System.out.println("enter price to add");
-                    int price = scanner.nextInt();
-                    InputVerification.print(Dietery.values());
-
-                    int option2 = InputVerification.InputVerificationDietery(Dietery.values().length);
-                    Dietery dietoryPreference = Dietery.values()[option2];
-
-                    InputVerification.print(Course.values());
-
-                    int option3 = InputVerification.InputVerificationCourse(Course.values().length);
-                    Course coursepreference = Course.values()[option3];
-
-                    InputVerification.print(Timing.values());
-
-                    int option4 = InputVerification.InputVerificationTiming(Timing.values().length);
-                    Timing timingPreference = Timing.values()[option4];
-
-                    Item item = new Item(foodname, price, dietoryPreference, coursepreference, timingPreference);
-                    manager.addMenusItems(item);
+                    try {
+                        System.out.println("enter foodname to add");
+                        String foodname = scanner.nextLine();
+                        System.out.println("enter price to add");
+                        int price = scanner.nextInt();
+                        InputVerification.print(Dietery.values());
+    
+                        int option2 = InputVerification.InputVerificationDietery(Dietery.values().length);
+                        Dietery dietoryPreference = Dietery.values()[option2];
+    
+                        InputVerification.print(Course.values());
+    
+                        int option3 = InputVerification.InputVerificationCourse(Course.values().length);
+                        Course coursepreference = Course.values()[option3];
+    
+                        InputVerification.print(Timing.values());
+    
+                        int option4 = InputVerification.InputVerificationTiming(Timing.values().length);
+                        Timing timingPreference = Timing.values()[option4];
+    
+                        Item item = new Item(foodname, price, dietoryPreference, coursepreference, timingPreference);
+                        manager.addMenusItems(item);
+                        
+                    } catch (InputMismatchException e) {
+                        System.out.println("input missmatched");
+                    }
                     break;
 
                 case ALTER_FOODPRICE:
+                try {
+                    
                     System.out.println("food available are ");
                     MenuList menuList1 = manager.getFullMenuAccess();
                     showMenu(menuList1.getItems());
@@ -127,9 +133,13 @@ public class ManagerUI {
                     int price2 = scanner.nextInt();
                     manager.alterMenuItems(foodname2, price2);
                     System.out.println("changed food name is " + foodname2 + "price is " + price2);
-                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("input missmatch exception");
+                }
+                break;
 
                 case DELETE_ITEM:
+                try {
                     System.out.println("food available are ");
                     MenuList menuList2 = manager.getFullMenuAccess();
                     showMenu(menuList2.getItems());
@@ -137,17 +147,28 @@ public class ManagerUI {
                     scanner.nextLine();
                     String foodname3 = scanner.nextLine();
                     manager.deleteMenuItems(foodname3);
-                    break;
+                    
+                } catch (InputMismatchException e) {
+                    System.out.println("input missmatch exception");
+                }
+                break;
 
                 case SET_TIMING:
+                MenuList menu1 = manager.getFullMenuAccess();
+                showMenu(menu1.getItems());
                     System.out.println("enter foodname to set timing");
                     String foodname4 = scanner.nextLine();
-                    System.out.println("enter which timing you need");
-                    InputVerification.print(Timing.values());
-
-                    int option5 = InputVerification.InputVerificationTiming(Timing.values().length);
-                    Timing timingPreference1 = Timing.values()[option5];
-                    manager.setTimingForFood(foodname4, timingPreference1);
+                    if(menu1.checkFoodAvailability(foodname4)){
+                        System.out.println("enter which timing you need");
+                        InputVerification.print(Timing.values());
+    
+                        int option5 = InputVerification.InputVerificationTiming(Timing.values().length);
+                        Timing timingPreference1 = Timing.values()[option5];
+                        manager.setTimingForFood(foodname4, timingPreference1);
+                    }
+                    else{
+                        System.out.println("wrong foodname");
+                    }
                     break;
 
                 case EXIT:
